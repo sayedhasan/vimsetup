@@ -37,9 +37,43 @@
 
     " Setup Bundle Support {
         " The next three lines ensure that the ~/.vim/bundle/ system works
+        set nocompatible
         filetype on
         filetype off
-        set rtp+=~/vimsetup/bundle/vundle
+        " set rtp+=~/vimsetup/bundle/vundle
+        " call vundle#rc()
+        let initial_setup = 0
+        if !isdirectory($HOME . '/.vim/bundle/vundle')
+          if executable('git')
+            " execute '!git clone https://github.com/gmarik/vundle.git "'
+            "       \ . $HOME . '/.vim/bundle/vundle"'
+            call mkdir($HOME . '/.vim/bundle', 'p')
+            if !isdirectory($HOME . '/.cache/vim/backup')
+              call mkdir($HOME . '/.cache/vim/backup', 'p')
+            endif
+            if !isdirectory($HOME . '/.cache/vim/undo')
+              call mkdir($HOME . '/.cache/vim/undo', 'p')
+            endif
+            if !isdirectory($HOME . '/.cache/vim/swap')
+              call mkdir($HOME . '/.cache/vim/swap', 'p')
+            endif
+            if has('win32') || has ('win64') " Fix for vimrun.exe on Windows
+              execute '!"git clone http://github.com/gmarik/vundle.git "'
+                    \ . $HOME . '/.vim/bundle/vundle""'
+            else
+              execute '!git clone http://github.com/gmarik/vundle.git "'
+                    \ . $HOME . '/.vim/bundle/vundle"'
+              let initial_setup = 1
+            endif
+          else
+            let choice =  confirm("You should get Git to be able to
+                  \ Install and Update. Continue?", "&Yes\n&No", 2)
+            if choice == 2
+              quit
+            endif
+          endif
+        endif
+        set runtimepath+=~/.vim/bundle/vundle
         call vundle#rc()
     " }
 
@@ -48,9 +82,11 @@
 " Use bundles config {
     if filereadable(expand("~/.vimrc.bundles"))
         source ~/.vimrc.bundles
+        if initial_setup == 1
+          BundleInstall
+        endif
     endif
 " }
-
 
 " Set filetype stuff to on
 filetype on
@@ -538,96 +574,96 @@ command! ToggleMinimap call ToggleMinimap()
 " }
 
 
-" Commands {
-"-----------------------------------------------------------------------------
-" FreemindToList {
-function! FreemindToListF()
-    setl filetype=
-    silent! :%s/^\(\s*\).*TEXT="\([^"]*\)".*$/\1- \2/
-    silent! :g/^\s*</d
-    silent! :%s/&quot;/"/g
-    silent! :%s/&apos;/\'/g
-    silent! g/^-/s/- //
-    silent! g/^\w/t.|s/./=/g
-    silent! g/^\s*-/normal O
-    silent! normal 3GgqG
-    silent! %s/^\s\{4}\zs-/o/
-    silent! %s/^\s\{12}\zs-/+/
-    silent! %s/^\s\{16}\zs-/*/
-    silent! %s/^\s\{20}\zs-/#/
-    silent! normal gg
-endfunction
-
-command! FreemindToList call FreemindToListF()
-" }
-
-" Auto commands {
-"-----------------------------------------------------------------------------
-augroup sayed_files
-  au!
-  au BufNewFile,BufRead  *.mi     set filetype=tcl
-  au BufNewFile,BufRead  *.fi     set filetype=tcl
-  au BufNewFile,BufRead *.pdb     set filetype=tcl
-  au BufNewFile,BufRead *.log     set filetype=tcl
-  au BufNewFile,BufRead   *.m     set filetype=matlab
-  au BufNewFile,BufRead *.inc     set filetype=make
-  au BufNewFile,BufRead *.dat     set filetype=perl
-  au BufNewFile,BufRead *.t       set filetype=perl
-  au BufNewFile,BufRead *.newrule set filetype=perl
-  au BufNewFile,BufRead zirconQA  set fdm=marker
-  " au BufNewFile,BufRead *.txt colorscheme slate
-augroup END
-
-autocmd BufEnter *.m compiler mlint
-" }
-
-
-" Fix constant spelling mistakes {
-"-----------------------------------------------------------------------------
-iab Acheive    Achieve
-iab acheive    achieve
-iab Alos       Also
-iab alos       also
-iab Aslo       Also
-iab aslo       also
-iab Becuase    Because
-iab becuase    because
-iab Bianries   Binaries
-iab bianries   binaries
-iab Bianry     Binary
-iab bianry     binary
-iab Charcter   Character
-iab charcter   character
-iab Charcters  Characters
-iab charcters  characters
-iab Exmaple    Example
-iab exmaple    example
-iab Exmaples   Examples
-iab exmaples   examples
-iab Fone       Phone
-iab fone       phone
-iab Seperate   Separate
-iab seperate   separate
-iab Seureth    Suereth
-iab seureth    suereth
-iab Shoudl     Should
-iab shoudl     should
-iab Taht       That
-iab taht       that
-iab Teh        The
-iab teh        the
-" }
-
-" Remember last cursor location {
-" Tell vim to remember certain things when we exit
-"  '10  :  marks will be remembered for up to 10 previously edited files
-"  "100 :  will save up to 100 lines for each register
-"  :20  :  up to 20 lines of command-line history will be remembered
-"  %    :  saves and restores the buffer list
-"  n... :  where to save the viminfo files
-set viminfo='10,\"100,:20,%,n~/.viminfo
-au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
-" }
+"" Commands {
+""-----------------------------------------------------------------------------
+"" FreemindToList {
+"function! FreemindToListF()
+"    setl filetype=
+"    silent! :%s/^\(\s*\).*TEXT="\([^"]*\)".*$/\1- \2/
+"    silent! :g/^\s*</d
+"    silent! :%s/&quot;/"/g
+"    silent! :%s/&apos;/\'/g
+"    silent! g/^-/s/- //
+"    silent! g/^\w/t.|s/./=/g
+"    silent! g/^\s*-/normal O
+"    silent! normal 3GgqG
+"    silent! %s/^\s\{4}\zs-/o/
+"    silent! %s/^\s\{12}\zs-/+/
+"    silent! %s/^\s\{16}\zs-/*/
+"    silent! %s/^\s\{20}\zs-/#/
+"    silent! normal gg
+"endfunction
+"
+"command! FreemindToList call FreemindToListF()
+"" }
+"
+"" Auto commands {
+""-----------------------------------------------------------------------------
+"augroup sayed_files
+"  au!
+"  au BufNewFile,BufRead  *.mi     set filetype=tcl
+"  au BufNewFile,BufRead  *.fi     set filetype=tcl
+"  au BufNewFile,BufRead *.pdb     set filetype=tcl
+"  au BufNewFile,BufRead *.log     set filetype=tcl
+"  au BufNewFile,BufRead   *.m     set filetype=matlab
+"  au BufNewFile,BufRead *.inc     set filetype=make
+"  au BufNewFile,BufRead *.dat     set filetype=perl
+"  au BufNewFile,BufRead *.t       set filetype=perl
+"  au BufNewFile,BufRead *.newrule set filetype=perl
+"  au BufNewFile,BufRead zirconQA  set fdm=marker
+"  " au BufNewFile,BufRead *.txt colorscheme slate
+"augroup END
+"
+"autocmd BufEnter *.m compiler mlint
+"" }
+"
+"
+"" Fix constant spelling mistakes {
+""-----------------------------------------------------------------------------
+"iab Acheive    Achieve
+"iab acheive    achieve
+"iab Alos       Also
+"iab alos       also
+"iab Aslo       Also
+"iab aslo       also
+"iab Becuase    Because
+"iab becuase    because
+"iab Bianries   Binaries
+"iab bianries   binaries
+"iab Bianry     Binary
+"iab bianry     binary
+"iab Charcter   Character
+"iab charcter   character
+"iab Charcters  Characters
+"iab charcters  characters
+"iab Exmaple    Example
+"iab exmaple    example
+"iab Exmaples   Examples
+"iab exmaples   examples
+"iab Fone       Phone
+"iab fone       phone
+"iab Seperate   Separate
+"iab seperate   separate
+"iab Seureth    Suereth
+"iab seureth    suereth
+"iab Shoudl     Should
+"iab shoudl     should
+"iab Taht       That
+"iab taht       that
+"iab Teh        The
+"iab teh        the
+"" }
+"
+"" Remember last cursor location {
+"" Tell vim to remember certain things when we exit
+""  '10  :  marks will be remembered for up to 10 previously edited files
+""  "100 :  will save up to 100 lines for each register
+""  :20  :  up to 20 lines of command-line history will be remembered
+""  %    :  saves and restores the buffer list
+""  n... :  where to save the viminfo files
+"set viminfo='10,\"100,:20,%,n~/.viminfo
+"au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
+"" }
 
 " All of my unstructured stuffs {
 
@@ -673,7 +709,8 @@ map <silent> <F1> "zyiw:he <C-R>"<CR>
 
 
 
-set guifont=Menlo:h14
+"set guifont=Menlo:h14
+set guifont=Consolas\ for\ Powerline\ FixedD\ 16
 colorscheme solarized
 set background=dark
 set number

@@ -2,6 +2,11 @@
 *.DS_Store
 [Tt]humbs.db
 
+# swap file
+*~
+*.swp
+*.swp
+
 # plugins
 bundle/FuzzyFinder/
 bundle/L9/
