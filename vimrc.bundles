@@ -37,7 +37,7 @@
         Bundle 'http://github.com/mattn/emmet-vim'
         Bundle 'http://github.com/tristen/vim-sparkup.git'
         Bundle 'http://github.com/tpope/vim-surround.git'
-        Bundle 'http://github.com/scrooloose/syntastic.git'
+        " Bundle 'http://github.com/scrooloose/syntastic.git'
         Bundle 'http://github.com/msanders/snipmate.vim.git'
         " Bundle 'http://github.com/spf13/snipmate-snippets.git'
         Bundle 'http://github.com/Shougo/neocomplcache.vim.git'
@@ -55,7 +55,7 @@
     " repo-management {
         Bundle 'http://github.com/tpope/vim-git.git'
         Bundle 'http://github.com/tpope/vim-fugitive.git'
-        Bundle 'http://github.com/mhinz/vim-signify.git'
+        " Bundle 'http://github.com/mhinz/vim-signify.git'
     " }
 
     " colorscheme font statusline {
