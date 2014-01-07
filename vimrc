@@ -8,81 +8,82 @@
 
 
 " Use before config {
-    if filereadable(expand("~/.vimrc.before"))
-        source ~/.vimrc.before
-    endif
+if filereadable(expand("~/.vimrc.before"))
+    source ~/.vimrc.before
+endif
 " }
 
 
 " Environment {
 
-    " Basics {
-        set nocompatible        " Must be first line
-        if !(has('win16') || has('win32') || has('win64'))
-          set shell=/bin/sh
-        endif
-    " }
+  " Basics {
+    set nocompatible        " Must be first line
+    if !(has('win16') || has('win32') || has('win64'))
+      set shell=/bin/sh
+    endif
+  " }
 
-    " Windows Compatible {
-        " On Windows, also use '.vim' instead of 'vimfiles'; this makes synchronization
-        " across (heterogeneous) systems easier.
-        if has('win32') || has('win64')
-          set runtimepath=$HOME/.vim,$VIM/vimfiles,$VIMRUNTIME,$VIM/vimfiles/after,$HOME/.vim/after
-        endif
-    " }
+  " Windows Compatible {
+    " On Windows, also use '.vim' instead of 'vimfiles'; this makes synchronization
+    " across (heterogeneous) systems easier.
+    if has('win32') || has('win64')
+      set runtimepath=$HOME/.vim,$VIM/vimfiles,$VIMRUNTIME,$VIM/vimfiles/after,$HOME/.vim/after
+    endif
+  " }
 
-    " Unix Shell {
+  " Unix Shell {
+    if has('unix')
+      set shell=tcsh
+    endif
+  " }
+
+  " Setup Bundle Support {
+    " The next three lines ensure that the ~/.vim/bundle/ system works
+    set nocompatible
+    filetype on
+    filetype off
+    let vundle_init = 0
+    if !isdirectory($HOME . '/.vim/bundle/vundle')
+      if executable('git')
+        call mkdir($HOME . '/.vim/bundle', 'p')
+        if !isdirectory($HOME . '/.cache/vim/backup')
+          call mkdir($HOME . '/.cache/vim/backup', 'p')
+        endif
+        if !isdirectory($HOME . '/.cache/vim/undo')
+          call mkdir($HOME . '/.cache/vim/undo', 'p')
+        endif
+        if !isdirectory($HOME . '/.cache/vim/swap')
+          call mkdir($HOME . '/.cache/vim/swap', 'p')
+        endif
         if has('unix')
-          set shell=tcsh
-       endif
-    " }
-
-    " Setup Bundle Support {
-        " The next three lines ensure that the ~/.vim/bundle/ system works
-        set nocompatible
-        filetype on
-        filetype off
-        let vundle_init = 0
-        if !isdirectory($HOME . '/.vim/bundle/vundle')
-          if executable('git')
-            call mkdir($HOME . '/.vim/bundle', 'p')
-            if !isdirectory($HOME . '/.cache/vim/backup')
-              call mkdir($HOME . '/.cache/vim/backup', 'p')
-            endif
-            if !isdirectory($HOME . '/.cache/vim/undo')
-              call mkdir($HOME . '/.cache/vim/undo', 'p')
-            endif
-            if !isdirectory($HOME . '/.cache/vim/swap')
-              call mkdir($HOME . '/.cache/vim/swap', 'p')
-            endif
-            if has('unix')
-              execute '!git clone http://github.com/gmarik/vundle.git "'
-                    \ . $HOME . '/.vim/bundle/vundle"'
-              let vundle_init = 1
-            endif
-          else
-            let choice =  confirm("You should get Git to be able to
-                  \ Install and Update. Continue?", "&Yes\n&No", 2)
-            if choice == 2
-              quit
-            endif
-          endif
+          execute '!git clone http://github.com/gmarik/vundle.git "'
+                \ . $HOME . '/.vim/bundle/vundle"'
+          let vundle_init = 1
         endif
-        set runtimepath+=~/.vim/bundle/vundle
-        call vundle#rc()
-    " }
-
+      else
+        let choice =  confirm("You should get Git to be able to
+              \ Install and Update. Continue?", "&Yes\n&No", 2)
+        if choice == 2
+          quit
+        endif
+      endif
+    endif
+    set runtimepath+=~/.vim/bundle/vundle
+    call vundle#rc()
+  " }
+  
 " }
 
 
 " Use bundles config {
-    if filereadable(expand("~/.vimrc.bundles"))
-        source ~/.vimrc.bundles
-        if vundle_init == 1
-          echo "run :BundleInstall to install all the plugins ..."
-          " BundleInstall
-        endif
+  if filereadable(expand("~/.vimrc.bundles"))
+    source ~/.vimrc.bundles
+    if vundle_init == 1
+      color default
+      BundleInstall
+      quit  " quit after initial installation
     endif
+  endif
 " }
 
 
@@ -104,6 +105,7 @@ set autoindent                 " copy indentation from the previous line ("stupi
 set backspace=eol,start,indent " allow backspacing over indent, eol, and the start of an insert
 " }
 
+
 " Buffer related options {
 " --------------------------------------------
 set autoread                   " auto-loads a buffer when changed on disc
@@ -119,6 +121,7 @@ set number                     " shows line-number
 set key=                       " Disable encryption (:X)
 " }
 
+
 " Status line and other file info related stuff {
 " --------------------------------------------
 " set stl=%f\ %m\ %r%{fugitive#statusline()}\ Line:%l/%L[%p%%]\ Col:%v\ Buf:#%n\ [%b][0x%B]
@@ -128,6 +131,7 @@ set showmode                   " shows mode
 set ch=2                       " make command line two lines high
 " }
 
+
 " Search related settings {
 " --------------------------------------------
 set showmatch                  " show the matching parentheses
@@ -136,12 +140,14 @@ set incsearch                  " incremental highlight of match
 set noignorecase               " case sensitive search
 " }
 
+
 " GUI related things {
 " --------------------------------------------
 set mousehide                  " Hide the mouse pointer while typing
 set guioptions=acg             " Hide gui menu
 set timeoutlen=500             " Some stuff I inherited
 " }
+
 
 " Auto-complete stuff {
 " --------------------------------------------
@@ -150,6 +156,7 @@ set wildmenu                   " command line auto-completion
 set complete=.,w,b,t           " insert mode auto-completion
 set showfulltag                " insert mode auto-completion with tag
 " }
+
 
 " Misc. settings {
 " --------------------------------------------
@@ -164,8 +171,10 @@ set magic                      " magic regular expression
 set ambiwidth=double           " set wider character wider
 " }
 
+
 " Switch on syntax highlighting.
 syntax on
+
 
 " key mappings {
 " Enhance '<' '>' , do not need to reselect the block after shift it.
@@ -460,30 +469,30 @@ nmap <silent> ,jbg :call JumpToBufferInJumpList('g')<cr>
 nmap <silent> ,ljb :call ListJumpToBuffers()<cr>
 
 function! DiffCurrentFileAgainstAnother(snipoff, replacewith)
-    let currentFile = expand('%:p')
-    let otherfile = substitute(currentFile, "^" . a:snipoff, a:replacewith, '')
-    only
-    execute "vertical diffsplit " . otherfile
+  let currentFile = expand('%:p')
+  let otherfile = substitute(currentFile, "^" . a:snipoff, a:replacewith, '')
+  only
+  execute "vertical diffsplit " . otherfile
 endfunction
 
 command! -nargs=+ DiffCurrent call DiffCurrentFileAgainstAnother(<f-args>)
 
 function! RunSystemCall(systemcall)
-    let output = system(a:systemcall)
-    let output = substitute(output, "\n", '', 'g')
-    return output
+  let output = system(a:systemcall)
+  let output = substitute(output, "\n", '', 'g')
+  return output
 endfunction
 
 function! HighlightAllOfWord(onoff)
-    if a:onoff == 1
-        :augroup highlight_all
-            :au!
-            :au CursorMoved * silent! exe printf('match Search /\<%s\>/', expand('<cword>'))
-        :augroup END
-    else
-        :au! highlight_all
-        match none /\<%s\>/
-    endif
+  if a:onoff == 1
+    :augroup highlight_all
+    :au!
+    :au CursorMoved * silent! exe printf('match Search /\<%s\>/', expand('<cword>'))
+    :augroup END
+  else
+    :au! highlight_all
+    match none /\<%s\>/
+  endif
 endfunction
 
 :nmap ,ha :call HighlightAllOfWord(1)<cr>
@@ -491,15 +500,15 @@ endfunction
 
 function! LengthenCWD()
   let cwd = getcwd()
-    if cwd == '/'
-        return
-    endif
+  if cwd == '/'
+    return
+  endif
   let lengthend = substitute(cwd, '/[^/]*$', '', '')
-    if lengthend == ''
-        let lengthend = '/'
-    endif
-    if cwd != lengthend
-      exec ":lcd " . lengthend
+  if lengthend == ''
+    let lengthend = '/'
+  endif
+  if cwd != lengthend
+    exec ":lcd " . lengthend
   endif
 endfunction
 
@@ -508,64 +517,64 @@ endfunction
 function! ShortenCWD()
   let cwd = split(getcwd(), '/')
   let filedir = split(expand("%:p:h"), '/')
-    let i = 0
-    let newdir = ""
-    while i < len(filedir)
-        let newdir = newdir . "/" . filedir[i]
-        if len(cwd) == i || filedir[i] != cwd[i]
-            break
-        endif
-        let i = i + 1
-    endwhile
-    exec ":lcd /" . newdir
+  let i = 0
+  let newdir = ""
+  while i < len(filedir)
+    let newdir = newdir . "/" . filedir[i]
+    if len(cwd) == i || filedir[i] != cwd[i]
+      break
+    endif
+    let i = i + 1
+  endwhile
+  exec ":lcd /" . newdir
 endfunction
 
 :nmap ,sd :call ShortenCWD()<cr>
 
 function! RedirToYankRegisterF(cmd, ...)
-    let cmd = a:cmd . " " . join(a:000, " ")
-    redir @*>
-    exe cmd
-    redir END
+  let cmd = a:cmd . " " . join(a:000, " ")
+  redir @*>
+  exe cmd
+  redir END
 endfunction
 
 command! -complete=command -nargs=+ RedirToYankRegister
   \ silent! call RedirToYankRegisterF(<f-args>)
 
 function! ToggleMinimap()
-    if exists("s:isMini") && s:isMini == 0
-        let s:isMini = 1
-    else
-        let s:isMini = 0
-    end
+  if exists("s:isMini") && s:isMini == 0
+    let s:isMini = 1
+  else
+    let s:isMini = 0
+  end
 
-    if (s:isMini == 0)
-        " save current visible lines
-        let s:firstLine = line("w0")
-        let s:lastLine = line("w$")
+  if (s:isMini == 0)
+    " save current visible lines
+    let s:firstLine = line("w0")
+    let s:lastLine = line("w$")
 
-        " make font small
-        " exe "set guifont=" . g:small_font
-        " highlight lines which were visible
-        let s:lines = ""
-        for i in range(s:firstLine, s:lastLine)
-            let s:lines = s:lines . "\\%" . i . "l"
+    " make font small
+    " exe "set guifont=" . g:small_font
+    " highlight lines which were visible
+    let s:lines = ""
+    for i in range(s:firstLine, s:lastLine)
+      let s:lines = s:lines . "\\%" . i . "l"
 
-            if i < s:lastLine
-                let s:lines = s:lines . "\\|"
-            endif
-        endfor
+      if i < s:lastLine
+        let s:lines = s:lines . "\\|"
+      endif
+    endfor
 
-        exe 'match Visible /' . s:lines . '/'
-        hi Visible guibg=lightblue guifg=black term=bold
-        nmap <s-j> 10j
-        nmap <s-k> 10k
-    else
-        " exe "set guifont=" . g:main_font
-        hi clear Visible
-        nunmap <s-j>
-        nunmap <s-k>
-    endif
+    exe 'match Visible /' . s:lines . '/'
+    hi Visible guibg=lightblue guifg=black term=bold
+    nmap <s-j> 10j
+    nmap <s-k> 10k
+  else
+    " exe "set guifont=" . g:main_font
+    hi clear Visible
+    nunmap <s-j>
+    nunmap <s-k>
+  endif
 endfunction
 
 command! ToggleMinimap call ToggleMinimap()
@@ -575,96 +584,96 @@ command! ToggleMinimap call ToggleMinimap()
 " }
 
 
-"" Commands {
-""-----------------------------------------------------------------------------
-"" FreemindToList {
-"function! FreemindToListF()
-"    setl filetype=
-"    silent! :%s/^\(\s*\).*TEXT="\([^"]*\)".*$/\1- \2/
-"    silent! :g/^\s*</d
-"    silent! :%s/&quot;/"/g
-"    silent! :%s/&apos;/\'/g
-"    silent! g/^-/s/- //
-"    silent! g/^\w/t.|s/./=/g
-"    silent! g/^\s*-/normal O
-"    silent! normal 3GgqG
-"    silent! %s/^\s\{4}\zs-/o/
-"    silent! %s/^\s\{12}\zs-/+/
-"    silent! %s/^\s\{16}\zs-/*/
-"    silent! %s/^\s\{20}\zs-/#/
-"    silent! normal gg
-"endfunction
-"
-"command! FreemindToList call FreemindToListF()
-"" }
-"
-"" Auto commands {
-""-----------------------------------------------------------------------------
-"augroup sayed_files
-"  au!
-"  au BufNewFile,BufRead  *.mi     set filetype=tcl
-"  au BufNewFile,BufRead  *.fi     set filetype=tcl
-"  au BufNewFile,BufRead *.pdb     set filetype=tcl
-"  au BufNewFile,BufRead *.log     set filetype=tcl
-"  au BufNewFile,BufRead   *.m     set filetype=matlab
-"  au BufNewFile,BufRead *.inc     set filetype=make
-"  au BufNewFile,BufRead *.dat     set filetype=perl
-"  au BufNewFile,BufRead *.t       set filetype=perl
-"  au BufNewFile,BufRead *.newrule set filetype=perl
-"  au BufNewFile,BufRead zirconQA  set fdm=marker
-"  " au BufNewFile,BufRead *.txt colorscheme slate
-"augroup END
-"
-"autocmd BufEnter *.m compiler mlint
-"" }
-"
-"
-"" Fix constant spelling mistakes {
-""-----------------------------------------------------------------------------
-"iab Acheive    Achieve
-"iab acheive    achieve
-"iab Alos       Also
-"iab alos       also
-"iab Aslo       Also
-"iab aslo       also
-"iab Becuase    Because
-"iab becuase    because
-"iab Bianries   Binaries
-"iab bianries   binaries
-"iab Bianry     Binary
-"iab bianry     binary
-"iab Charcter   Character
-"iab charcter   character
-"iab Charcters  Characters
-"iab charcters  characters
-"iab Exmaple    Example
-"iab exmaple    example
-"iab Exmaples   Examples
-"iab exmaples   examples
-"iab Fone       Phone
-"iab fone       phone
-"iab Seperate   Separate
-"iab seperate   separate
-"iab Seureth    Suereth
-"iab seureth    suereth
-"iab Shoudl     Should
-"iab shoudl     should
-"iab Taht       That
-"iab taht       that
-"iab Teh        The
-"iab teh        the
-"" }
-"
-"" Remember last cursor location {
-"" Tell vim to remember certain things when we exit
-""  '10  :  marks will be remembered for up to 10 previously edited files
-""  "100 :  will save up to 100 lines for each register
-""  :20  :  up to 20 lines of command-line history will be remembered
-""  %    :  saves and restores the buffer list
-""  n... :  where to save the viminfo files
-"set viminfo='10,\"100,:20,%,n~/.viminfo
-"au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
-"" }
+" Commands {
+"-----------------------------------------------------------------------------
+" FreemindToList {
+function! FreemindToListF()
+  setl filetype=
+  silent! :%s/^\(\s*\).*TEXT="\([^"]*\)".*$/\1- \2/
+  silent! :g/^\s*</d
+  silent! :%s/&quot;/"/g
+  silent! :%s/&apos;/\'/g
+  silent! g/^-/s/- //
+  silent! g/^\w/t.|s/./=/g
+  silent! g/^\s*-/normal O
+  silent! normal 3GgqG
+  silent! %s/^\s\{4}\zs-/o/
+  silent! %s/^\s\{12}\zs-/+/
+  silent! %s/^\s\{16}\zs-/*/
+  silent! %s/^\s\{20}\zs-/#/
+  silent! normal gg
+endfunction
+
+command! FreemindToList call FreemindToListF()
+" }
+
+" Auto commands {
+"-----------------------------------------------------------------------------
+augroup sayed_files
+  au!
+  au BufNewFile,BufRead  *.mi     set filetype=tcl
+  au BufNewFile,BufRead  *.fi     set filetype=tcl
+  au BufNewFile,BufRead *.pdb     set filetype=tcl
+  au BufNewFile,BufRead *.log     set filetype=tcl
+  au BufNewFile,BufRead   *.m     set filetype=matlab
+  au BufNewFile,BufRead *.inc     set filetype=make
+  au BufNewFile,BufRead *.dat     set filetype=perl
+  au BufNewFile,BufRead *.t       set filetype=perl
+  au BufNewFile,BufRead *.newrule set filetype=perl
+  au BufNewFile,BufRead zirconQA  set fdm=marker
+  " au BufNewFile,BufRead *.txt colorscheme slate
+augroup END
+
+autocmd BufEnter *.m compiler mlint
+" }
+
+
+" Fix constant spelling mistakes {
+"-----------------------------------------------------------------------------
+iab Acheive    Achieve
+iab acheive    achieve
+iab Alos       Also
+iab alos       also
+iab Aslo       Also
+iab aslo       also
+iab Becuase    Because
+iab becuase    because
+iab Bianries   Binaries
+iab bianries   binaries
+iab Bianry     Binary
+iab bianry     binary
+iab Charcter   Character
+iab charcter   character
+iab Charcters  Characters
+iab charcters  characters
+iab Exmaple    Example
+iab exmaple    example
+iab Exmaples   Examples
+iab exmaples   examples
+iab Fone       Phone
+iab fone       phone
+iab Seperate   Separate
+iab seperate   separate
+iab Seureth    Suereth
+iab seureth    suereth
+iab Shoudl     Should
+iab shoudl     should
+iab Taht       That
+iab taht       that
+iab Teh        The
+iab teh        the
+" }
+
+" Remember last cursor location {
+" Tell vim to remember certain things when we exit
+"  '10  :  marks will be remembered for up to 10 previously edited files
+"  "100 :  will save up to 100 lines for each register
+"  :20  :  up to 20 lines of command-line history will be remembered
+"  %    :  saves and restores the buffer list
+"  n... :  where to save the viminfo files
+set viminfo='10,\"100,:20,%,n~/.viminfo
+au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
+" }
 
 " All of my unstructured stuffs {
 
@@ -682,8 +691,6 @@ nmap <silent> <F6> :!perl -d:ptkdb %&<CR>
 let perl_include = 1
 let perl_extended_vars = 1
 let perl_want_scope_in_variables = 1
-" let perl_fold = 1
-" let perl_fold_blocks = 1
 
 autocmd Filetype perl :set equalprg=perltidy\ -i=2\ -nt\ -msc=2\ -ci=2\ -dsm\ -asc\ -lp\ -l=110\ -isbc\ -dws\ -w
 " nmap <silent> ,p ggO#!/usr/intel/pkgs/perl/5.8.5/bin/perl<CR><CR>use strict;<CR>use warnings;<CR><CR><ESC><C-V>4kx6Gdd:w<CR>:!chmod u+x %:p<CR>:e<CR>
