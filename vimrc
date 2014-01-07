@@ -6,11 +6,13 @@
 "
 " }
 
+
 " Use before config {
     if filereadable(expand("~/.vimrc.before"))
         source ~/.vimrc.before
     endif
 " }
+
 
 " Environment {
 
@@ -40,13 +42,9 @@
         set nocompatible
         filetype on
         filetype off
-        " set rtp+=~/vimsetup/bundle/vundle
-        " call vundle#rc()
-        let initial_setup = 0
+        let vundle_init = 0
         if !isdirectory($HOME . '/.vim/bundle/vundle')
           if executable('git')
-            " execute '!git clone https://github.com/gmarik/vundle.git "'
-            "       \ . $HOME . '/.vim/bundle/vundle"'
             call mkdir($HOME . '/.vim/bundle', 'p')
             if !isdirectory($HOME . '/.cache/vim/backup')
               call mkdir($HOME . '/.cache/vim/backup', 'p')
@@ -57,13 +55,10 @@
             if !isdirectory($HOME . '/.cache/vim/swap')
               call mkdir($HOME . '/.cache/vim/swap', 'p')
             endif
-            if has('win32') || has ('win64') " Fix for vimrun.exe on Windows
-              execute '!"git clone http://github.com/gmarik/vundle.git "'
-                    \ . $HOME . '/.vim/bundle/vundle""'
-            else
+            if has('unix')
               execute '!git clone http://github.com/gmarik/vundle.git "'
                     \ . $HOME . '/.vim/bundle/vundle"'
-              let initial_setup = 1
+              let vundle_init = 1
             endif
           else
             let choice =  confirm("You should get Git to be able to
@@ -79,19 +74,25 @@
 
 " }
 
+
 " Use bundles config {
     if filereadable(expand("~/.vimrc.bundles"))
         source ~/.vimrc.bundles
-        if initial_setup == 1
-          BundleInstall
+        if vundle_init == 1
+          echo "run :BundleInstall to install all the plugins ..."
+          " BundleInstall
         endif
     endif
 " }
+
+
 
 " Set filetype stuff to on
 filetype on
 filetype plugin on
 filetype indent on
+
+
 
 " Tabstops and backspace related settings {
 " --------------------------------------------
