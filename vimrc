@@ -128,7 +128,7 @@ set key=                       " Disable encryption (:X)
 set laststatus=2               " tell VIM to always put a status line in, even if there is only one window
 set showcmd                    " shows last command at status line
 set showmode                   " shows mode
-set ch=2                       " make command line two lines high
+set ch=1                       " make command line two lines high
 " }
 
 
