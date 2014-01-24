@@ -1,6 +1,6 @@
 " Modeline and Notes {
 " -------------------------------------------------------------------------------------
-"   vim: set sw=2 ts=2 sts=2 et tw=68 foldmarker={,} foldlevel=0 foldmethod=marker spell:
+"   vim: set sw=2 ts=2 sts=2 et tw=68 foldmarker={,} foldlevel=99 foldmethod=marker spell:
 "
 "   This is the personal .vimrc file of Sayed Hasan
 "
@@ -144,7 +144,7 @@ set noignorecase               " case sensitive search
 " GUI related things {
 " --------------------------------------------
 set mousehide                  " Hide the mouse pointer while typing
-set guioptions=acg             " Hide gui menu
+" set guioptions=acg             " Hide gui menu
 set timeoutlen=500             " Some stuff I inherited
 " }
 
@@ -266,6 +266,7 @@ nmap <silent> ,gW :vimgrep /<C-r><C-a>/ %<CR>:ccl<CR>:cwin<CR><C-W>J:nohls<CR>
 nmap <silent> gw :s/\(\%#\w\+\)\(\_W\+\)\(\w\+\)/\3\2\1/<CR>`'
 
 " Underline the current line with '='
+nmap <silent> ,u  :t.\|s/./-/g\|:nohls<cr>
 nmap <silent> ,u= :t.\|s/./=/g\|:nohls<cr>
 nmap <silent> ,u- :t.\|s/./-/g\|:nohls<cr>
 nmap <silent> ,u~ :t.\|s/./\\~/g\|:nohls<cr>
@@ -732,18 +733,28 @@ set encoding=utf-8
 "+----------------------------
 "| airline
 "+----------------------------
-let g:airline_theme             = 'solarized'
-let g:airline_enable_branch     = 1
-let g:airline_enable_syntastic  = 1
-let g:airline_left_sep          = ''
-let g:airline_left_alt_sep      = ''
-let g:airline_right_sep         = ''
-let g:airline_right_alt_sep     = ''
-let g:airline_branch_prefix     = ''
-let g:airline_readonly_symbol   = ''
-let g:airline_linecolumn_prefix = ''
-let g:airline_powerline_fonts   = 1
-let g:airline_detect_modified   = 1
-let g:airline_detect_paste      = 1
+" let g:airline_theme             = 'solarized'
+" let g:airline_enable_branch     = 1
+" let g:airline_enable_syntastic  = 1
+" let g:airline_left_sep          = ''
+" let g:airline_left_alt_sep      = ''
+" let g:airline_right_sep         = ''
+" let g:airline_right_alt_sep     = ''
+" let g:airline_branch_prefix     = ''
+" let g:airline_readonly_symbol   = ''
+" let g:airline_linecolumn_prefix = ''
+" let g:airline_powerline_fonts   = 1
+" let g:airline_detect_modified   = 1
+" let g:airline_detect_paste      = 1
 set lazyredraw
 " }
+
+" set tags=/nfs/pdx/disks/tcad_ptm_pdmg_work_12/usr/shasan/2014/Q1/mds/tags;
+set tags=./tags;
+
+"+----------------------------
+"| vim-latex configuration
+"+----------------------------
+let Tex_FoldedSections=""
+let Tex_FoldedEnvironments=""
+let Tex_FoldedMisc=""

@@ -1,5 +1,5 @@
 " Modeline and Notes {
-" vim: set sw=4 ts=4 sts=4 et tw=78 foldmarker={,} foldlevel=0 foldmethod=marker spell:
+" vim: set sw=4 ts=4 sts=4 et tw=78 foldmarker={,} foldlevel=99 foldmethod=marker spell:
 "
 "   This is the personal .vimrc.bundles file of Sayed Hasan
 "
@@ -41,6 +41,7 @@
         Bundle 'http://github.com/msanders/snipmate.vim.git'
         " Bundle 'http://github.com/spf13/snipmate-snippets.git'
         Bundle 'http://github.com/Shougo/neocomplcache.vim.git'
+        Bundle 'http://github.com/Townk/vim-autoclose'
     " }
 
     " file name and search {
@@ -49,6 +50,7 @@
         Bundle 'http://github.com/kien/ctrlp.vim.git'
         Bundle 'http://github.com/shemerey/vim-project.git'
         Bundle 'http://github.com/scrooloose/nerdtree.git'
+        " Bundle 'http://github.com/jistr/vim-nerdtree-tabs.git'
         Bundle 'http://github.com/danro/rename.vim.git'
     " }
 
