@@ -7,6 +7,6 @@
 *.swp
 *.swp
 
-# plugins
+# ignore everything but vundle inside bundle
 bundle/**
-~bundle/Vundle
+!bundle/vundle
