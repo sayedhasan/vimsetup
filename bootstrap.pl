@@ -10,4 +10,4 @@ if ($? ne '0') {
   print "git clone http://github.com/gmarik/vundle.git\n";
 }
 
-return 0;
+exit 0;
