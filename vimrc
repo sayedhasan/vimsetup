@@ -74,6 +74,9 @@ endif
   
 " }
 
+" setup backdirectory
+set backupdir=~/.cache/vim/swap
+set directory=~/.cache/vim/swap
 
 " Use bundles config {
   if filereadable(expand("~/.vimrc.bundles"))
@@ -114,7 +117,7 @@ set hidden                     " allow unsaved buffer
 set lazyredraw                 " Don't update the display while executing macros
 set textwidth=80               " Text width before wrapping lines
 set clipboard+=unnamed         " To use system clipboard
-set encoding=utf8              " utf8 encoding, needed to show NERDTree properly
+" set encoding=utf8              " utf8 encoding, needed to show NERDTree properly
 set ffs=unix,dos,mac           " EOF terminator type
 set autochdir                  " Vim will change CWD automatically to the file opened
 set number                     " shows line-number
@@ -279,13 +282,13 @@ nmap <silent> ,sw :execute ":resize " . line('$')<cr>
 nmap <F8> :TagbarToggle<CR>
 
 " Use the bufkill plugin to eliminate a buffer but keep the window layout
-nmap ,bd :BD<cr>
+nmap <Leader>bd :BD<cr>
 
 " Use CTRL-E to replace the original ',' mapping
 nnoremap <C-E> ,
 
 " Make the current file executable
-nmap ,x :w<cr>:!chmod 755 %:p<cr>:e<cr>
+nmap <Leader>x :w<cr>:!chmod 755 %:p<cr>:e<cr>
 
 " Syntax coloring lines that are too long just slows down the world
 set synmaxcol=2048
@@ -306,10 +309,10 @@ autocmd User fugitive
   \ endif
 autocmd BufReadPost fugitive://* set bufhidden=delete
 
-nmap ,gs :Gstatus<cr>
-nmap ,ge :Gedit<cr>
-nmap ,gw :Gwrite<cr>
-nmap ,gr :Gread<cr>
+nmap <Leader>gs :Gstatus<cr>
+nmap <Leader>ge :Gedit<cr>
+nmap <Leader>gw :Gwrite<cr>
+nmap <Leader>gr :Gread<cr>
 " }
 
 
@@ -385,10 +388,10 @@ let g:ctrlp_prompt_mappings = {
   \ 'PrtHistory(-1)':       ['<c-j>', '<down>'],
   \ 'PrtHistory(1)':        ['<c-i>', '<up>']
 \ }
-map ,fb :CtrlPBuffer<cr>
-map ,ff :CtrlP .<cr>
-map ,fr :CtrlP<cr>
-map ,fm :CtrlPMixed<cr>
+map <Leader>fb :CtrlPBuffer<cr>
+map <Leader>ff :CtrlP .<cr>
+map <Leader>fr :CtrlP<cr>
+map <Leader>fm :CtrlPMixed<cr>
 " }
 
 
@@ -400,7 +403,7 @@ function! VCSDiffMore(from)
   let revisions = map(revisions, 'substitute(v:val, "r\\(\\d\\+\\) .*$", "\\1", "")')
   exec ":VCSVimDiff " . revisions[a:from]
 endfunction
-nmap ,dd :call VCSDiffMore(0)<cr>
+nmap <Leader>dd :call VCSDiffMore(0)<cr>
 " }
 
 
@@ -496,8 +499,8 @@ function! HighlightAllOfWord(onoff)
   endif
 endfunction
 
-:nmap ,ha :call HighlightAllOfWord(1)<cr>
-:nmap ,hA :call HighlightAllOfWord(0)<cr>
+:nmap <Leader>ha :call HighlightAllOfWord(1)<cr>
+:nmap <Leader>hA :call HighlightAllOfWord(0)<cr>
 
 function! LengthenCWD()
   let cwd = getcwd()
@@ -513,7 +516,7 @@ function! LengthenCWD()
   endif
 endfunction
 
-:nmap ,ld :call LengthenCWD()<cr>
+:nmap <Leader>ld :call LengthenCWD()<cr>
 
 function! ShortenCWD()
   let cwd = split(getcwd(), '/')
@@ -530,7 +533,7 @@ function! ShortenCWD()
   exec ":lcd /" . newdir
 endfunction
 
-:nmap ,sd :call ShortenCWD()<cr>
+:nmap <Leader>sd :call ShortenCWD()<cr>
 
 function! RedirToYankRegisterF(cmd, ...)
   let cmd = a:cmd . " " . join(a:000, " ")
@@ -718,7 +721,7 @@ nmap <silent> <C-S-F6> :colorscheme mustang<CR>
 
 map <silent> <F1> "zyiw:he <C-R>"<CR>
 
-
+inoremap <Leader>fn <C-R>=expand("%:t")<CR>
 
 "set guifont=Menlo:h14
 set guifont=Consolas\ for\ Powerline\ FixedD\ 16
