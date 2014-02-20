@@ -14,7 +14,7 @@
 
     " comments {
         Bundle 'http://github.com/tomtom/tcomment_vim.git'
-        Bundle 'http://github.com/tpope/vim-commentary.git'
+        " Bundle 'http://github.com/tpope/vim-commentary.git'
         " Bundle 'http://github.com/scrooloose/nerdcommenter.git'
     " }
 
@@ -77,6 +77,7 @@
         Bundle 'http://github.com/rayburgemeestre/phpfolding.vim.git'
         Bundle 'http://github.com/spf13/PIV.git'
         Bundle 'http://github.com/Lokaltog/vim-easymotion.git'
+        Bundle 'http://github.com/zaiste/tmux.vim.git'
     " }
 
 " }
