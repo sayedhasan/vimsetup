@@ -31,6 +31,7 @@
         Bundle 'http://github.com/tpope/vim-unimpaired.git'
         Bundle 'http://github.com/ciaranm/detectindent.git'
         Bundle 'http://github.com/tpope/vim-endwise.git'
+        Bundle 'http://github.com/vim-scripts/FSwitch.git'
     " }
 
     " code complete {

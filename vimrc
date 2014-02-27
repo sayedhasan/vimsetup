@@ -346,15 +346,15 @@ nmap <silent> ,eu :sign unplace *<cr>
 
 " FSwitch mappings {
 "-----------------------------------------------------------------------------
-nmap <silent> ,of :FSHere<CR>
-nmap <silent> ,ol :FSRight<CR>
-nmap <silent> ,oL :FSSplitRight<CR>
-nmap <silent> ,oh :FSLeft<CR>
-nmap <silent> ,oH :FSSplitLeft<CR>
-nmap <silent> ,ok :FSAbove<CR>
-nmap <silent> ,oK :FSSplitAbove<CR>
-nmap <silent> ,oj :FSBelow<CR>
-nmap <silent> ,oJ :FSSplitBelow<CR>
+nmap <silent> <Leader>of :FSHere<CR>
+nmap <silent> <Leader>ol :FSRight<CR>
+nmap <silent> <Leader>oL :FSSplitRight<CR>
+nmap <silent> <Leader>oh :FSLeft<CR>
+nmap <silent> <Leader>oH :FSSplitLeft<CR>
+nmap <silent> <Leader>ok :FSAbove<CR>
+nmap <silent> <Leader>oK :FSSplitAbove<CR>
+nmap <silent> <Leader>oj :FSBelow<CR>
+nmap <silent> <Leader>oJ :FSSplitBelow<CR>
 " }
 
 
