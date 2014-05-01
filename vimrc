@@ -89,7 +89,8 @@ set directory=~/.cache/vim/swap
   endif
 " }
 
-
+" Enable Matchit
+runtime! macros/matchit.vim
 
 " Set filetype stuff to on
 filetype on
@@ -700,6 +701,8 @@ autocmd Filetype perl :set equalprg=perltidy\ -i=2\ -nt\ -msc=2\ -ci=2\ -dsm\ -a
 " nmap <silent> ,p ggO#!/usr/intel/pkgs/perl/5.8.5/bin/perl<CR><CR>use strict;<CR>use warnings;<CR><CR><ESC><C-V>4kx6Gdd:w<CR>:!chmod u+x %:p<CR>:e<CR>
 " nmap <silent> ,p ggO#!/usr/intel/pkgs/perl/5.14.1/bin/perl<CR><CR>use strict;<CR>use warnings;<CR><CR><ESC><C-V>4kx6Gdd:w<CR>:!chmod u+x %:p<CR>:e<CR>
 nmap <silent> ,p ggO<ESC>:r ~/commands/perl_template.pl<CR>ggddG:se ft=perl<CR>:w<CR>:!chmod u+x %:p<CR>
+nmap <silent> ,py ggO#!/nfs/pdx/home/shasan/usr/pkgs/python/2.7.6/bin/python<CR><ESC>:!chmod u+x %:p<CR>G
+nmap <silent> ,py3 ggO#!/nfs/pdx/home/shasan/usr/pkgs/python/3.4.0/bin/python3<CR><ESC>:!chmod u+x %:p<CR>G
 
 
 " folding stuff
@@ -722,6 +725,7 @@ nmap <silent> <C-S-F6> :colorscheme mustang<CR>
 map <silent> <F1> "zyiw:he <C-R>"<CR>
 
 inoremap <Leader>fn <C-R>=expand("%:t")<CR>
+inoremap <Leader>fp <C-R>=getcwd()<CR>
 
 "set guifont=Menlo:h14
 set guifont=Consolas\ for\ Powerline\ FixedD\ 16
