@@ -70,6 +70,7 @@
         " Bundle 'http://github.com/bling/vim-airline.git'
         " Bundle 'bling/vim-airline'
         Bundle 'http://github.com/rey-wright/argokai.git'
+        Bundle 'http://github.com/Pychimp/Pychimp-vim.git'
     " }
 
     " language support {
