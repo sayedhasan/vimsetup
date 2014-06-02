@@ -1,5 +1,6 @@
 #!/bin/csh -f
 
+# env http_proxy="http://proxy.fm.intel.com:911" git clone http://github.com/adobe/source-code-pro.git
 set script_dir = `dirname $0`
 mkdir -p $HOME/.fonts
 cd $script_dir
