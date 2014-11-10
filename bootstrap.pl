@@ -16,8 +16,8 @@ if ($? ne '0') {
 # --- get visualstudio colorscheme
 print "\n\ngetting visualstudio colorscheme ...\n";
 `mkdir -p colors`;
-`env $HTTP_PROXY wget -O colors/visualstudio.vim "http://www.vim.org/scripts/script.php?script_id=4680"`;
-
+# `env $HTTP_PROXY wget -O colors/visualstudio.vim "http://www.vim.org/scripts/script.php?script_id=4680"`;
+`env $HTTP_PROXY wget -O colors/visualstudio.tar.gz "http://www.vim.org/scripts/download_script.php?src_id=20598"`;
 
 # --- get tcl systax and color stuff
 print "\n\ngetting tcl syntax and coloring ...\n";
@@ -27,5 +27,7 @@ print "\n\ngetting tcl syntax and coloring ...\n";
 `env $HTTP_PROXY wget -O syntax/tcl.vim        "http://www.vim.org/scripts/download_script.php?src_id=7049"`;
 `env $HTTP_PROXY wget -O syntax/tcl_itcl.vim   "http://www.vim.org/scripts/download_script.php?src_id=6610"`;
 `env $HTTP_PROXY wget -O syntax/tcl_critcl.vim "http://www.vim.org/scripts/download_script.php?src_id=6649"`;
+`mkdir -p plugin`;
+`env $HTTP_PROXY wget -O plugin/shim.vim "http://www.vim.org/scripts/download_script.php?src_id=20377"`;
 
 exit 0;

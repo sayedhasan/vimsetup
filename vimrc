@@ -1,93 +1,146 @@
-" Modeline and Notes {
-" -------------------------------------------------------------------------------------
-"   vim: set sw=2 ts=2 sts=2 et tw=68 foldmarker={,} foldlevel=99 foldmethod=marker spell:
-"
+"---------------------------------------------------------------------------------------------
+" Modeline and Notes
+"---------------------------------------------------------------------------------------------
+"   vim: set sw=2 ts=2 sts=2 et tw=72 foldmarker={{{,}}} foldlevel=90 foldmethod=marker spell:
 "   This is the personal .vimrc file of Sayed Hasan
 "
-" }
+"---------------------------------------------------------------------------------------------
 
 
-" Use before config {
-if filereadable(expand("~/.vimrc.before"))
-    source ~/.vimrc.before
+" Multi platform shell settings {{{
+
+" Must be first line
+" Windows shell is bash
+set nocompatible
+if !(has('win16') || has('win32') || has('win64'))
+  set shell=/bin/sh
 endif
-" }
 
+" Unix Shell is tcsh
+if has('unix')
+  set shell=tcsh
+endif
 
-" Environment {
+" }}}
 
-  " Basics {
-    set nocompatible        " Must be first line
-    if !(has('win16') || has('win32') || has('win64'))
-      set shell=/bin/sh
-    endif
-  " }
+" Directory setup {{{
 
-  " Windows Compatible {
-    " On Windows, also use '.vim' instead of 'vimfiles'; this makes synchronization
-    " across (heterogeneous) systems easier.
-    if has('win32') || has('win64')
-      set runtimepath=$HOME/.vim,$VIM/vimfiles,$VIMRUNTIME,$VIM/vimfiles/after,$HOME/.vim/after
-    endif
-  " }
-
-  " Unix Shell {
-    if has('unix')
-      set shell=tcsh
-    endif
-  " }
-
-  " Setup Bundle Support {
-    " The next three lines ensure that the ~/.vim/bundle/ system works
-    set nocompatible
-    filetype on
-    filetype off
-    let vundle_init = 0
-    if !isdirectory($HOME . '/.vim/bundle/vundle')
-      if executable('git')
-        call mkdir($HOME . '/.vim/bundle', 'p')
-        if !isdirectory($HOME . '/.cache/vim/backup')
-          call mkdir($HOME . '/.cache/vim/backup', 'p')
-        endif
-        if !isdirectory($HOME . '/.cache/vim/undo')
-          call mkdir($HOME . '/.cache/vim/undo', 'p')
-        endif
-        if !isdirectory($HOME . '/.cache/vim/swap')
-          call mkdir($HOME . '/.cache/vim/swap', 'p')
-        endif
-        if has('unix')
-          execute '!git clone http://github.com/gmarik/vundle.git "'
-                \ . $HOME . '/.vim/bundle/vundle"'
-          let vundle_init = 1
-        endif
-      else
-        let choice =  confirm("You should get Git to be able to
-              \ Install and Update. Continue?", "&Yes\n&No", 2)
-        if choice == 2
-          quit
-        endif
-      endif
-    endif
-    set runtimepath+=~/.vim/bundle/vundle
-    call vundle#rc()
-  " }
-  
-" }
+" On Windows, also use '.vim' instead of 'vimfiles';
+" this makes synchronization across (heterogeneous)
+" systems easier.
+if has('win32') || has('win64')
+  set runtimepath=$HOME/.vim,$VIM/vimfiles,$VIMRUNTIME
+endif
 
 " setup backdirectory
 set backupdir=~/.cache/vim/swap
 set directory=~/.cache/vim/swap
 
-" Use bundles config {
-  if filereadable(expand("~/.vimrc.bundles"))
-    source ~/.vimrc.bundles
-    if vundle_init == 1
-      color default
-      BundleInstall
-      quit  " quit after initial installation
-    endif
-  endif
-" }
+" }}}
+
+" Vundle {{{
+set nocompatible
+set rtp+=~/.vim/bundle/vundle/
+call vundle#rc()
+
+set rtp+=~/.vim/bundle/vimproc.vim/autoload
+set rtp+=~/.vim/bundle/vimproc.vim/plugin
+
+" Let Vundle manage Vundle
+" required!
+Bundle 'gmarik/vundle'
+
+" comments
+Bundle 'http://github.com/tomtom/tcomment_vim.git'
+" Bundle 'http://github.com/tpope/vim-commentary.git'
+" Bundle 'http://github.com/scrooloose/nerdcommenter.git'
+
+" Text manipulation
+Bundle 'vim-scripts/Align'
+Bundle 'vim-scripts/Gundo'
+Bundle 'godlygeek/tabular'
+
+" code navigation
+Bundle 'http://github.com/majutsushi/tagbar.git'
+Bundle 'http://github.com/nathanaelkane/vim-indent-guides.git'
+Bundle 'michaeljsmith/vim-indent-object'
+
+" buffer management
+Bundle 'http://github.com/vim-scripts/bufkill.vim.git'
+Bundle 'http://github.com/derekwyatt/vim-fswitch.git'
+Bundle 'http://github.com/sjl/gundo.vim.git'
+Bundle 'http://github.com/tpope/vim-repeat.git'
+Bundle 'http://github.com/tpope/vim-unimpaired.git'
+Bundle 'http://github.com/ciaranm/detectindent.git'
+Bundle 'http://github.com/tpope/vim-endwise.git'
+Bundle 'http://github.com/vim-scripts/FSwitch.git'
+
+" code complete
+Bundle 'http://github.com/mattn/emmet-vim'
+Bundle 'http://github.com/tristen/vim-sparkup.git'
+Bundle 'http://github.com/tpope/vim-surround.git'
+" Bundle 'http://github.com/scrooloose/syntastic.git'
+Bundle 'http://github.com/msanders/snipmate.vim.git'
+" Bundle 'http://github.com/spf13/snipmate-snippets.git'
+Bundle 'http://github.com/Shougo/neocomplcache.vim.git'
+" Bundle 'http://github.com/Townk/vim-autoclose'
+
+" file name and search
+Bundle 'http://github.com/vim-scripts/L9.git'
+Bundle 'http://github.com/vim-scripts/FuzzyFinder.git'
+Bundle 'http://github.com/kien/ctrlp.vim.git'
+Bundle 'http://github.com/shemerey/vim-project.git'
+Bundle 'http://github.com/scrooloose/nerdtree.git'
+" Bundle 'http://github.com/jistr/vim-nerdtree-tabs.git'
+Bundle 'http://github.com/danro/rename.vim.git'
+
+" repo-management
+Bundle 'http://github.com/tpope/vim-git.git'
+Bundle 'http://github.com/tpope/vim-fugitive.git'
+Bundle 'int3/vim-extradite'
+" Bundle 'http://github.com/mhinz/vim-signify.git'
+
+" colorscheme font statusline
+Bundle 'http://github.com/altercation/vim-colors-solarized.git'
+Bundle 'http://github.com/flazz/vim-colorschemes.git'
+Bundle 'http://github.com/drmikehenry/vim-fontsize.git'
+Bundle 'http://github.com/maciakl/vim-neatstatus.git'
+" Bundle 'http://github.com/Lokaltog/vim-powerline.git'
+" Bundle 'http://github.com/bling/vim-airline.git'
+" Bundle 'bling/vim-airline'
+Bundle 'http://github.com/rey-wright/argokai.git'
+Bundle 'http://github.com/Pychimp/Pychimp-vim.git'
+
+" Allow pane movement to jump out of vim into tmux
+Bundle 'christoomey/vim-tmux-navigator'
+
+" language support
+Bundle 'http://github.com/jcf/vim-latex.git'
+Bundle 'http://github.com/vim-scripts/MatlabFilesEdition.git'
+Bundle 'http://github.com/rayburgemeestre/phpfolding.vim.git'
+Bundle 'http://github.com/spf13/PIV.git'
+Bundle 'http://github.com/Lokaltog/vim-easymotion.git'
+Bundle 'http://github.com/zaiste/tmux.vim.git'
+
+" Haskell
+Bundle 'raichoo/haskell-vim'
+let g:haskell_enable_quantification = 1 " to enable highlighting of forall
+let g:haskell_enable_recursivedo = 1 " to enable highlighting of mdo and rec
+let g:haskell_enable_arrowsyntax = 1 " to enable highlighting of proc
+let g:haskell_enable_pattern_synonyms = 1 " to enable highlighting of pattern
+let g:haskell_enable_typeroles = 1 " to enable highlighting of type roles
+
+" Bundle 'enomsg/vim-haskellConcealPlus'
+Bundle 'eagletmt/ghcmod-vim'
+Bundle 'eagletmt/neco-ghc'
+Bundle 'Twinside/vim-hoogle'
+
+
+" }}}
+
+
+" set 7 linies offset to the cursur from bottom
+set so=7
 
 " Enable Matchit
 runtime! macros/matchit.vim
@@ -96,6 +149,13 @@ runtime! macros/matchit.vim
 filetype on
 filetype plugin on
 filetype indent on
+
+" Show trailing whitespace
+set list
+" But only interesting whitespace
+if &listchars ==# 'eol:$'
+  set listchars=tab:>\ ,trail:-,extends:>,precedes:<,nbsp:+
+endif
 
 
 
@@ -107,7 +167,7 @@ set softtabstop=2              " number of columns to shift in INSERT mode when 
 set expandtab                  " expands tabs to spaces
 set autoindent                 " copy indentation from the previous line ("stupid indent")
 set backspace=eol,start,indent " allow backspacing over indent, eol, and the start of an insert
-" }
+set whichwrap+=<,>,h,l
 
 
 " Buffer related options {
@@ -123,7 +183,6 @@ set ffs=unix,dos,mac           " EOF terminator type
 set autochdir                  " Vim will change CWD automatically to the file opened
 set number                     " shows line-number
 set key=                       " Disable encryption (:X)
-" }
 
 
 " Status line and other file info related stuff {
@@ -147,15 +206,21 @@ set noignorecase               " case sensitive search
 
 " GUI related things {
 " --------------------------------------------
-set mousehide                  " Hide the mouse pointer while typing
+" set mousehide                  " Hide the mouse pointer while typing
 " set guioptions=acg             " Hide gui menu
-set timeoutlen=500             " Some stuff I inherited
+set timeoutlen=1500              " Some stuff I inherited
+" Turn mouse mode on
+nnoremap <leader>ma :set mouse=a<cr>
+" Turn mouse mode off
+nnoremap <leader>mo :set mouse=<cr>
+" Default to mouse mode on
+set mouse=a
 " }
 
 
 " Auto-complete stuff {
 " --------------------------------------------
-set history=100                " Command-line history
+set history=700                " Command-line history
 set wildmenu                   " command line auto-completion
 set complete=.,w,b,t           " insert mode auto-completion
 set showfulltag                " insert mode auto-completion with tag
@@ -683,7 +748,7 @@ au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g
 " All of my unstructured stuffs {
 
 " saving macros
-let @a = ':%s/ //gggvG'
+let @a = ':%s/ /\/g\ggvG'
 
 nmap <silent> ,src :set lines=42 columns=158<CR>
 nmap <silent> ,srr :set lines=42<CR>
@@ -728,9 +793,21 @@ inoremap <Leader>fn <C-R>=expand("%:t")<CR>
 inoremap <Leader>fp <C-R>=getcwd()<CR>
 
 "set guifont=Menlo:h14
-set guifont=Consolas\ for\ Powerline\ FixedD\ 16
-colorscheme solarized
-set background=dark
+if &term =~ '256color'
+  " disable Background Color Erase (BCE) so that color schemes
+  " render properly when inside 256-color tmux and GNU screen.
+  " see also http://snk.tuxfamily.org/log/vim-256color-bce.html
+  set t_ut=
+endif
+
+set gfn=Inconsolata\ 16
+try
+  colorscheme solarized
+  " set background=light
+  set background=dark
+catch
+endtry
+
 set number
 set laststatus=2
 set showcmd
@@ -769,4 +846,118 @@ let Tex_FoldedEnvironments=""
 let Tex_FoldedMisc=""
 
 set shellredir=>
-set shortmess+=I
+" set shortmess+=I
+
+" run the current line as shell command
+nmap <C-S-F1> :echo system(getline('.'))<CR>
+
+
+" Delete trailing white space on save
+func! DeleteTrailingWS()
+  exe "normal mz"
+  %s/\s\+$//ge
+  exe "normal `z"
+endfunc
+
+augroup whitespace
+  autocmd!
+  autocmd BufWrite *.hs :call DeleteTrailingWS()
+augroup END
+
+
+nmap <Leader>ccc :%s/\s\+$//g<CR>
+nmap <silent> ,wa :1,9000bwipeout<cr>
+
+
+"----------------------------------
+" google style
+"----------------------------------
+" Show line numbers.
+set number
+
+" Turn on syntax highlighting.
+syntax on
+
+" Detect if the current file type is a C-like language.
+au BufNewFile,BufRead c,cpp,objc,*.mm call SetupForCLang()
+
+" Configuration for C-like languages.
+function! SetupForCLang()
+    " Highlight lines longer than 80 characters.
+    au BufWinEnter * let w:m2=matchadd('ErrorMsg', '\%>80v.\+', -1)
+    " Alternately, uncomment these lines to wrap at 80 characters.
+    " setlocal textwidth=80
+    " setlocal wrap
+
+    " Use 2 spaces for indentation.
+    setlocal shiftwidth=2
+    setlocal tabstop=2
+    setlocal softtabstop=2
+    setlocal expandtab
+
+    " Configure auto-indentation formatting.
+    setlocal cindent
+    setlocal cinoptions=h1,l1,g1,t0,i4,+4,(0,w1,W4
+    setlocal indentexpr=GoogleCppIndent()
+    let b:undo_indent = "setl sw< ts< sts< et< tw< wrap< cin< cino< inde<"
+
+    " Uncomment these lines to map F5 to the CEF style checker. Change the path to match your system.
+    map! <F5> <Esc>:!python /tmp/shasan/Code/chromium/cef3/tools/check_style.py %:p 2> lint.out<CR>:cfile lint.out<CR>:silent !rm lint.out<CR>:redraw!<CR>:cc<CR>
+    map  <F5> <Esc>:!python /tmp/shasan/Code/chromium/cef3/tools/check_style.py %:p 2> lint.out<CR>:cfile lint.out<CR>:silent !rm lint.out<CR>:redraw!<CR>:cc<CR>
+endfunction
+
+" From https://github.com/vim-scripts/google.vim/blob/master/indent/google.vim
+function! GoogleCppIndent()
+    let l:cline_num = line('.')
+
+    let l:orig_indent = cindent(l:cline_num)
+
+    if l:orig_indent == 0 | return 0 | endif
+
+    let l:pline_num = prevnonblank(l:cline_num - 1)
+    let l:pline = getline(l:pline_num)
+    if l:pline =~# '^\s*template' | return l:pline_indent | endif
+
+    " TODO: I don't know to correct it:
+    " namespace test {
+    " void
+    " ....<-- invalid cindent pos
+    "
+    " void test() {
+    " }
+    "
+    " void
+    " <-- cindent pos
+    if l:orig_indent != &shiftwidth | return l:orig_indent | endif
+
+    let l:in_comment = 0
+    let l:pline_num = prevnonblank(l:cline_num - 1)
+    while l:pline_num > -1
+        let l:pline = getline(l:pline_num)
+        let l:pline_indent = indent(l:pline_num)
+
+        if l:in_comment == 0 && l:pline =~ '^.\{-}\(/\*.\{-}\)\@<!\*/'
+            let l:in_comment = 1
+        elseif l:in_comment == 1
+            if l:pline =~ '/\*\(.\{-}\*/\)\@!'
+                let l:in_comment = 0
+            endif
+        elseif l:pline_indent == 0
+            if l:pline !~# '\(#define\)\|\(^\s*//\)\|\(^\s*{\)'
+                if l:pline =~# '^\s*namespace.*'
+                    return 0
+                else
+                    return l:orig_indent
+                endif
+            elseif l:pline =~# '\\$'
+                return l:orig_indent
+            endif
+        else
+            return l:orig_indent
+        endif
+
+        let l:pline_num = prevnonblank(l:pline_num - 1)
+    endwhile
+
+    return l:orig_indent
+endfunction

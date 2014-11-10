@@ -1,314 +1,92 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
-<html>
+" This color scheme was derived from:
+"
+" Blueshift color scheme
+" by Jan Zwiener, mail: jan@zwiener.org
+" Based upon the pyte color scheme by Henning Hasemann
+"
+" 2010/11/16: Version 1.0
+"
 
-<head>
-  <link rel="Stylesheet" type="text/css" href="/css/style.css" >
-  <title>Visual Studio - A color scheme that tries to imitate Visual Studio 2010. : vim online</title>
-  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-  <meta name="KEYWORDS" content="Vim, Vi IMproved, text editor, home, documentation, tips, scripts, news">
-  <link rel="shortcut icon" type="image/x-icon" href="/images/vim_shortcut.ico">
-</head>
+set background=light
 
-<body topmargin="0" leftmargin="0" marginheight="0" marginwidth="0" bgcolor="#ffffff"> 
+hi clear
+if exists("syntax_on")
+  syntax reset
+endif
 
-<!-- HEADER, SPONSOR IMAGE, VIM IMAGE AND BOOK AD -->
-<table width="100%" cellpadding="0" cellspacing="0" border="0" bordercolor="red">
-  <tr>
-    <td colspan="4" class="lightbg"><img src="/images/spacer.gif" width="1" height="5" alt=""></td>
-  </tr>
-  <tr>
-  <td class="lightbg">&nbsp;&nbsp;&nbsp;</td>
-  <td class="lightbg" align="left"><a href="/sponsor/index.php"><img src="/images/sponsorvim.gif" alt="sponsor Vim development" border="0"></a></td>
-    <td class="lightbg" align="center"><a href="/index.php"><img src="/images/vim_header.gif" border="0" alt="Vim logo"></a></td>
-    <td class="lightbg" align="right"><a href="http://iccf-holland.org/click5.html"><img src="/images/buyhelplearn.gif" alt="Vim Book Ad" border="0"></a></td>
-  </tr>
-  <tr>
-    <td colspan="4" class="lightbg"><img src="/images/spacer.gif" width="1" height="5" alt=""></td>
-  </tr>
-  <tr>
-    <td colspan="4" class="darkbg"><img src="/images/spacer.gif" width="1" height="10" alt=""></td>
-  </tr>
-</table>
-<!-- THE PAGE BODY: BETWEEN HEADER AND FOOTER -->
+let colors_name = "visualstudio"
 
-<table cellpadding="0" cellspacing="0" border="0" width="100%">
-  <col width="180">
-  <col width="1">
+" Taglist colors
+hi MyTagListFileName    guifg=black   guibg=#c0d0e0
+hi MyTagListTagName     guifg=black   guibg=#ffbc29
 
-  <tr valign="top">
-    <td class="sidebar">
-      <table width="180" cellpadding="4" cellspacing="0" border="0">
-        <tr valign="top">
-          <td class="sidebar">
+if version >= 700
+  hi CursorLine     guibg=#f6f6f6
+  hi CursorColumn   guibg=#f6f6f6
+  hi MatchParen     guifg=black     guibg=#bfbfbf
 
-<!-- INCLUDE THE PAGE NAVIGATION -->
-<table width="100%" cellpadding="0" cellspacing="0" border="0" bordercolor="red">
-    <tr>
-        <td><small>not logged in (<a href="/login.php">login</a>)</small></td>
-    </tr>
-    <tr><td>
-<small>&nbsp;</small>
-<form action="http://www.google.com/cse" id="cse-search-box">
-  <div>
-    <input type="hidden" name="cx" value="partner-pub-3005259998294962:bvyni59kjr1" />
-    <input type="hidden" name="ie" value="ISO-8859-1" />
-    <input type="text" name="q" size="20" />
-    <br>
-    <input type="submit" name="sa" value="Search" />
-  </div>
-</form>
-<script type="text/javascript" src="http://www.google.com/coop/cse/brand?form=cse-search-box&amp;lang=en"></script>
-    </td></tr>
-    <tr>
-        <td><img src="/images/spacer.gif" alt="" border="0" width="1" height="1"></td>
-    </tr>
-    <tr>
-        <td class="darkbg"><img src="/images/spacer.gif" alt='' border="0" height="3"></td>
-    </tr>
-    <tr>
-        <td><img src="/images/spacer.gif" alt="" border="0" width="1" height="2"></td>
-    </tr>
-        <tr>
-            <td class="sidebarheader"><a href="/index.php">Home</a></td>
-        </tr>
-        <tr>
-            <td class="sidebarheader"><a href="/search.php">Advanced search</a></td>
-        </tr>
-    <tr>
-        <td><img src="/images/spacer.gif" alt="" border="0" width="1" height="7"></td>
-    </tr>
-    <tr>
-        <td class="checker"><img src="/images/spacer.gif" alt='' border="0" height="1"></td>
-    </tr>
-    <tr>
-        <td><img src="/images/spacer.gif" alt="" border="0" width="1" height="7"></td>
-    </tr>
-        <tr>
-            <td class="sidebarheader"><a href="/about.php">About Vim</a></td>
-        </tr>
-        <tr>
-            <td class="sidebarheader"><a href="/community.php">Community</a></td>
-        </tr>
-        <tr>
-            <td class="sidebarheader"><a href="/news/news.php">News</a></td>
-        </tr>
-        <tr>
-            <td class="sidebarheader"><a href="/sponsor/index.php">Sponsoring</a></td>
-        </tr>
-        <tr>
-            <td class="sidebarheader"><a href="/trivia.php">Trivia</a></td>
-        </tr>
-        <tr>
-            <td class="sidebarheader"><a href="/docs.php">Documentation</a></td>
-        </tr>
-        <tr>
-            <td class="sidebarheader download"><a href="/download.php">Download</a></td>
-        </tr>
-    <tr>
-        <td><img src="/images/spacer.gif" alt="" border="0" width="1" height="7"></td>
-    </tr>
-    <tr>
-        <td class="checker"><img src="/images/spacer.gif" alt='' border="0" height="1"></td>
-    </tr>
-    <tr>
-        <td><img src="/images/spacer.gif" alt="" border="0" width="1" height="7"></td>
-    </tr>
-        <tr>
-            <td class="sidebarheader"><a href="/scripts/index.php">Scripts</a></td>
-        </tr>
-        <tr>
-            <td class="sidebarheader"><a href="/tips/index.php">Tips</a></td>
-        </tr>
-        <tr>
-            <td class="sidebarheader"><a href="/account/index.php">My Account</a></td>
-        </tr>
-    <tr>
-        <td><img src="/images/spacer.gif" alt="" border="0" width="1" height="7"></td>
-    </tr>
-    <tr>
-        <td class="checker"><img src="/images/spacer.gif" alt='' border="0" height="1"></td>
-    </tr>
-    <tr>
-        <td><img src="/images/spacer.gif" alt="" border="0" width="1" height="7"></td>
-    </tr>
-        <tr>
-            <td class="sidebarheader"><a href="/huh.php">Site Help</a></td>
-        </tr>
-</table>
-<br>
-<g:plusone></g:plusone>
+  hi TabLine        guifg=black     guibg=#b0b8c0
+  hi TabLineFill    guifg=#9098a0
+  hi TabLineSel     guifg=black     guibg=#f0f0f0 gui=bold
 
-            <table width="172" cellpadding="0" cellspacing="0" border="0">
-              <tr><td><img src="/images/spacer.gif" alt="" border="0" width="1" height="8"></td></tr>
-              <tr><td class="darkbg"><img src="/images/spacer.gif" width="1" height="3" alt=""></td></tr>
-            </table>
-            <br>
+  hi Pmenu          guifg=white     guibg=#808080
+  hi PmenuSel       guifg=black     guibg=#ffbc29
+endif
 
-<!-- INCLUDE THE PAGE SIDEBAR TEXT -->
-&nbsp;
+hi Title        guifg=#202020   gui=none
+hi Underlined   guifg=#202020   gui=underline
 
-          </td>
-        </tr>
-      </table>
-    </td>
+hi Normal       guifg=black     guibg=#f2f2f2
+hi ModeMsg      guifg=black     guibg=#f2f2f2
+hi Cursor       guifg=#f0f0f0   guibg=#101010
+hi LineNr       guifg=#2b91af   guibg=#f2f2f2 gui=none
+hi Visual       guifg=white     guibg=#5381bc
+hi WildMenu     guifg=black     guibg=#ffbc29
+hi IncSearch    guibg=black     guifg=#ffbc29
+hi Question     guifg=black     guibg=#ffbc29
 
-    <td class="darkbg"><img src="/images/spacer.gif" width="1" height="1" border="0" alt=""><br></td>
-    <td>
-      <table width="100%" cellpadding="10" cellspacing="0" border="0" bordercolor="red">
-        <tr>
-          <td valign="top">
+hi StatusLine   guifg=white     guibg=black   gui=bold
+hi StatusLineNC guifg=white     guibg=#8090a0 gui=bold
+hi VertSplit    guifg=#a0b0c0   guibg=#a0b0c0 gui=none
 
-<span class="txth1">Visual Studio : A color scheme that tries to imitate Visual Studio 2010.</span> 
+hi NonText      guifg=#bebebe   guibg=#f2f2f2
+hi Comment      guifg=#008000   gui=none
+hi Folded       guifg=#708090   guibg=#c0d0e0
+hi Folded       guifg=#708090   guibg=#c0d0e0
+hi FoldColumn   guifg=#708090   guibg=#c0d0e0
 
-<br>
-<br>
+hi Constant     guifg=#6f008a   gui=none
+hi Number       guifg=black
+hi Float        guifg=black
+hi Boolean      guifg=#0070af   gui=none
+hi String       guifg=#a31515   gui=none
 
-<!-- karma table -->
-<table cellpadding="4" cellspacing="0" border="1" bordercolor="#000066">
-<tr>
-  <td class="lightbg"><b>&nbsp;script karma&nbsp;</b></td>
-  <td>
-    Rating <b>31/12</b>,
-    Downloaded by 679    &nbsp;
-    <g:plusone></g:plusone>
-  </td>
-  <td class="lightbg">
-  <b>&nbsp;Comments, bugs, improvements&nbsp;</b>
-  </td>
-  <td>
-    <a href="http://vim.wikia.com/wiki/Script:4680">Vim wiki</a>
-  </td>  
-</tr>
-</table>
-<p>
+hi Statement    guifg=blue      gui=none
+hi StorageClass guifg=#0070af   gui=none
+hi Type         guifg=#0070af   gui=none
+hi Typedef      guifg=blue      gui=none
+hi Structure    guifg=blue      gui=none
+hi Identifier   guifg=#0070af   gui=none
+hi Function     guifg=#0070af   gui=none
+hi Repeat       guifg=blue      gui=none
+hi Conditional  guifg=blue      gui=none
+hi Operator     guifg=blue      gui=none
 
-<table cellspacing="0" cellpadding="0" border="0">
-<tr><td class="prompt">created by</td></tr>
-<tr><td><a href="/account/profile.php?user_id=66855">Kali Kali</a></td></tr>
-<tr><td>&nbsp;</td></tr>
-<tr><td class="prompt">script type</td></tr>
-<tr><td>color scheme</td></tr>
-<tr><td>&nbsp;</td></tr>
-<tr><td class="prompt">description</td></tr>
-<tr><td>This color scheme was derived from <a href="/scripts/script.php?script_id=3328">vimscript #3328</a><br>It tries to be closer to the look of Visual Studios syntax highlighting and font.<br>You should use it in the GUI version of vim (gvim).<br><br>The archive includes the font Consolas from <a target="_blank" href="http://github.com/eugeneching/consolas-powerline-vim">http://github.com/eugeneching/consolas-powerline-vim</A><br><br>Screenshot:<br><br><a target="_blank" href="http://img545.imageshack.us/img545/5940/v7o4.png">http://img545.imageshack.us/img545/5940/v7o4.png</A><br></td></tr>
-<tr><td>&nbsp;</td></tr>
-<tr><td class="prompt">install details</td></tr>
-<tr><td>Instructions for Unix-like OSes:<br><br>Extract archive:<br><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;tar -xf visualstudio.tar.gz<br><br>Copy fonts:<br><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cp visualstudio/fonts/*.ttf ~/.fonts/<br><br>Copy color scheme:<br><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cp visualstudio/visualstudio.vim ~/.vim/colors/<br><br>Activate in gvim with:<br><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:colorscheme visualstudio<br></td></tr>
-<tr><td>&nbsp;</td></tr>
-</table>
+hi PreProc      guifg=#2222ff   gui=none
+hi Define       guifg=#2222ff   gui=none
+hi Include      guifg=#2222ff   gui=none
 
-<!-- rating table -->
-<form name="rating" method="post">
-<input type="hidden" name="script_id" value="4680">
-<table cellpadding="4" cellspacing="0" border="1" bordercolor="#000066">
-<tr>
-  <td class="lightbg"><b>rate this script</b></td>
-  <td valign="middle">
-    <input type="radio" name="rating" value="life_changing">Life Changing
-    <input type="radio" name="rating" value="helpful">Helpful
-    <input type="radio" name="rating" value="unfulfilling">Unfulfilling&nbsp;
-    <input type="submit" value="rate">
-  </td>
-</tr>
-</table>
-</form>
-<span class="txth2">script versions</span> (<a href="add_script_version.php?script_id=4680">upload new version</a>)
-<p>
-Click on the package to download.
-<p>
+hi Error        guifg=red       guibg=#f2f2f2   gui=bold,underline
+hi Todo         guifg=blue      guibg=yellow    gui=none
+hi Search       guifg=black     guibg=yellow    gui=none
+hi SpecialKey	guifg=#1060a0   guibg=#f2f2f2
+hi Special      guifg=#666600   guibg=#f2f2f2
 
-<table cellspacing="2" cellpadding="4" border="0" width="100%">
-<tr class='tableheader'>
-        <th valign="top">package</th>
-    <th valign="top">script version</th>
-    <th valign="top">date</th>
-    <th valign="top">Vim version</th>
-    <th valign="top">user</th>
-    <th valign="top">release notes</th>
-</tr>
-<tr>
-        <td class="rowodd" valign="top" nowrap><a href="download_script.php?src_id=20598">visualstudio.tar.gz</a></td>
-    <td class="rowodd" valign="top" nowrap><b>1.1</b></td>
-    <td class="rowodd" valign="top" nowrap><i>2013-08-04</i></td>
-    <td class="rowodd" valign="top" nowrap>7.0</td>
-    <td class="rowodd" valign="top"><i><a href="/account/profile.php?user_id=66855">Kali Kali</a></i></td>
-    <td class="rowodd" valign="top" width="2000">Changed visualstudio.vim to display the right name of this color scheme. Version 1.0 showed up as &quot;blueshift&quot;.</td>
-</tr>
-<tr>
-        <td class="roweven" valign="top" nowrap><a href="download_script.php?src_id=20593">visualstudio.tar.gz</a></td>
-    <td class="roweven" valign="top" nowrap><b>1.0</b></td>
-    <td class="roweven" valign="top" nowrap><i>2013-08-02</i></td>
-    <td class="roweven" valign="top" nowrap>7.0</td>
-    <td class="roweven" valign="top"><i><a href="/account/profile.php?user_id=66855">Kali Kali</a></i></td>
-    <td class="roweven" valign="top" width="2000">Initial upload</td>
-</tr>
-</table>
-<small>ip used for rating: 192.55.55.41</small>
-<!-- finish off the framework -->
-          </td>
-        </tr>
-      </table>
-    </td>
+" Diff
+hi DiffChange   guifg=NONE      guibg=#e0e0e0   gui=bold
+hi DiffText     guifg=NONE      guibg=#f0c8c8   gui=bold
+hi DiffAdd      guifg=NONE      guibg=#c0e0d0   gui=bold
+hi DiffDelete   guifg=NONE      guibg=#f0e0b0   gui=bold
 
-  </tr>
-</table>
-
-<!-- END OF THE PAGE BODY: BETWEEN HEADER AND FOOTER -->
-
-<table width="100%" cellpadding="0" cellspacing="0" border="0" bordercolor="red">
-  <tr><td colspan="4"><img src="/images/spacer.gif" width="1" height="5" alt=""></td></tr>
-  <tr><td colspan="4" bgcolor="#000000"><img src="/images/spacer.gif" height="2" width="1" alt=""></td></tr>
-  <tr><td colspan="4"><img src="/images/spacer.gif" width="1" height="5" alt=""></td></tr>
-  <tr>
-    <td><img src="/images/spacer.gif" width="5" height="1" alt=""></td>
-
-    <td align="left" valign="top"><small>
-      If you have questions or remarks about this site, visit the
-      <a href="http://vimonline.sf.net">vimonline development</a> pages.
-      Please use this site responsibly.
-      <br> 
-      
-      Questions about <a href="http://www.vim.org/about.php">Vim</a> should go
-      to the <a href="http://www.vim.org/maillist.php">maillist</a>.
-      Help Bram <a href="http://iccf-holland.org/">help Uganda</a>.
-      </small>
-	&nbsp;
-	&nbsp;
-
-	<!-- Start of StatCounter Code -->
-	<script type="text/javascript" language="javascript">
-	var sc_project=1417324; 
-	var sc_invisible=1; 
-	var sc_partition=11; 
-	var sc_security="d41633bc"; 
-	</script>
-
-	<script type="text/javascript" language="javascript" src="http://www.statcounter.com/counter/counter.js"></script><noscript><a href="http://www.statcounter.com/" target="_blank"><img  src="http://c12.statcounter.com/counter.php?sc_project=1417324&java=0&security=d41633bc&invisible=0" alt="free tracking" border="0"></a> </noscript>
-	<!-- End of StatCounter Code -->
-          </td>
-
-    <td align="right" valign="top">
-      		<a href="http://sourceforge.net/projects/vim" rel="nofollow"><img src="http://sflogo.sourceforge.net/sflogo.php?group_id=8&type=1" width="88" height="31" border="0" alt="SourceForge.net Logo" /></a>
-    </td>
-
-    <td><img src="/images/spacer.gif" width="5" height="1" alt=""></td>
-  </tr>
-
-    
-  <tr><td colspan="4"><img src="/images/spacer.gif" width="1" height="5" alt=""></td>
-  
-  </tr>
-</table>
-
-<!-- for Google +1 button -->
-<script type="text/javascript">
-  (function() {
-    var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
-    po.src = 'https://apis.google.com/js/plusone.js';
-    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
-  })();
-</script>
-
-</body>
-</html>
+" set guifont=Consolas\ for\ Powerline\ FixedD\ 11
 
