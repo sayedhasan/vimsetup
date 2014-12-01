@@ -1,7 +1,7 @@
 "---------------------------------------------------------------------------------------------
 " Modeline and Notes
 "---------------------------------------------------------------------------------------------
-"   vim: set sw=2 ts=2 sts=2 et tw=72 foldmarker={{{,}}} foldlevel=90 foldmethod=marker spell:
+"   vim: set sw=2 ts=2 sts=2 et tw=72 foldmarker={{{,}}} foldlevel=90 foldmethod=marker:
 "   This is the personal .vimrc file of Sayed Hasan
 "
 "---------------------------------------------------------------------------------------------
@@ -49,11 +49,9 @@ call vundle#begin()
 " Let Vundle manage Vundle, required
 Plugin 'gmarik/Vundle.vim'
 
-" comments
+" Comments
 Plugin 'tomtom/tcomment_vim'
-" Plugin 'tpope/vim-commentary'
-" Plugin 'scroolose/nerdcommenter'
-" Plugin 'tpope/vim-commentary'
+Plugin 'tpope/vim-commentary'
 
 " Text manipulation
 Plugin 'godlygeek/tabular'
