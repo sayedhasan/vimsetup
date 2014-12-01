@@ -39,102 +39,125 @@ set directory=~/.cache/vim/swap
 " }}}
 
 " Vundle {{{
-set nocompatible
-set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
+set nocompatible              " be iMproved, required
+filetype off                  " required
 
-set rtp+=~/.vim/bundle/vimproc.vim/autoload
-set rtp+=~/.vim/bundle/vimproc.vim/plugin
+" set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
 
-" Let Vundle manage Vundle
-" required!
-Bundle 'gmarik/vundle'
+" Let Vundle manage Vundle, required
+Plugin 'gmarik/Vundle.vim'
 
 " comments
-Bundle 'http://github.com/tomtom/tcomment_vim.git'
-" Bundle 'http://github.com/tpope/vim-commentary.git'
-" Bundle 'http://github.com/scrooloose/nerdcommenter.git'
+Plugin 'tomtom/tcomment_vim'
+" Plugin 'tpope/vim-commentary'
+" Plugin 'scroolose/nerdcommenter'
+" Plugin 'tpope/vim-commentary'
 
 " Text manipulation
-Bundle 'vim-scripts/Align'
-Bundle 'vim-scripts/Gundo'
-Bundle 'godlygeek/tabular'
+Plugin 'godlygeek/tabular'
+Plugin 'vim-scripts/Align'
+Plugin 'vim-scripts/Gundo'
+Plugin 'vim-scripts/VisIncr'
+Plugin 'tpope/vim-speeddating'
+Plugin 'tpope/vim-repeat'
+Plugin 'tpope/vim-unimpaired'
+Plugin 'tpope/vim-endwise'
+Plugin 'tpope/vim-surround'
+Plugin 'ciaranm/detectindent'
 
-" code navigation
-Bundle 'http://github.com/majutsushi/tagbar.git'
-Bundle 'http://github.com/nathanaelkane/vim-indent-guides.git'
-Bundle 'michaeljsmith/vim-indent-object'
+" Code navigation and IDE functionality
+Plugin 'majutsushi/tagbar'
+
+" Indent guide
+Plugin 'nathanaelkane/vim-indent-guides'
+Plugin 'michaeljsmith/vim-indent-object'
 
 " buffer management
-Bundle 'http://github.com/vim-scripts/bufkill.vim.git'
-Bundle 'http://github.com/derekwyatt/vim-fswitch.git'
-Bundle 'http://github.com/sjl/gundo.vim.git'
-Bundle 'http://github.com/tpope/vim-repeat.git'
-Bundle 'http://github.com/tpope/vim-unimpaired.git'
-Bundle 'http://github.com/ciaranm/detectindent.git'
-Bundle 'http://github.com/tpope/vim-endwise.git'
-Bundle 'http://github.com/vim-scripts/FSwitch.git'
+Plugin 'vim-scripts/bufkill.vim'
+Plugin 'vim-scripts/FSwitch.git'
+Plugin 'derekwyatt/vim-fswitch'
 
 " code complete
-Bundle 'http://github.com/mattn/emmet-vim'
-Bundle 'http://github.com/tristen/vim-sparkup.git'
-Bundle 'http://github.com/tpope/vim-surround.git'
-" Bundle 'http://github.com/scrooloose/syntastic.git'
-Bundle 'http://github.com/msanders/snipmate.vim.git'
-" Bundle 'http://github.com/spf13/snipmate-snippets.git'
-Bundle 'http://github.com/Shougo/neocomplcache.vim.git'
-" Bundle 'http://github.com/Townk/vim-autoclose'
+Plugin 'mattn/emmet-vim'
+Plugin 'tristen/vim-sparkup'
+" Plugin 'scroolose/syntastic'
+" Plugin 'garbas/vim-snipmate'
+" Plugin 'msanders/snipmate.vim'
+Plugin 'http://github.com/Shougo/neocomplcache.vim.git'
+" Plugin 'http://github.com/Townk/vim-autoclose'
 
 " file name and search
-Bundle 'http://github.com/vim-scripts/L9.git'
-Bundle 'http://github.com/vim-scripts/FuzzyFinder.git'
-Bundle 'http://github.com/kien/ctrlp.vim.git'
-Bundle 'http://github.com/shemerey/vim-project.git'
-Bundle 'http://github.com/scrooloose/nerdtree.git'
-" Bundle 'http://github.com/jistr/vim-nerdtree-tabs.git'
-Bundle 'http://github.com/danro/rename.vim.git'
+Plugin 'http://github.com/vim-scripts/L9.git'
+Plugin 'http://github.com/vim-scripts/FuzzyFinder.git'
+Plugin 'http://github.com/kien/ctrlp.vim.git'
+Plugin 'http://github.com/shemerey/vim-project.git'
+Plugin 'http://github.com/scrooloose/nerdtree.git'
+" Plugin 'http://github.com/jistr/vim-nerdtree-tabs.git'
+Plugin 'http://github.com/danro/rename.vim.git'
 
 " repo-management
-Bundle 'http://github.com/tpope/vim-git.git'
-Bundle 'http://github.com/tpope/vim-fugitive.git'
-Bundle 'int3/vim-extradite'
-" Bundle 'http://github.com/mhinz/vim-signify.git'
+Plugin 'http://github.com/tpope/vim-git.git'
+Plugin 'http://github.com/tpope/vim-fugitive.git'
+" Plugin 'int3/vim-extradite'
+" Plugin 'http://github.com/mhinz/vim-signify.git'
 
 " colorscheme font statusline
-Bundle 'http://github.com/altercation/vim-colors-solarized.git'
-Bundle 'http://github.com/flazz/vim-colorschemes.git'
-Bundle 'http://github.com/drmikehenry/vim-fontsize.git'
-Bundle 'http://github.com/maciakl/vim-neatstatus.git'
-" Bundle 'http://github.com/Lokaltog/vim-powerline.git'
-" Bundle 'http://github.com/bling/vim-airline.git'
-" Bundle 'bling/vim-airline'
-Bundle 'http://github.com/rey-wright/argokai.git'
-Bundle 'http://github.com/Pychimp/Pychimp-vim.git'
+" Plugin 'chrisbra/color_highlight.git'
+" Plugin 'skwp/vim-colors-solarized'
+" Plugin 'itchyny/lightline'
+" Plugin "jby/tmux.vim.git"
+" Plugin "morhetz/gruvbox"
+" Plugin "xsunsmile/showmarks.git"
+Plugin 'http://github.com/altercation/vim-colors-solarized.git'
+Plugin 'http://github.com/flazz/vim-colorschemes.git'
+Plugin 'http://github.com/drmikehenry/vim-fontsize.git'
+Plugin 'http://github.com/maciakl/vim-neatstatus.git'
+" Plugin 'http://github.com/Lokaltog/vim-powerline.git'
+" Plugin 'http://github.com/bling/vim-airline.git'
+" Plugin 'bling/vim-airline'
+" Plugin 'http://github.com/rey-wright/argokai.git'
+" Plugin 'http://github.com/Pychimp/Pychimp-vim.git'
+Plugin 'abra/vim-abra'
+Plugin 'nice/sweater'
+Plugin 'blerins/flattown'
+Plugin 'duythinht/vim-coffee'
+
+" Plugin 'jpo/vim-railscasts-theme'
+Plugin 'antlypls/vim-colors-codeschool'
+Plugin 'chankaward/vim-railscasts-theme'
+" Plugin 'ryanb/dotfiles/vim/colors/railscasts.vim'
 
 " Allow pane movement to jump out of vim into tmux
-Bundle 'christoomey/vim-tmux-navigator'
+Plugin 'christoomey/vim-tmux-navigator'
 
 " language support
-Bundle 'http://github.com/jcf/vim-latex.git'
-Bundle 'http://github.com/vim-scripts/MatlabFilesEdition.git'
-Bundle 'http://github.com/rayburgemeestre/phpfolding.vim.git'
-Bundle 'http://github.com/spf13/PIV.git'
-Bundle 'http://github.com/Lokaltog/vim-easymotion.git'
-Bundle 'http://github.com/zaiste/tmux.vim.git'
+Plugin 'xolox/vim-misc.git'
+Plugin 'xolox/vim-notes.git'
+Plugin 'http://github.com/jcf/vim-latex.git'
+Plugin 'http://github.com/vim-scripts/MatlabFilesEdition.git'
+Plugin 'http://github.com/rayburgemeestre/phpfolding.vim.git'
+Plugin 'http://github.com/spf13/PIV.git'
+Plugin 'http://github.com/Lokaltog/vim-easymotion.git'
+Plugin 'http://github.com/zaiste/tmux.vim.git'
+Plugin 'http://github.com/funorpain/vim-cpplint.git'
 
 " Haskell
-Bundle 'raichoo/haskell-vim'
+Plugin 'raichoo/haskell-vim'
 let g:haskell_enable_quantification = 1 " to enable highlighting of forall
 let g:haskell_enable_recursivedo = 1 " to enable highlighting of mdo and rec
 let g:haskell_enable_arrowsyntax = 1 " to enable highlighting of proc
 let g:haskell_enable_pattern_synonyms = 1 " to enable highlighting of pattern
 let g:haskell_enable_typeroles = 1 " to enable highlighting of type roles
 
-" Bundle 'enomsg/vim-haskellConcealPlus'
-Bundle 'eagletmt/ghcmod-vim'
-Bundle 'eagletmt/neco-ghc'
-Bundle 'Twinside/vim-hoogle'
+" Plugin 'enomsg/vim-haskellConcealPlus'
+Plugin 'eagletmt/ghcmod-vim'
+Plugin 'eagletmt/neco-ghc'
+Plugin 'Twinside/vim-hoogle'
 
+call vundle#end()            " required
+filetype plugin indent on    " required
 
 " }}}
 
@@ -151,7 +174,7 @@ filetype plugin on
 filetype indent on
 
 " Show trailing whitespace
-set list
+" set list
 " But only interesting whitespace
 if &listchars ==# 'eol:$'
   set listchars=tab:>\ ,trail:-,extends:>,precedes:<,nbsp:+
@@ -260,43 +283,43 @@ let java_allow_cpp_keywords = 1
 let mapleader = ","
 
 " Wipe out all buffers
-nmap <silent> ,wa :1,9000bwipeout<cr>
+nnoremap <silent> ,wa :1,9000bwipeout<cr>
 
 " Toggle paste mode
-nmap <silent> ,p :set invpaste<CR>:set paste?<CR>
+nnoremap <silent> ,p :set invpaste<CR>:set paste?<CR>
 
 " cd to the directory containing the file in the buffer
-nmap <silent> ,cd :lcd %:h<CR>
-nmap <silent> ,md :!mkdir -p %:p:h<CR>
+nnoremap <silent> ,cd :lcd %:h<CR>
+nnoremap <silent> ,md :!mkdir -p %:p:h<CR>
 
 " Turn off that stupid highlight search
-nmap <silent> ,n :nohls<CR>
+nnoremap <silent> ,n :nohls<CR>
 
 " put the vim directives for my file editing settings in
-nmap <silent> ,vi ovim:set ts=2 sts=2 sw=2:<CR>vim:fdm=marker fdl=1 fdc=0:<ESC>
+nnoremap <silent> ,vi ovim:set ts=2 sts=2 sw=2:<CR>vim:fdm=marker fdl=1 fdc=0:<ESC>
 
 " Show all available VIM servers
-nmap <silent> ,ss :echo serverlist()<CR>
+nnoremap <silent> ,ss :echo serverlist()<CR>
 
 " The following beast is something i didn't write... it will return the
 " syntax highlighting group that the current "thing" under the cursor
 " belongs to -- very useful for figuring out what to change as far as
 " syntax highlighting goes.
-nmap <silent> ,qq :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<' . synIDattr(synID(line("."),col("."),0),"name") . "> lo<" . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>
+nnoremap <silent> ,qq :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<' . synIDattr(synID(line("."),col("."),0),"name") . "> lo<" . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>
 
-nmap <silent> ,cp :let @" = expand("%")<CR>
+nnoremap <silent> ,cp :let @" = expand("%")<CR>
 
 " Make shift-insert work like in Xterm
-map <S-Insert> <MiddleMouse>
-map! <S-Insert> <MiddleMouse>
+noremap <S-Insert> <MiddleMouse>
+noremap! <S-Insert> <MiddleMouse>
 
 " Buffer creation
-map <Tab> <C-W>w
-map <Bar> <C-W>v<C-W><Right>
-map -     <C-W>s<C-W><Down>
+noremap <Tab> <C-W>w
+noremap <Bar> <C-W>v<C-W><Right>
+noremap -     <C-W>s<C-W><Down>
 
 " set text wrapping toggles
-nmap <silent> ,ww :set invwrap<CR>:set wrap?<CR>
+nnoremap <silent> ,ww :set invwrap<CR>:set wrap?<CR>
 
 " allow command line editing like emacs
 cnoremap <C-A>      <Home>
@@ -312,49 +335,49 @@ cnoremap <ESC><C-F> <S-Right>
 cnoremap <ESC><C-H> <C-W>
 
 " Edit the vimrc file
-nmap <silent> ,ev :e $MYVIMRC<CR>
-nmap <silent> ,sv :so $MYVIMRC<CR>
+nnoremap <silent> ,ev :e $MYVIMRC<CR>
+nnoremap <silent> ,sv :so $MYVIMRC<CR>
 
 " Make horizontal scrolling easier
-nmap <silent> <C-o> 10zl
-nmap <silent> <C-i> 10zh
+nnoremap <silent> <C-o> 10zl
+nnoremap <silent> <C-i> 10zh
 
 " Add a GUID to the current line
-imap <C-J>d <C-r>=substitute(system("uuidgen"), '.$', '', 'g')<CR>
+inoremap <C-J>d <C-r>=substitute(system("uuidgen"), '.$', '', 'g')<CR>
 
 " Search the current file for what's currently in the search register and display matches
-nmap <silent> ,gs :vimgrep /<C-r>// %<CR>:ccl<CR>:cwin<CR><C-W>J:nohls<CR>
+nnoremap <silent> ,gs :vimgrep /<C-r>// %<CR>:ccl<CR>:cwin<CR><C-W>J:nohls<CR>
 
 " Search the current file for the word under the cursor and display matches
-nmap <silent> ,gw :vimgrep /<C-r><C-w>/ %<CR>:ccl<CR>:cwin<CR><C-W>J:nohls<CR>
+nnoremap <silent> ,gw :vimgrep /<C-r><C-w>/ %<CR>:ccl<CR>:cwin<CR><C-W>J:nohls<CR>
 
 " Search the current file for the WORD under the cursor and display matches
-nmap <silent> ,gW :vimgrep /<C-r><C-a>/ %<CR>:ccl<CR>:cwin<CR><C-W>J:nohls<CR>
+nnoremap <silent> ,gW :vimgrep /<C-r><C-a>/ %<CR>:ccl<CR>:cwin<CR><C-W>J:nohls<CR>
 
 " Swap two words
-nmap <silent> gw :s/\(\%#\w\+\)\(\_W\+\)\(\w\+\)/\3\2\1/<CR>`'
+nnoremap <silent> gw :s/\(\%#\w\+\)\(\_W\+\)\(\w\+\)/\3\2\1/<CR>`'
 
 " Underline the current line with '='
-nmap <silent> ,u  :t.\|s/./-/g\|:nohls<cr>
-nmap <silent> ,u= :t.\|s/./=/g\|:nohls<cr>
-nmap <silent> ,u- :t.\|s/./-/g\|:nohls<cr>
-nmap <silent> ,u~ :t.\|s/./\\~/g\|:nohls<cr>
+nnoremap <silent> ,u  :t.\|s/./-/g\|:nohls<cr>
+nnoremap <silent> ,u= :t.\|s/./=/g\|:nohls<cr>
+nnoremap <silent> ,u- :t.\|s/./-/g\|:nohls<cr>
+nnoremap <silent> ,u~ :t.\|s/./\\~/g\|:nohls<cr>
 
 " Shrink the current window to fit the number of lines in the buffer.  Useful
 " for those buffers that are only a few lines
-nmap <silent> ,sw :execute ":resize " . line('$')<cr>
+nnoremap <silent> ,sw :execute ":resize " . line('$')<cr>
 
 " Tagbar plugin
-nmap <F8> :TagbarToggle<CR>
+nnoremap <F8> :TagbarToggle<CR>
 
 " Use the bufkill plugin to eliminate a buffer but keep the window layout
-nmap <Leader>bd :BD<cr>
+nnoremap <Leader>bd :BD<cr>
 
 " Use CTRL-E to replace the original ',' mapping
 nnoremap <C-E> ,
 
 " Make the current file executable
-nmap <Leader>x :w<cr>:!chmod 755 %:p<cr>:e<cr>
+nnoremap <Leader>x :w<cr>:!chmod 755 %:p<cr>:e<cr>
 
 " Syntax coloring lines that are too long just slows down the world
 set synmaxcol=2048
@@ -375,20 +398,20 @@ autocmd User fugitive
   \ endif
 autocmd BufReadPost fugitive://* set bufhidden=delete
 
-nmap <Leader>gs :Gstatus<cr>
-nmap <Leader>ge :Gedit<cr>
-nmap <Leader>gw :Gwrite<cr>
-nmap <Leader>gr :Gread<cr>
+nnoremap <Leader>gs :Gstatus<cr>
+nnoremap <Leader>ge :Gedit<cr>
+nnoremap <Leader>gw :Gwrite<cr>
+nnoremap <Leader>gr :Gread<cr>
 " }
 
 
 " NERD Tree Plugin Settings {
 "-----------------------------------------------------------------------------
 " Toggle the NERD Tree on an off with F7
-nmap <F7> :NERDTreeToggle<CR>
+nnoremap <F7> :NERDTreeToggle<CR>
 
 " Close the NERD Tree with Shift-F7
-nmap <S-F7> :NERDTreeClose<CR>
+nnoremap <S-F7> :NERDTreeClose<CR>
 
 " Show the bookmarks table on startup
 let NERDTreeShowBookmarks=1
@@ -406,21 +429,21 @@ let NERDTreeIgnore=[ '\.ncb$', '\.suo$', '\.vcproj\.RIMNET', '\.obj$',
 "-----------------------------------------------------------------------------
 " L9 creates an 'interesting' set of error formats when quickfix is engaged
 " This mapping cleans it up
-nmap <silent> ,eu :sign unplace *<cr>
+nnoremap <silent> ,eu :sign unplace *<cr>
 " }
 
 
 " FSwitch mappings {
 "-----------------------------------------------------------------------------
-nmap <silent> <Leader>of :FSHere<CR>
-nmap <silent> <Leader>ol :FSRight<CR>
-nmap <silent> <Leader>oL :FSSplitRight<CR>
-nmap <silent> <Leader>oh :FSLeft<CR>
-nmap <silent> <Leader>oH :FSSplitLeft<CR>
-nmap <silent> <Leader>ok :FSAbove<CR>
-nmap <silent> <Leader>oK :FSSplitAbove<CR>
-nmap <silent> <Leader>oj :FSBelow<CR>
-nmap <silent> <Leader>oJ :FSSplitBelow<CR>
+nnoremap <silent> <Leader>of :FSHere<CR>
+nnoremap <silent> <Leader>ol :FSRight<CR>
+nnoremap <silent> <Leader>oL :FSSplitRight<CR>
+nnoremap <silent> <Leader>oh :FSLeft<CR>
+nnoremap <silent> <Leader>oH :FSSplitLeft<CR>
+nnoremap <silent> <Leader>ok :FSAbove<CR>
+nnoremap <silent> <Leader>oK :FSSplitAbove<CR>
+nnoremap <silent> <Leader>oj :FSBelow<CR>
+nnoremap <silent> <Leader>oJ :FSSplitBelow<CR>
 " }
 
 
@@ -429,9 +452,9 @@ nmap <silent> <Leader>oJ :FSSplitBelow<CR>
 let g:fuf_splitPathMatching = 1
 let g:fuf_maxMenuWidth = 110
 let g:fuf_timeFormat = ''
-nmap <silent> ,fv :FufFile ~/.vim/<cr>
-nmap <silent> ,fc :FufMruCmd<cr>
-nmap <silent> ,fm :FufMruFile<cr>
+nnoremap <silent> ,fv :FufFile ~/.vim/<cr>
+nnoremap <silent> ,fc :FufMruCmd<cr>
+nnoremap <silent> ,fm :FufMruFile<cr>
 
 let g:CommandTMatchWindowAtTop = 1
 let g:make_scala_fuf_mappings = 0
@@ -448,16 +471,16 @@ let g:ctrlp_custom_ignore = '\v%(/\.%(git|hg|svn)|\.%(class|o|png|jpg|jpeg|bmp|t
 let g:ctrlp_open_new_file = 'r'
 let g:ctrlp_open_multiple_files = '1ri'
 let g:ctrlp_match_window = 'max:40'
-let g:ctrlp_prompt_mappings = {
+let g:ctrlp_prompt_noremappings = {
   \ 'PrtSelectMove("j")':   ['<c-n>'],
   \ 'PrtSelectMove("k")':   ['<c-p>'],
   \ 'PrtHistory(-1)':       ['<c-j>', '<down>'],
   \ 'PrtHistory(1)':        ['<c-i>', '<up>']
 \ }
-map <Leader>fb :CtrlPBuffer<cr>
-map <Leader>ff :CtrlP .<cr>
-map <Leader>fr :CtrlP<cr>
-map <Leader>fm :CtrlPMixed<cr>
+noremap <Leader>fb :CtrlPBuffer<cr>
+noremap <Leader>ff :CtrlP .<cr>
+noremap <Leader>fr :CtrlP<cr>
+noremap <Leader>fm :CtrlPMixed<cr>
 " }
 
 
@@ -485,7 +508,7 @@ let g:autotags_ctags_global_include = ""
 
 " Gundo Settings {
 "-----------------------------------------------------------------------------
-nmap <c-F5> :GundoToggle<cr>
+nnoremap <c-F5> :GundoToggle<cr>
 " }
 
 
@@ -520,23 +543,23 @@ function! IndentToNextBraceInLineAbove()
     :normal j"vPl
 endfunction
 
-nmap <silent> ,ii :call IndentToNextBraceInLineAbove()<cr>
+nnoremap <silent> ,ii :call IndentToNextBraceInLineAbove()<cr>
 
-nmap <silent> ,mba :call MarkBufferInJumpList(expand('%:p'), 'a')<cr>
-nmap <silent> ,mbb :call MarkBufferInJumpList(expand('%:p'), 'b')<cr>
-nmap <silent> ,mbc :call MarkBufferInJumpList(expand('%:p'), 'c')<cr>
-nmap <silent> ,mbd :call MarkBufferInJumpList(expand('%:p'), 'd')<cr>
-nmap <silent> ,mbe :call MarkBufferInJumpList(expand('%:p'), 'e')<cr>
-nmap <silent> ,mbf :call MarkBufferInJumpList(expand('%:p'), 'f')<cr>
-nmap <silent> ,mbg :call MarkBufferInJumpList(expand('%:p'), 'g')<cr>
-nmap <silent> ,jba :call JumpToBufferInJumpList('a')<cr>
-nmap <silent> ,jbb :call JumpToBufferInJumpList('b')<cr>
-nmap <silent> ,jbc :call JumpToBufferInJumpList('c')<cr>
-nmap <silent> ,jbd :call JumpToBufferInJumpList('d')<cr>
-nmap <silent> ,jbe :call JumpToBufferInJumpList('e')<cr>
-nmap <silent> ,jbf :call JumpToBufferInJumpList('f')<cr>
-nmap <silent> ,jbg :call JumpToBufferInJumpList('g')<cr>
-nmap <silent> ,ljb :call ListJumpToBuffers()<cr>
+nnoremap <silent> ,mba :call MarkBufferInJumpList(expand('%:p'), 'a')<cr>
+nnoremap <silent> ,mbb :call MarkBufferInJumpList(expand('%:p'), 'b')<cr>
+nnoremap <silent> ,mbc :call MarkBufferInJumpList(expand('%:p'), 'c')<cr>
+nnoremap <silent> ,mbd :call MarkBufferInJumpList(expand('%:p'), 'd')<cr>
+nnoremap <silent> ,mbe :call MarkBufferInJumpList(expand('%:p'), 'e')<cr>
+nnoremap <silent> ,mbf :call MarkBufferInJumpList(expand('%:p'), 'f')<cr>
+nnoremap <silent> ,mbg :call MarkBufferInJumpList(expand('%:p'), 'g')<cr>
+nnoremap <silent> ,jba :call JumpToBufferInJumpList('a')<cr>
+nnoremap <silent> ,jbb :call JumpToBufferInJumpList('b')<cr>
+nnoremap <silent> ,jbc :call JumpToBufferInJumpList('c')<cr>
+nnoremap <silent> ,jbd :call JumpToBufferInJumpList('d')<cr>
+nnoremap <silent> ,jbe :call JumpToBufferInJumpList('e')<cr>
+nnoremap <silent> ,jbf :call JumpToBufferInJumpList('f')<cr>
+nnoremap <silent> ,jbg :call JumpToBufferInJumpList('g')<cr>
+nnoremap <silent> ,ljb :call ListJumpToBuffers()<cr>
 
 function! DiffCurrentFileAgainstAnother(snipoff, replacewith)
   let currentFile = expand('%:p')
@@ -565,8 +588,8 @@ function! HighlightAllOfWord(onoff)
   endif
 endfunction
 
-:nmap <Leader>ha :call HighlightAllOfWord(1)<cr>
-:nmap <Leader>hA :call HighlightAllOfWord(0)<cr>
+:nnoremap <Leader>ha :call HighlightAllOfWord(1)<cr>
+:nnoremap <Leader>hA :call HighlightAllOfWord(0)<cr>
 
 function! LengthenCWD()
   let cwd = getcwd()
@@ -582,7 +605,7 @@ function! LengthenCWD()
   endif
 endfunction
 
-:nmap <Leader>ld :call LengthenCWD()<cr>
+:nnoremap <Leader>ld :call LengthenCWD()<cr>
 
 function! ShortenCWD()
   let cwd = split(getcwd(), '/')
@@ -599,7 +622,7 @@ function! ShortenCWD()
   exec ":lcd /" . newdir
 endfunction
 
-:nmap <Leader>sd :call ShortenCWD()<cr>
+:nnoremap <Leader>sd :call ShortenCWD()<cr>
 
 function! RedirToYankRegisterF(cmd, ...)
   let cmd = a:cmd . " " . join(a:000, " ")
@@ -637,8 +660,8 @@ function! ToggleMinimap()
 
     exe 'match Visible /' . s:lines . '/'
     hi Visible guibg=lightblue guifg=black term=bold
-    nmap <s-j> 10j
-    nmap <s-k> 10k
+    nnoremap <s-j> 10j
+    nnoremap <s-k> 10k
   else
     " exe "set guifont=" . g:main_font
     hi clear Visible
@@ -750,12 +773,12 @@ au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g
 " saving macros
 let @a = ':%s/ /\/g\ggvG'
 
-nmap <silent> ,src :set lines=42 columns=158<CR>
-nmap <silent> ,srr :set lines=42<CR>
-nmap <silent> ,scc :set columns=158<CR>
-nmap <silent> <F5> :!%<CR>
-imap <silent> <F5> <ESC>:w<CR>:!%<CR>
-nmap <silent> <F6> :!perl -d:ptkdb %&<CR>
+nnoremap <silent> ,src :set lines=42 columns=158<CR>
+nnoremap <silent> ,srr :set lines=42<CR>
+nnoremap <silent> ,scc :set columns=158<CR>
+nnoremap <silent> <F5> :!%<CR>
+inoremap <silent> <F5> <ESC>:w<CR>:!%<CR>
+nnoremap <silent> <F6> :!perl -d:ptkdb %&<CR>
 
 " perl related settings
 let perl_include = 1
@@ -763,12 +786,12 @@ let perl_extended_vars = 1
 let perl_want_scope_in_variables = 1
 
 " autocmd Filetype perl :set equalprg=perltidy\ -i=2\ -nt\ -msc=2\ -ci=2\ -dsm\ -asc\ -lp\ -l=110\ -isbc\ -dws\ -w
-" nmap <silent> ,p ggO#!/usr/intel/pkgs/perl/5.8.5/bin/perl<CR><CR>use strict;<CR>use warnings;<CR><CR><ESC><C-V>4kx6Gdd:w<CR>:!chmod u+x %:p<CR>:e<CR>
-" nmap <silent> ,p ggO#!/usr/intel/pkgs/perl/5.14.1/bin/perl<CR><CR>use strict;<CR>use warnings;<CR><CR><ESC><C-V>4kx6Gdd:w<CR>:!chmod u+x %:p<CR>:e<CR>
-nmap <silent> ,p ggO<ESC>:r ~/commands/perl_template.pl<CR>ggddG:se ft=perl<CR>:w<CR>:!chmod u+x %:p<CR>
-nmap <silent> ,py ggO#!/nfs/pdx/home/shasan/usr/pkgs/python/2.7.6/bin/python<CR><ESC>:!chmod u+x %:p<CR>G
-nmap <silent> ,py3 ggO#!/nfs/pdx/home/shasan/usr/pkgs/python/3.4.0/bin/python3<CR><ESC>:!chmod u+x %:p<CR>G
-
+" nnoremap <silent> ,p ggO#!/usr/intel/pkgs/perl/5.8.5/bin/perl<CR><CR>use strict;<CR>use warnings;<CR><CR><ESC><C-V>4kx6Gdd:w<CR>:!chmod u+x %:p<CR>:e<CR>
+" nnoremap <silent> ,p ggO#!/usr/intel/pkgs/perl/5.14.1/bin/perl<CR><CR>use strict;<CR>use warnings;<CR><CR><ESC><C-V>4kx6Gdd:w<CR>:!chmod u+x %:p<CR>:e<CR>
+nnoremap <silent> ,p ggO<ESC>:r ~/commands/perl_template.pl<CR>ggddG:se ft=perl<CR>:w<CR>:!chmod u+x %:p<CR>
+nnoremap <silent> ,py ggO#!/nfs/pdx/home/shasan/usr/pkgs/python/2.7.6/bin/python<CR><ESC>:!chmod u+x %:p<CR>G
+nnoremap <silent> ,py3 ggO#!/nfs/pdx/home/shasan/usr/pkgs/python/3.4.0/bin/python3<CR><ESC>:!chmod u+x %:p<CR>G
+autocmd Filetype cpp :set equalprg=/nfs/pdx/disks/tcad_ptm_pdmg_work_07/ndm_pub/cpplint/applyMdsStyle.csh
 
 " folding stuff
 inoremap <F9> <C-O>za
@@ -777,17 +800,15 @@ onoremap <F9> <C-C>za
 vnoremap <F9> zf
 
 " shortcut to bright colorschemes
-nmap <silent> <C-S-F1> :colorscheme visualstudio<CR>
-nmap <silent> <C-S-F3> :colorscheme dual<CR>
-nmap <silent> <C-S-F5> :colorscheme emacs<CR>
-nmap <silent> <C-S-F7> :colorscheme default<CR>
+nnoremap <silent> <C-S-F5> :colorscheme emacs<CR>
+nnoremap <silent> <C-S-F7> :colorscheme default<CR>
 
 " shortcut to mte colorschemes
-nmap <silent> <C-S-F2> :colorscheme slate<CR>
-nmap <silent> <C-S-F4> :colorscheme xoria256<CR>
-nmap <silent> <C-S-F6> :colorscheme mustang<CR>
+nnoremap <silent> <C-S-F2> :colorscheme slate<CR>
+nnoremap <silent> <C-S-F4> :colorscheme xoria256<CR>
+nnoremap <silent> <C-S-F6> :colorscheme mustang<CR>
 
-map <silent> <F1> "zyiw:he <C-R>"<CR>
+noremap <silent> <S-F1> "zyiw:he <C-R>"<CR>
 
 inoremap <Leader>fn <C-R>=expand("%:t")<CR>
 inoremap <Leader>fp <C-R>=getcwd()<CR>
@@ -802,9 +823,10 @@ endif
 
 set gfn=Inconsolata\ 16
 try
-  colorscheme solarized
+  " colorscheme solarized
   " set background=light
-  set background=dark
+  " set background=dark
+  colorscheme molokai
 catch
 endtry
 
@@ -849,7 +871,7 @@ set shellredir=>
 " set shortmess+=I
 
 " run the current line as shell command
-nmap <C-S-F1> :echo system(getline('.'))<CR>
+nnoremap <C-S-F1> :echo system(getline('.'))<CR>
 
 
 " Delete trailing white space on save
@@ -865,99 +887,15 @@ augroup whitespace
 augroup END
 
 
-nmap <Leader>ccc :%s/\s\+$//g<CR>
-nmap <silent> ,wa :1,9000bwipeout<cr>
+nnoremap <Leader>ccc :%s/\s\+$//g<CR>
+nnoremap <silent> ,wa :1,9000bwipeout<cr>
 
+" noremap <F5>:!pytyhon $NDMPUB/cpplint/cpplint.py --verbose=4 %:p >& lint.out<CR>:cfile lint.out<CR>:silent !rm lint.out<CR>:redraw!<CR>:cc<CR>
 
-"----------------------------------
-" google style
-"----------------------------------
-" Show line numbers.
-set number
+" get rid of that damn annoying <F1> key
+nnoremap <F1> <Esc>
+vnoremap <F1> <Esc>
+inoremap <F1> <Esc>
 
-" Turn on syntax highlighting.
-syntax on
-
-" Detect if the current file type is a C-like language.
-au BufNewFile,BufRead c,cpp,objc,*.mm call SetupForCLang()
-
-" Configuration for C-like languages.
-function! SetupForCLang()
-    " Highlight lines longer than 80 characters.
-    au BufWinEnter * let w:m2=matchadd('ErrorMsg', '\%>80v.\+', -1)
-    " Alternately, uncomment these lines to wrap at 80 characters.
-    " setlocal textwidth=80
-    " setlocal wrap
-
-    " Use 2 spaces for indentation.
-    setlocal shiftwidth=2
-    setlocal tabstop=2
-    setlocal softtabstop=2
-    setlocal expandtab
-
-    " Configure auto-indentation formatting.
-    setlocal cindent
-    setlocal cinoptions=h1,l1,g1,t0,i4,+4,(0,w1,W4
-    setlocal indentexpr=GoogleCppIndent()
-    let b:undo_indent = "setl sw< ts< sts< et< tw< wrap< cin< cino< inde<"
-
-    " Uncomment these lines to map F5 to the CEF style checker. Change the path to match your system.
-    map! <F5> <Esc>:!python /tmp/shasan/Code/chromium/cef3/tools/check_style.py %:p 2> lint.out<CR>:cfile lint.out<CR>:silent !rm lint.out<CR>:redraw!<CR>:cc<CR>
-    map  <F5> <Esc>:!python /tmp/shasan/Code/chromium/cef3/tools/check_style.py %:p 2> lint.out<CR>:cfile lint.out<CR>:silent !rm lint.out<CR>:redraw!<CR>:cc<CR>
-endfunction
-
-" From https://github.com/vim-scripts/google.vim/blob/master/indent/google.vim
-function! GoogleCppIndent()
-    let l:cline_num = line('.')
-
-    let l:orig_indent = cindent(l:cline_num)
-
-    if l:orig_indent == 0 | return 0 | endif
-
-    let l:pline_num = prevnonblank(l:cline_num - 1)
-    let l:pline = getline(l:pline_num)
-    if l:pline =~# '^\s*template' | return l:pline_indent | endif
-
-    " TODO: I don't know to correct it:
-    " namespace test {
-    " void
-    " ....<-- invalid cindent pos
-    "
-    " void test() {
-    " }
-    "
-    " void
-    " <-- cindent pos
-    if l:orig_indent != &shiftwidth | return l:orig_indent | endif
-
-    let l:in_comment = 0
-    let l:pline_num = prevnonblank(l:cline_num - 1)
-    while l:pline_num > -1
-        let l:pline = getline(l:pline_num)
-        let l:pline_indent = indent(l:pline_num)
-
-        if l:in_comment == 0 && l:pline =~ '^.\{-}\(/\*.\{-}\)\@<!\*/'
-            let l:in_comment = 1
-        elseif l:in_comment == 1
-            if l:pline =~ '/\*\(.\{-}\*/\)\@!'
-                let l:in_comment = 0
-            endif
-        elseif l:pline_indent == 0
-            if l:pline !~# '\(#define\)\|\(^\s*//\)\|\(^\s*{\)'
-                if l:pline =~# '^\s*namespace.*'
-                    return 0
-                else
-                    return l:orig_indent
-                endif
-            elseif l:pline =~# '\\$'
-                return l:orig_indent
-            endif
-        else
-            return l:orig_indent
-        endif
-
-        let l:pline_num = prevnonblank(l:pline_num - 1)
-    endwhile
-
-    return l:orig_indent
-endfunction
+" asign F1 to shift F1
+nnoremap <S-F1> help<CR>
