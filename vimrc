@@ -71,6 +71,7 @@ Plugin 'majutsushi/tagbar'
 " Indent guide
 Plugin 'nathanaelkane/vim-indent-guides'
 Plugin 'michaeljsmith/vim-indent-object'
+Plugin 'Yggdroot/indentLine'
 
 " buffer management
 Plugin 'vim-scripts/bufkill.vim'
@@ -199,7 +200,7 @@ set hidden                     " allow unsaved buffer
 set lazyredraw                 " Don't update the display while executing macros
 set textwidth=80               " Text width before wrapping lines
 set clipboard+=unnamed         " To use system clipboard
-" set encoding=utf8              " utf8 encoding, needed to show NERDTree properly
+set encoding=utf8              " utf8 encoding, needed to show NERDTree properly
 set ffs=unix,dos,mac           " EOF terminator type
 set autochdir                  " Vim will change CWD automatically to the file opened
 set number                     " shows line-number
@@ -442,6 +443,7 @@ nnoremap <silent> <Leader>ok :FSAbove<CR>
 nnoremap <silent> <Leader>oK :FSSplitAbove<CR>
 nnoremap <silent> <Leader>oj :FSBelow<CR>
 nnoremap <silent> <Leader>oJ :FSSplitBelow<CR>
+au! BufEnter *.cpp let b:fswitchdst = 'h,hpp' | let b:fswitchlocs = '../inc'
 " }
 
 
@@ -506,7 +508,7 @@ let g:autotags_ctags_global_include = ""
 
 " Gundo Settings {
 "-----------------------------------------------------------------------------
-nnoremap <c-F5> :GundoToggle<cr>
+nnoremap <F5> :GundoToggle<cr>
 " }
 
 
@@ -774,8 +776,8 @@ let @a = ':%s/ /\/g\ggvG'
 nnoremap <silent> ,src :set lines=42 columns=158<CR>
 nnoremap <silent> ,srr :set lines=42<CR>
 nnoremap <silent> ,scc :set columns=158<CR>
-nnoremap <silent> <F5> :!%<CR>
-inoremap <silent> <F5> <ESC>:w<CR>:!%<CR>
+" nnoremap <silent> <F5> :!%<CR>
+" inoremap <silent> <F5> <ESC>:w<CR>:!%<CR>
 nnoremap <silent> <F6> :!perl -d:ptkdb %&<CR>
 
 " perl related settings
@@ -798,7 +800,7 @@ onoremap <F9> <C-C>za
 vnoremap <F9> zf
 
 " shortcut to bright colorschemes
-nnoremap <silent> <C-S-F5> :colorscheme emacs<CR>
+" nnoremap <silent> <C-S-F5> :colorscheme emacs<CR>
 nnoremap <silent> <C-S-F7> :colorscheme default<CR>
 
 " shortcut to mte colorschemes
@@ -806,7 +808,7 @@ nnoremap <silent> <C-S-F2> :colorscheme slate<CR>
 nnoremap <silent> <C-S-F4> :colorscheme xoria256<CR>
 nnoremap <silent> <C-S-F6> :colorscheme mustang<CR>
 
-noremap <silent> <S-F1> "zyiw:he <C-R>"<CR>
+noremap <silent> <Leader>hh "zyiw:tab he <C-R>"<CR>
 
 inoremap <Leader>fn <C-R>=expand("%:t")<CR>
 inoremap <Leader>fp <C-R>=getcwd()<CR>
@@ -869,7 +871,7 @@ set shellredir=>
 " set shortmess+=I
 
 " run the current line as shell command
-nnoremap <C-S-F1> :echo system(getline('.'))<CR>
+" nnoremap <S-F5> :echo system(getline('.'))<CR>
 
 
 " Delete trailing white space on save
@@ -885,7 +887,7 @@ augroup whitespace
 augroup END
 
 
-nnoremap <Leader>ccc :%s/\s\+$//g<CR>
+nnoremap <Leader>ccc :%s/\s\+$//gc<CR>
 nnoremap <silent> ,wa :1,9000bwipeout<cr>
 
 " noremap <F5>:!pytyhon $NDMPUB/cpplint/cpplint.py --verbose=4 %:p >& lint.out<CR>:cfile lint.out<CR>:silent !rm lint.out<CR>:redraw!<CR>:cc<CR>
@@ -897,3 +899,5 @@ inoremap <F1> <Esc>
 
 " asign F1 to shift F1
 nnoremap <S-F1> help<CR>
+
+cabbrev help tab help
