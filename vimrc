@@ -67,6 +67,10 @@ Plugin 'ciaranm/detectindent'
 
 " Code navigation and IDE functionality
 Plugin 'majutsushi/tagbar'
+Plugin 'hewes/unite-gtags'
+Plugin 'vim-scripts/gtags.vim'
+Plugin 'Shougo/unite.vim'
+Plugin 'chazy/cscope_maps'
 
 " Indent guide
 Plugin 'nathanaelkane/vim-indent-guides'
@@ -102,31 +106,31 @@ Plugin 'http://github.com/tpope/vim-fugitive.git'
 " Plugin 'int3/vim-extradite'
 " Plugin 'http://github.com/mhinz/vim-signify.git'
 
-" colorscheme font statusline
+"-------------------------------------------
+" colorscheme font statusline (COLORSCHEMES)
+"-------------------------------------------
 " Plugin 'chrisbra/color_highlight.git'
 " Plugin 'skwp/vim-colors-solarized'
 " Plugin 'itchyny/lightline'
-" Plugin "jby/tmux.vim.git"
-" Plugin "morhetz/gruvbox"
-" Plugin "xsunsmile/showmarks.git"
+" Plugin 'jby/tmux.vim.git'
+" Plugin 'morhetz/gruvbox'
+" Plugin 'xsunsmile/showmarks.git'
 Plugin 'http://github.com/altercation/vim-colors-solarized.git'
 Plugin 'http://github.com/flazz/vim-colorschemes.git'
 Plugin 'http://github.com/drmikehenry/vim-fontsize.git'
-Plugin 'http://github.com/maciakl/vim-neatstatus.git'
+" Plugin 'http://github.com/maciakl/vim-neatstatus.git'
 " Plugin 'http://github.com/Lokaltog/vim-powerline.git'
 " Plugin 'http://github.com/bling/vim-airline.git'
-" Plugin 'bling/vim-airline'
+Plugin 'bling/vim-airline'
 " Plugin 'http://github.com/rey-wright/argokai.git'
 " Plugin 'http://github.com/Pychimp/Pychimp-vim.git'
 Plugin 'abra/vim-abra'
 Plugin 'nice/sweater'
 Plugin 'blerins/flattown'
 Plugin 'duythinht/vim-coffee'
-
-" Plugin 'jpo/vim-railscasts-theme'
 Plugin 'antlypls/vim-colors-codeschool'
 Plugin 'chankaward/vim-railscasts-theme'
-" Plugin 'ryanb/dotfiles/vim/colors/railscasts.vim'
+Plugin 'quanganhdo/grb256'
 
 " Allow pane movement to jump out of vim into tmux
 Plugin 'christoomey/vim-tmux-navigator'
@@ -143,17 +147,17 @@ Plugin 'http://github.com/zaiste/tmux.vim.git'
 Plugin 'http://github.com/funorpain/vim-cpplint.git'
 
 " Haskell
-Plugin 'raichoo/haskell-vim'
-let g:haskell_enable_quantification = 1 " to enable highlighting of forall
-let g:haskell_enable_recursivedo = 1 " to enable highlighting of mdo and rec
-let g:haskell_enable_arrowsyntax = 1 " to enable highlighting of proc
-let g:haskell_enable_pattern_synonyms = 1 " to enable highlighting of pattern
-let g:haskell_enable_typeroles = 1 " to enable highlighting of type roles
-
-" Plugin 'enomsg/vim-haskellConcealPlus'
-Plugin 'eagletmt/ghcmod-vim'
-Plugin 'eagletmt/neco-ghc'
-Plugin 'Twinside/vim-hoogle'
+" Plugin 'raichoo/haskell-vim'
+" let g:haskell_enable_quantification = 1 " to enable highlighting of forall
+" let g:haskell_enable_recursivedo = 1 " to enable highlighting of mdo and rec
+" let g:haskell_enable_arrowsyntax = 1 " to enable highlighting of proc
+" let g:haskell_enable_pattern_synonyms = 1 " to enable highlighting of pattern
+" let g:haskell_enable_typeroles = 1 " to enable highlighting of type roles
+"
+" " Plugin 'enomsg/vim-haskellConcealPlus'
+" Plugin 'eagletmt/ghcmod-vim'
+" Plugin 'eagletmt/neco-ghc'
+" Plugin 'Twinside/vim-hoogle'
 
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -334,8 +338,8 @@ cnoremap <ESC><C-F> <S-Right>
 cnoremap <ESC><C-H> <C-W>
 
 " Edit the vimrc file
-nnoremap <silent> ,ev :e $MYVIMRC<CR>
-nnoremap <silent> ,sv :so $MYVIMRC<CR>
+nnoremap <silent> <Leader>ev :tabnew $MYVIMRC<CR>
+nnoremap <silent> <Leader>sv :so $MYVIMRC<CR>
 
 " Make horizontal scrolling easier
 nnoremap <silent> <C-o> 10zl
@@ -368,6 +372,9 @@ nnoremap <silent> ,sw :execute ":resize " . line('$')<cr>
 
 " Tagbar plugin
 nnoremap <F8> :TagbarToggle<CR>
+nnoremap <F9> :IndentLinesToggle<CR>
+let g:indentLine_enabled = 0
+let g:indentLine_indentLevel = 4
 
 " Use the bufkill plugin to eliminate a buffer but keep the window layout
 nnoremap <Leader>bd :BD<cr>
@@ -443,7 +450,14 @@ nnoremap <silent> <Leader>ok :FSAbove<CR>
 nnoremap <silent> <Leader>oK :FSSplitAbove<CR>
 nnoremap <silent> <Leader>oj :FSBelow<CR>
 nnoremap <silent> <Leader>oJ :FSSplitBelow<CR>
-au! BufEnter *.cpp let b:fswitchdst = 'h,hpp' | let b:fswitchlocs = '../inc'
+augroup mycppfiles
+  au!
+  au BufEnter *.h let b:fswitchdst  = 'cpp,cc,C'
+  " au BufEnter *.cpp let b:fswitchdst = 'h,hpp'
+  " au BufEnter *.h let b:fswitchlocs = 'reg:/include/src/,reg:/include.*/src/'
+augroup END
+
+" au! BufEnter *.cpp let b:fswitchdst = 'h,hpp' | let b:fswitchlocs = '../inc'
 " }
 
 
@@ -793,11 +807,11 @@ nnoremap <silent> ,py ggO#!/nfs/pdx/home/shasan/usr/pkgs/python/2.7.6/bin/python
 nnoremap <silent> ,py3 ggO#!/nfs/pdx/home/shasan/usr/pkgs/python/3.4.0/bin/python3<CR><ESC>:!chmod u+x %:p<CR>G
 autocmd Filetype cpp :set equalprg=/nfs/pdx/disks/tcad_ptm_pdmg_work_07/ndm_pub/cpplint/applyMdsStyle.csh
 
-" folding stuff
-inoremap <F9> <C-O>za
-nnoremap <F9> za
-onoremap <F9> <C-C>za
-vnoremap <F9> zf
+" " folding stuff
+" inoremap <F9> <C-O>za
+" nnoremap <F9> za
+" onoremap <F9> <C-C>za
+" vnoremap <F9> zf
 
 " shortcut to bright colorschemes
 " nnoremap <silent> <C-S-F5> :colorscheme emacs<CR>
@@ -821,7 +835,9 @@ if &term =~ '256color'
   set t_ut=
 endif
 
-set gfn=Inconsolata\ 16
+" set gfn=Inconsolata\ 18
+set gfn=Consolas\ for\ Powerline\ 18
+" set gfn=Monaco\ 16
 try
   " colorscheme solarized
   " set background=light
@@ -829,6 +845,11 @@ try
   colorscheme molokai
 catch
 endtry
+
+if has ("gui_running")
+  " colorscheme abra
+  colorscheme molokai
+endif
 
 set number
 set laststatus=2
@@ -867,8 +888,8 @@ let Tex_FoldedSections=""
 let Tex_FoldedEnvironments=""
 let Tex_FoldedMisc=""
 
-set shellredir=>
-" set shortmess+=I
+" set shellredir=>       " read shell output in vim
+" set shortmess+=I     " disables vim splash screen
 
 " run the current line as shell command
 " nnoremap <S-F5> :echo system(getline('.'))<CR>
@@ -900,4 +921,32 @@ inoremap <F1> <Esc>
 " asign F1 to shift F1
 nnoremap <S-F1> help<CR>
 
+cabbrev he tab help
 cabbrev help tab help
+
+
+"--- Unite gtag mappings
+set csprg=gtags-cscope
+" cscope add /foo/bar/GTAGS
+
+nnoremap <leader>gd :execute 'Unite gtags/def:'.expand('<cword>')<CR>
+nnoremap <leader>gc :execute 'Unite gtags/context'<CR>
+nnoremap <leader>gr :execute 'Unite gtags/ref'<CR>
+nnoremap <leader>gg :execute 'Unite gtags/grep'<CR>
+vnoremap <leader>gv <ESC>:execute 'Unite gtags/def:'.GetVisualSelection()<CR>
+
+
+" actually I like the intro message
+" intro
+" set shortmess-=I     " disables vim splash screen
+
+"--- Textmate style TextGroup tooltip
+" Show highlighting groups for current word
+nmap <C-S-M> :call <SID>SynStack()<CR>
+function! <SID>SynStack()
+  if !exists("*synstack")
+    return
+  endif
+  echo map(synstack(line('.'), col('.')),
+  \       'synIDattr(v:val, "name")')
+endfunc
