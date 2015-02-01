@@ -8,5 +8,6 @@
 *.swp
 
 # ignore everything but vundle inside bundle
+.VimballRecord
 bundle/**
 !bundle/vundle

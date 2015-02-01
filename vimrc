@@ -1,14 +1,14 @@
 "---------------------------------------------------------------------------------------------
 " Modeline and Notes
 "---------------------------------------------------------------------------------------------
-"   vim: set sw=2 ts=2 sts=2 et tw=72 foldmarker={{{,}}} foldlevel=90 foldmethod=marker:
-"   This is the personal .vimrc file of Sayed Hasan
+"   vim:set sw=2 ts=2 sts=2 et tw=72:
+"   vim:fdm=marker foldmarker=<--fold(,--) fdl=0 fdc=0:
 "
+"   This is the personal .vimrc file of Sayed Hasan
 "---------------------------------------------------------------------------------------------
 
 
-" Multi platform shell settings {{{
-
+" Shell setting"<--fold(
 " Must be first line
 " Windows shell is bash
 set nocompatible
@@ -20,11 +20,9 @@ endif
 if has('unix')
   set shell=tcsh
 endif
+"--)
 
-" }}}
-
-" Directory setup {{{
-
+" Directory setup"<--fold(
 " On Windows, also use '.vim' instead of 'vimfiles';
 " this makes synchronization across (heterogeneous)
 " systems easier.
@@ -35,10 +33,9 @@ endif
 " setup backdirectory
 set backupdir=~/.cache/vim/swap
 set directory=~/.cache/vim/swap
+"--)
 
-" }}}
-
-" Vundle {{{
+" Plugin mamagement
 set nocompatible              " be iMproved, required
 filetype off                  " required
 
@@ -46,14 +43,16 @@ filetype off                  " required
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
-" Let Vundle manage Vundle, required
+" Let Vundle manage Vundle, required"<--fold(
 Plugin 'gmarik/Vundle.vim'
+"--)
 
-" Comments
+" Commenting plugins"<--fold(
 Plugin 'tomtom/tcomment_vim'
 Plugin 'tpope/vim-commentary'
+"--)
 
-" Text manipulation
+" Text manipulation plugins"<--fold(
 Plugin 'godlygeek/tabular'
 Plugin 'vim-scripts/Align'
 Plugin 'vim-scripts/Gundo'
@@ -64,25 +63,37 @@ Plugin 'tpope/vim-unimpaired'
 Plugin 'tpope/vim-endwise'
 Plugin 'tpope/vim-surround'
 Plugin 'ciaranm/detectindent'
+Plugin 'haya14busa/incsearch.vim'
+"--)
 
-" Code navigation and IDE functionality
-Plugin 'majutsushi/tagbar'
+" IDE functionality and tagging plugins"<--fold(
+Plugin 'Shougo/unite.vim'
 Plugin 'hewes/unite-gtags'
 Plugin 'vim-scripts/gtags.vim'
-Plugin 'Shougo/unite.vim'
 Plugin 'chazy/cscope_maps'
+Plugin 'majutsushi/tagbar'
+Plugin 'sayedhasan/taglist'
+"--)
 
-" Indent guide
+" Indent guides plugins"<--fold(
 Plugin 'nathanaelkane/vim-indent-guides'
 Plugin 'michaeljsmith/vim-indent-object'
 Plugin 'Yggdroot/indentLine'
+"--)
 
-" buffer management
+"Folding/fold-search plugins"<--fold(
+Plugin 'embear/vim-foldsearch'
+"--)
+
+" Buffer management plugins"<--fold(
 Plugin 'vim-scripts/bufkill.vim'
 Plugin 'vim-scripts/FSwitch.git'
 Plugin 'derekwyatt/vim-fswitch'
+" Plugin 'pelodelfuego/vim-swoop'
+" Plugin 'rargo/vim-tab'
+"--)
 
-" code complete
+" Code snippet plugins"<--fold(
 Plugin 'mattn/emmet-vim'
 Plugin 'tristen/vim-sparkup'
 " Plugin 'scroolose/syntastic'
@@ -90,24 +101,28 @@ Plugin 'tristen/vim-sparkup'
 " Plugin 'msanders/snipmate.vim'
 Plugin 'http://github.com/Shougo/neocomplcache.vim.git'
 " Plugin 'http://github.com/Townk/vim-autoclose'
+"--)
 
-" file name and search
+" Command-T like plugins"<--fold(
 Plugin 'http://github.com/vim-scripts/L9.git'
 Plugin 'http://github.com/vim-scripts/FuzzyFinder.git'
 Plugin 'http://github.com/kien/ctrlp.vim.git'
+Plugin 'DavidEGx/ctrlp-smarttabs'
+" Plugin 'wincent/command-t'
 Plugin 'http://github.com/shemerey/vim-project.git'
 Plugin 'http://github.com/scrooloose/nerdtree.git'
 " Plugin 'http://github.com/jistr/vim-nerdtree-tabs.git'
 Plugin 'http://github.com/danro/rename.vim.git'
+"--)
 
-" repo-management
+" Repo-management plugins"<--fold(
 Plugin 'http://github.com/tpope/vim-git.git'
 Plugin 'http://github.com/tpope/vim-fugitive.git'
 " Plugin 'int3/vim-extradite'
 " Plugin 'http://github.com/mhinz/vim-signify.git'
+"--)
 
-"-------------------------------------------
-" colorscheme font statusline (COLORSCHEMES)
+" Colorschemes and Theme related plugins"<--fold(
 "-------------------------------------------
 " Plugin 'chrisbra/color_highlight.git'
 " Plugin 'skwp/vim-colors-solarized'
@@ -115,6 +130,7 @@ Plugin 'http://github.com/tpope/vim-fugitive.git'
 " Plugin 'jby/tmux.vim.git'
 " Plugin 'morhetz/gruvbox'
 " Plugin 'xsunsmile/showmarks.git'
+Plugin 'chilicuil/nextCS'
 Plugin 'http://github.com/altercation/vim-colors-solarized.git'
 Plugin 'http://github.com/flazz/vim-colorschemes.git'
 Plugin 'http://github.com/drmikehenry/vim-fontsize.git'
@@ -131,11 +147,15 @@ Plugin 'duythinht/vim-coffee'
 Plugin 'antlypls/vim-colors-codeschool'
 Plugin 'chankaward/vim-railscasts-theme'
 Plugin 'quanganhdo/grb256'
+Plugin 'ajh17/Spacegray.vim'
+"--)
 
+" Tmux-vim integration plugins"<--fold(
 " Allow pane movement to jump out of vim into tmux
 Plugin 'christoomey/vim-tmux-navigator'
+"--)
 
-" language support
+" Language support plugins"<--fold(
 Plugin 'xolox/vim-misc.git'
 Plugin 'xolox/vim-notes.git'
 Plugin 'http://github.com/jcf/vim-latex.git'
@@ -145,7 +165,6 @@ Plugin 'http://github.com/spf13/PIV.git'
 Plugin 'http://github.com/Lokaltog/vim-easymotion.git'
 Plugin 'http://github.com/zaiste/tmux.vim.git'
 Plugin 'http://github.com/funorpain/vim-cpplint.git'
-
 " Haskell
 " Plugin 'raichoo/haskell-vim'
 " let g:haskell_enable_quantification = 1 " to enable highlighting of forall
@@ -158,11 +177,10 @@ Plugin 'http://github.com/funorpain/vim-cpplint.git'
 " Plugin 'eagletmt/ghcmod-vim'
 " Plugin 'eagletmt/neco-ghc'
 " Plugin 'Twinside/vim-hoogle'
+"--)
 
 call vundle#end()            " required
 filetype plugin indent on    " required
-
-" }}}
 
 
 " set 7 linies offset to the cursur from bottom
@@ -226,7 +244,7 @@ set ch=1                       " make command line two lines high
 set showmatch                  " show the matching parentheses
 set hlsearch                   " highlight match
 set incsearch                  " incremental highlight of match
-set noignorecase               " case sensitive search
+set smartcase                  " ignores case in general but uses case if there is upper case letter
 " }
 
 
@@ -373,6 +391,7 @@ nnoremap <silent> ,sw :execute ":resize " . line('$')<cr>
 " Tagbar plugin
 nnoremap <F8> :TagbarToggle<CR>
 nnoremap <F9> :IndentLinesToggle<CR>
+nnoremap <F10> :TlistToggle<CR>
 let g:indentLine_enabled = 0
 let g:indentLine_indentLevel = 4
 
@@ -441,15 +460,15 @@ nnoremap <silent> ,eu :sign unplace *<cr>
 
 " FSwitch mappings {
 "-----------------------------------------------------------------------------
-nnoremap <silent> <Leader>of :FSHere<CR>
-nnoremap <silent> <Leader>ol :FSRight<CR>
-nnoremap <silent> <Leader>oL :FSSplitRight<CR>
-nnoremap <silent> <Leader>oh :FSLeft<CR>
-nnoremap <silent> <Leader>oH :FSSplitLeft<CR>
-nnoremap <silent> <Leader>ok :FSAbove<CR>
-nnoremap <silent> <Leader>oK :FSSplitAbove<CR>
-nnoremap <silent> <Leader>oj :FSBelow<CR>
-nnoremap <silent> <Leader>oJ :FSSplitBelow<CR>
+nmap <silent> <Leader>of :FSHere<CR>
+nmap <silent> <Leader>ol :FSRight<CR>
+nmap <silent> <Leader>oL :FSSplitRight<CR>
+nmap <silent> <Leader>oh :FSLeft<CR>
+nmap <silent> <Leader>oH :FSSplitLeft<CR>
+nmap <silent> <Leader>ok :FSAbove<CR>
+nmap <silent> <Leader>oK :FSSplitAbove<CR>
+nmap <silent> <Leader>oj :FSBelow<CR>
+nmap <silent> <Leader>oJ :FSSplitBelow<CR>
 augroup mycppfiles
   au!
   au BufEnter *.h let b:fswitchdst  = 'cpp,cc,C'
@@ -479,8 +498,10 @@ let g:make_scala_fuf_mappings = 0
 "-----------------------------------------------------------------------------
 let g:ctrlp_switch_buffer = 'E'
 let g:ctrlp_tabpage_position = 'c'
-let g:ctrlp_working_path_mode = 'rc'
-let g:ctrlp_root_markers = ['.project.root']
+let g:ctrlp_working_path_mode = 'ra'
+" let g:ctrlp_working_path_mode = 'rc'
+" let g:ctrlp_root_markers = ['.project.root']
+let g:ctrlp_root_markers = ['iccdriver64']
 let g:ctrlp_custom_ignore = '\v%(/\.%(git|hg|svn)|\.%(class|o|png|jpg|jpeg|bmp|tar|jar|tgz|deb|zip)$|/target/)'
 let g:ctrlp_open_new_file = 'r'
 let g:ctrlp_open_multiple_files = '1ri'
@@ -522,7 +543,7 @@ let g:autotags_ctags_global_include = ""
 
 " Gundo Settings {
 "-----------------------------------------------------------------------------
-nnoremap <F5> :GundoToggle<cr>
+nnoremap <F4> :GundoToggle<cr>
 " }
 
 
@@ -792,7 +813,7 @@ nnoremap <silent> ,srr :set lines=42<CR>
 nnoremap <silent> ,scc :set columns=158<CR>
 " nnoremap <silent> <F5> :!%<CR>
 " inoremap <silent> <F5> <ESC>:w<CR>:!%<CR>
-nnoremap <silent> <F6> :!perl -d:ptkdb %&<CR>
+" nnoremap <silent> <F6> :!perl -d:ptkdb %&<CR>
 
 " perl related settings
 let perl_include = 1
@@ -815,12 +836,12 @@ autocmd Filetype cpp :set equalprg=/nfs/pdx/disks/tcad_ptm_pdmg_work_07/ndm_pub/
 
 " shortcut to bright colorschemes
 " nnoremap <silent> <C-S-F5> :colorscheme emacs<CR>
-nnoremap <silent> <C-S-F7> :colorscheme default<CR>
-
-" shortcut to mte colorschemes
-nnoremap <silent> <C-S-F2> :colorscheme slate<CR>
-nnoremap <silent> <C-S-F4> :colorscheme xoria256<CR>
-nnoremap <silent> <C-S-F6> :colorscheme mustang<CR>
+" nnoremap <silent> <C-S-F7> :colorscheme default<CR>
+"
+" " shortcut to mte colorschemes
+" nnoremap <silent> <C-S-F2> :colorscheme slate<CR>
+" nnoremap <silent> <C-S-F4> :colorscheme xoria256<CR>
+" nnoremap <silent> <C-S-F6> :colorscheme mustang<CR>
 
 noremap <silent> <Leader>hh "zyiw:tab he <C-R>"<CR>
 
@@ -847,8 +868,8 @@ catch
 endtry
 
 if has ("gui_running")
-  " colorscheme abra
-  colorscheme molokai
+  colorscheme abra
+  " colorscheme molokai
 endif
 
 set number
@@ -908,10 +929,10 @@ augroup whitespace
 augroup END
 
 
-nnoremap <Leader>ccc :%s/\s\+$//gc<CR>
+nnoremap <Leader>ccc :%s/\s\+$//ge<CR>
 nnoremap <silent> ,wa :1,9000bwipeout<cr>
 
-" noremap <F5>:!pytyhon $NDMPUB/cpplint/cpplint.py --verbose=4 %:p >& lint.out<CR>:cfile lint.out<CR>:silent !rm lint.out<CR>:redraw!<CR>:cc<CR>
+nmap <Leader>lnt :!python $NDMPUB/cpplint/cpplint.py --verbose=4 %:p >& lint.out<CR>:cfile lint.out<CR>:silent !rm lint.out<CR>:redraw!<CR>
 
 " get rid of that damn annoying <F1> key
 nnoremap <F1> <Esc>
@@ -932,7 +953,8 @@ set csprg=gtags-cscope
 nnoremap <leader>gd :execute 'Unite gtags/def:'.expand('<cword>')<CR>
 nnoremap <leader>gc :execute 'Unite gtags/context'<CR>
 nnoremap <leader>gr :execute 'Unite gtags/ref'<CR>
-nnoremap <leader>gg :execute 'Unite gtags/grep'<CR>
+" nnoremap <leader>gg :execute 'Unite gtags/grep -no-quit -keep-focus'<CR>
+nnoremap <leader>gg :execute 'Unite gtags/grep -no-quit -keep-focus'<CR>
 vnoremap <leader>gv <ESC>:execute 'Unite gtags/def:'.GetVisualSelection()<CR>
 
 
