@@ -1,0 +1,50 @@
+[user]
+	name = Sayed Hasan
+	email = sayed.hasan@intel.com
+[color]
+	ui = auto
+	status = auto
+	branch = auto
+	interactive = auto
+	diff = auto
+[core]
+	gitproxy = /nfs/pdx/home/shasan/bin/socks-gw
+  editor = /tmp/shasan/vim/7.4/bin/vim
+
+[http]
+	proxy = http://proxy-us.intel.com:911
+  postBuffer = 524288000
+[alias]
+	co = checkout
+	br = branch
+	ci = commit
+	df = diff
+	lg = log -p
+	rb = rebase
+	st = status
+	unstage = reset HEAD --
+	last = log -1 HEAD
+	visual = gitk &
+	d = difftool
+  #
+  # Log commands
+  #
+  lmg = log --oneline --decorate --graph --all
+  lp = log --pretty=oneline
+  # List commits with nice format (short)
+  ls = log --pretty=format:'%C(yellow)%h %Cred%ad %Cblue%an%Cgreen%d %Creset%s' --date=short
+  # List commits with nice format (long)
+  ll = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --numstat
+  # Short format (with graph)
+  lg = "!git ls --graph"
+  # Changes related to a specific file
+  lf = "!git ls -u"
+  # List modified files in last commit
+  dl = "!git ll -1"
+
+[apply]
+	whitespace = nowarn
+[merge]
+	tool = vimdiff
+[diff]
+	tool = tkdiff
