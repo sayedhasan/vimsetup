@@ -134,10 +134,10 @@ Plugin 'chilicuil/nextCS'
 Plugin 'http://github.com/altercation/vim-colors-solarized.git'
 Plugin 'http://github.com/flazz/vim-colorschemes.git'
 Plugin 'http://github.com/drmikehenry/vim-fontsize.git'
-" Plugin 'http://github.com/maciakl/vim-neatstatus.git'
-" Plugin 'http://github.com/Lokaltog/vim-powerline.git'
-" Plugin 'http://github.com/bling/vim-airline.git'
-Plugin 'bling/vim-airline'
+Plugin 'http://github.com/maciakl/vim-neatstatus.git'
+" Plugin 'http://github.com/Lokaltog/vim-powerline.git'    " --- very slow
+" Plugin 'http://github.com/bling/vim-airline.git
+" Plugin 'bling/vim-airline'                               " --- very slow
 " Plugin 'http://github.com/rey-wright/argokai.git'
 " Plugin 'http://github.com/Pychimp/Pychimp-vim.git'
 Plugin 'abra/vim-abra'
@@ -157,7 +157,7 @@ Plugin 'christoomey/vim-tmux-navigator'
 
 " Language support plugins"<--fold(
 Plugin 'xolox/vim-misc.git'
-Plugin 'xolox/vim-notes.git'
+" Plugin 'xolox/vim-notes.git'
 Plugin 'http://github.com/jcf/vim-latex.git'
 Plugin 'http://github.com/vim-scripts/MatlabFilesEdition.git'
 Plugin 'http://github.com/rayburgemeestre/phpfolding.vim.git'
@@ -179,12 +179,16 @@ Plugin 'http://github.com/funorpain/vim-cpplint.git'
 " Plugin 'Twinside/vim-hoogle'
 "--)
 
+" VimDiff related plugins"<--fold(
+" Plugin 'chrisbra/vim-diff-enhanced'
+"--)
+
 call vundle#end()            " required
 filetype plugin indent on    " required
 
 
 " set 7 linies offset to the cursur from bottom
-set so=7
+set so=0
 
 " Enable Matchit
 runtime! macros/matchit.vim
@@ -244,7 +248,8 @@ set ch=1                       " make command line two lines high
 set showmatch                  " show the matching parentheses
 set hlsearch                   " highlight match
 set incsearch                  " incremental highlight of match
-set smartcase                  " ignores case in general but uses case if there is upper case letter
+" set smartcase                  " ignores case in general but uses case if there is upper case letter
+set ignorecase                 " just ignore case
 " }
 
 
@@ -411,6 +416,7 @@ set synmaxcol=2048
 set path=
 set tags=
 set tags+=~/.ptags
+set path+=./
 " }
 
 
@@ -957,6 +963,8 @@ nnoremap <leader>gr :execute 'Unite gtags/ref'<CR>
 nnoremap <leader>gg :execute 'Unite gtags/grep -no-quit -keep-focus'<CR>
 vnoremap <leader>gv <ESC>:execute 'Unite gtags/def:'.GetVisualSelection()<CR>
 
+"--- special vi modeline for mi file
+nnoremap <leader>mif ggO vim:set ft=tcl sw=2 ts=2 sts=2 et tw=72:<CR>vim:fdm=marker foldmarker=<--fold(,--) fdl=0 fdc=0:<Esc>
 
 " actually I like the intro message
 " intro
@@ -972,3 +980,5 @@ function! <SID>SynStack()
   echo map(synstack(line('.'), col('.')),
   \       'synIDattr(v:val, "name")')
 endfunc
+
+
