@@ -2,7 +2,7 @@
 " Modeline and Notes
 "---------------------------------------------------------------------------------------------
 "   vim:set sw=2 ts=2 sts=2 et tw=72:
-"   vim:fdm=marker foldmarker=<--fold(,--) fdl=0 fdc=0:
+"   vim:fdm=marker foldmarker=<--fold(,--) fdl=10 fdc=0:
 "
 "   This is the personal .vimrc file of Sayed Hasan
 "---------------------------------------------------------------------------------------------
@@ -863,18 +863,19 @@ if &term =~ '256color'
 endif
 
 " set gfn=Inconsolata\ 18
-set gfn=Consolas\ for\ Powerline\ 18
+set gfn=Consolas\ for\ Powerline\ 14
 " set gfn=Monaco\ 16
 try
   " colorscheme solarized
   " set background=light
   " set background=dark
-  colorscheme molokai
+  " colorscheme molokai
+  colorscheme mustang
 catch
 endtry
 
 if has ("gui_running")
-  colorscheme abra
+  " colorscheme abra
   " colorscheme molokai
 endif
 
