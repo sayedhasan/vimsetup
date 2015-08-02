@@ -14,7 +14,7 @@ sudo apt-get install tmux
 
 #--- setup vim now
 cd $HOME
-git clone git://github.com/sayedhasan/vimsetup.git
+git clone https://github.com/sayedhasan/vimsetup.git
 mkdir -p ~/.cache/vim/swap
 ln -s ~/vimsetup ~/.vim
 ln -s .vim/tmux.conf ~/.tmux.conf
