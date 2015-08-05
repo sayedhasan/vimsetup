@@ -2,7 +2,7 @@
 " Modeline and Notes
 "---------------------------------------------------------------------------------------------
 "   vim:set sw=2 ts=2 sts=2 et tw=72:
-"   vim:fdm=marker foldmarker=<--fold(,--) fdl=0 fdc=0:
+"   vim:fdm=marker foldmarker=<--fold(,--) fdl=100 fdc=0:
 "
 "   This is the personal .vimrc file of Sayed Hasan
 "---------------------------------------------------------------------------------------------
@@ -148,6 +148,8 @@ Plugin 'antlypls/vim-colors-codeschool'
 Plugin 'chankaward/vim-railscasts-theme'
 Plugin 'quanganhdo/grb256'
 Plugin 'ajh17/Spacegray.vim'
+Plugin 'chriskempson/base16-vim'
+let base16colorspace=256  " Access colors present in 256 colorspace
 "--)
 
 " Tmux-vim integration plugins"<--fold(
@@ -869,13 +871,17 @@ try
   " colorscheme solarized
   " set background=light
   " set background=dark
-  colorscheme molokai
+  " colorscheme molokai
+  colorscheme mustang
+  " colorscheme base16-default
 catch
 endtry
 
 if has ("gui_running")
-  colorscheme abra
   " colorscheme molokai
+  colorscheme mustang
+  " colorscheme abra
+  " colorscheme base16-default
 endif
 
 set number
