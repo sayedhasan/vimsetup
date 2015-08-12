@@ -6,7 +6,10 @@ sudo apt-get upgrade
 #--- vim related
 sudo apt-get install git-core python-pip font-manager \
   ttf-mscorefonts-installer ttf-liberation zsh ksh tcsh csh \
-  exuberant-ctags tmux vim-gnome
+  exuberant-ctags tmux vim-gnome gnome-terminal ncurses-term \
+
+#echo "" >> ~/.bashrc
+#echo "export TERM=xterm-256color" >> ~/.bashrc
 
 #--- setup vim now
 cd $HOME
@@ -20,16 +23,18 @@ font-install/install-font
 ln -s ~/.vim/vimrc ~/.vimrc
 vim +PluginInstall +qall
 
-#--- OpenELEC related
-mkdir -p OpenELEC
-cd OpenELEC
-git clone git://github.com/OpenELEC/OpenELEC.tv.git
+git clone https://github.com/chriskempson/base16-gnome-terminal.git ~/.config/base16-gnome-terminal
 
-sudo apt-get install g++ nasm flex bison gawk gperf \
-  autoconf automake m4 cvs libtool byacc texinfo \
-  gettext zlib1g-dev libncurses5-dev git-core \
-  build-essential xsltproc libexpat1-dev zip \
-  autopoint xfonts-utils libxml-parser-perl
-
-cd OpenELEC.tv
-PROJECT=RPi ARCH=arm make release |& tee build-log.txt
+##--- OpenELEC related
+#mkdir -p OpenELEC
+#cd OpenELEC
+#git clone git://github.com/OpenELEC/OpenELEC.tv.git
+#
+#sudo apt-get install g++ nasm flex bison gawk gperf \
+#  autoconf automake m4 cvs libtool byacc texinfo \
+#  gettext zlib1g-dev libncurses5-dev git-core \
+#  build-essential xsltproc libexpat1-dev zip \
+#  autopoint xfonts-utils libxml-parser-perl
+#
+#cd OpenELEC.tv
+#PROJECT=RPi ARCH=arm make release |& tee build-log.txt
