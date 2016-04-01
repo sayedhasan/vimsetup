@@ -5,12 +5,11 @@ use warnings;
 use File::Path;
 use File::Copy;
 use File::Basename;
-use File::HomeDir;
-use Pod::Usage;
+#use File::HomeDir;
+#use Pod::Usage;
 use Cwd;
 
-
-my $HTTP_PROXY = "http_proxy=http://proxy.fm.intel.com:911";
+my $HTTP_PROXY = "";
 
 # --- bootstrap vundle
 print "getting bundle ...\n";

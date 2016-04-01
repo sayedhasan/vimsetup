@@ -79,10 +79,12 @@ Plugin 'sayedhasan/taglist'
 Plugin 'nathanaelkane/vim-indent-guides'
 Plugin 'michaeljsmith/vim-indent-object'
 Plugin 'Yggdroot/indentLine'
+Plugin 'tweekmonster/braceless.vim'
 "--)
 
 "Folding/fold-search plugins"<--fold(
 Plugin 'embear/vim-foldsearch'
+Plugin 'Konfekt/FastFold'
 "--)
 
 " Buffer management plugins"<--fold(
@@ -140,7 +142,8 @@ Plugin 'http://github.com/maciakl/vim-neatstatus.git'
 " Plugin 'bling/vim-airline'                               " --- very slow
 " Plugin 'http://github.com/rey-wright/argokai.git'
 " Plugin 'http://github.com/Pychimp/Pychimp-vim.git'
-Plugin 'abra/vim-abra'
+" Plugin 'abra/vim-abra'
+Plugin 'http://github.com/easysid/mod8.vim.git'
 Plugin 'nice/sweater'
 Plugin 'blerins/flattown'
 Plugin 'duythinht/vim-coffee'
@@ -149,6 +152,7 @@ Plugin 'chankaward/vim-railscasts-theme'
 Plugin 'quanganhdo/grb256'
 Plugin 'ajh17/Spacegray.vim'
 Plugin 'chriskempson/base16-vim'
+Plugin 'chriskempson/tomorrow-theme'
 let base16colorspace=256  " Access colors present in 256 colorspace
 "--)
 
@@ -163,7 +167,7 @@ Plugin 'xolox/vim-misc.git'
 Plugin 'http://github.com/jcf/vim-latex.git'
 Plugin 'http://github.com/vim-scripts/MatlabFilesEdition.git'
 Plugin 'http://github.com/rayburgemeestre/phpfolding.vim.git'
-Plugin 'http://github.com/spf13/PIV.git'
+" Plugin 'http://github.com/spf13/PIV.git'
 Plugin 'http://github.com/Lokaltog/vim-easymotion.git'
 Plugin 'http://github.com/zaiste/tmux.vim.git'
 Plugin 'http://github.com/funorpain/vim-cpplint.git'
@@ -871,15 +875,17 @@ try
   " colorscheme solarized
   " set background=light
   " set background=dark
-  " colorscheme molokai
-  colorscheme mustang
+  colorscheme molokai
+  " colorscheme mustang
   " colorscheme base16-default
+  " colorscheme Tomorrow-Night-Bright
 catch
 endtry
 
 if has ("gui_running")
   " colorscheme molokai
   colorscheme mustang
+  " colorscheme Tomorrow-Night-Bright
   " colorscheme abra
   " colorscheme base16-default
 endif
