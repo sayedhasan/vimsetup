@@ -136,7 +136,7 @@ Plugin 'chilicuil/nextCS'
 Plugin 'http://github.com/altercation/vim-colors-solarized.git'
 Plugin 'http://github.com/flazz/vim-colorschemes.git'
 Plugin 'http://github.com/drmikehenry/vim-fontsize.git'
-Plugin 'http://github.com/maciakl/vim-neatstatus.git'
+" Plugin 'http://github.com/maciakl/vim-neatstatus.git'
 " Plugin 'http://github.com/Lokaltog/vim-powerline.git'    " --- very slow
 " Plugin 'http://github.com/bling/vim-airline.git
 " Plugin 'bling/vim-airline'                               " --- very slow
