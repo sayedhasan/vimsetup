@@ -171,6 +171,7 @@ Plugin 'http://github.com/rayburgemeestre/phpfolding.vim.git'
 Plugin 'http://github.com/Lokaltog/vim-easymotion.git'
 Plugin 'http://github.com/zaiste/tmux.vim.git'
 Plugin 'http://github.com/funorpain/vim-cpplint.git'
+Plugin 'http://bitbucket.org/JohnKaul/cpp-devel-vim.git'
 " Haskell
 " Plugin 'raichoo/haskell-vim'
 " let g:haskell_enable_quantification = 1 " to enable highlighting of forall
