@@ -171,7 +171,7 @@ Plugin 'http://github.com/rayburgemeestre/phpfolding.vim.git'
 Plugin 'http://github.com/Lokaltog/vim-easymotion.git'
 Plugin 'http://github.com/zaiste/tmux.vim.git'
 Plugin 'http://github.com/funorpain/vim-cpplint.git'
-Plugin 'http://bitbucket.org/JohnKaul/cpp-devel-vim.git'
+" Plugin 'http://bitbucket.org/JohnKaul/cpp-devel-vim.git'
 " Haskell
 " Plugin 'raichoo/haskell-vim'
 " let g:haskell_enable_quantification = 1 " to enable highlighting of forall
@@ -752,6 +752,8 @@ command! FreemindToList call FreemindToListF()
 "-----------------------------------------------------------------------------
 augroup sayed_files
   au!
+  au BufNewFile,BufRead  *.gcov   set filetype=cpp
+  au BufNewFile,BufRead  *.c      set filetype=cpp
   au BufNewFile,BufRead  *.mi     set filetype=tcl
   au BufNewFile,BufRead  *.fi     set filetype=tcl
   au BufNewFile,BufRead *.pdb     set filetype=tcl
@@ -839,7 +841,7 @@ let perl_want_scope_in_variables = 1
 nnoremap <silent> ,p ggO<ESC>:r ~/commands/perl_template.pl<CR>ggddG:se ft=perl<CR>:w<CR>:!chmod u+x %:p<CR>
 nnoremap <silent> ,py ggO#!/nfs/pdx/home/shasan/usr/pkgs/python/2.7.6/bin/python<CR><ESC>:!chmod u+x %:p<CR>G
 nnoremap <silent> ,py3 ggO#!/nfs/pdx/home/shasan/usr/pkgs/python/3.4.0/bin/python3<CR><ESC>:!chmod u+x %:p<CR>G
-autocmd Filetype cpp :set equalprg=/nfs/pdx/disks/tcad_ptm_pdmg_work_07/ndm_pub/cpplint/applyMdsStyle.csh
+autocmd Filetype cpp :set equalprg=/nfs/site/home/shasan/cpplint/applyMdsStyle.csh
 
 " " folding stuff
 " inoremap <F9> <C-O>za
@@ -873,22 +875,21 @@ endif
 set gfn=Consolas\ for\ Powerline\ 18
 " set gfn=Monaco\ 16
 try
-  " colorscheme solarized
+  " solarized molokai mustang base16-default
   " set background=light
   " set background=dark
-  colorscheme molokai
-  " colorscheme mustang
-  " colorscheme base16-default
-  " colorscheme Tomorrow-Night-Bright
+  " Tomorrow-Night-Bright
+  colorscheme desert
 catch
 endtry
 
 if has ("gui_running")
   " colorscheme molokai
-  colorscheme mustang
+  " colorscheme mustang
   " colorscheme Tomorrow-Night-Bright
   " colorscheme abra
   " colorscheme base16-default
+  colorscheme sandydune
 endif
 
 set number
@@ -967,6 +968,8 @@ cabbrev help tab help
 
 "--- Unite gtag mappings
 set csprg=gtags-cscope
+cs add GTAGS
+set cst
 " cscope add /foo/bar/GTAGS
 
 nnoremap <leader>gd :execute 'Unite gtags/def:'.expand('<cword>')<CR>
