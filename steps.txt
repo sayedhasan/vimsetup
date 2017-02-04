@@ -1,0 +1,109 @@
+1) Connect to the root account:
+-------------------------------
+    sudo su
+
+
+
+2) Install virtual environment
+------------------------------
+    pip install virtualenv
+
+
+
+3) Install nginx and start the server and check if it's working:
+----------------------------------------------------------------
+    apt-get install nginx -y
+    /etc/init.d/nginx start
+
+    # to check the IP address
+    ifconfig
+    
+    # on browser do the following
+    http://<ip from ifconfig>
+
+
+
+4) Activate venv and install flask
+----------------------------------
+    mkdir -p /var/www/lab_app
+    cd /var/www/lab_app
+    virtualenv venv
+    . venv/bin/activate
+
+    pip install flask
+
+
+
+5) Copy hello.py to /var/www/lab_app folder:
+--------------------------------------------
+    # source file:
+    https://github.com/futureshocked/RaspberryPi-FullStack/blob/master/hello.py
+    
+    # destination file:
+    /var/www/lab_app/hello.py
+
+
+
+6) Test flask:
+--------------
+    python hello.py
+
+    # then browse to 
+    <IP>:8080
+
+
+
+7) Installing uwsgi:
+--------------------
+    # install uwsgi
+    pip install uwsgi
+
+    # copy the following file:
+    https://github.com/futureshocked/RaspberryPi-FullStack/blob/master/lab_app_nginx.conf
+    dest:  /var/www/lab_app/lab_app_nginx.conf
+
+    # remove the default configuration file
+    rm -f /etc/nginx/sites-available/default
+
+    # link this new configuration file
+    ln -s /var/www/lab_app/lab_app_nginx.conf /etc/nginx/conf.d/
+
+
+
+8) Restart nginx daemon:
+------------------------
+    /etc/init.d/nginx restart
+
+
+
+9) Now create uwsgi init file:
+------------------------------
+    # copy from here:
+    https://github.com/futureshocked/RaspberryPi-FullStack/blob/master/lab_app_uwsgi.ini
+
+    # destination file:
+    /var/www/lab_app/lab_app_uwsgi.ini
+
+  
+
+10) Create uwsgi log file folder and restart uwsgi:
+---------------------------------------------------
+    mkdir -p /var/log/uwsgi
+    uwsgi /var/www/lab_app/lab_app_uwsgi.ini
+
+
+
+11) Auto-start uwsgi by using "upstart":
+----------------------------------------
+    # uwsgi has a special mode called Emperor
+    # Emperor will look for configuration file
+    # in a folder called vassals. Here is what
+    # it goes:
+    #
+    # upstart --> starts Emperor --> uwsgi server
+
+    apt-get install upstart
+    
+
+
+

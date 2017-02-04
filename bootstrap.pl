@@ -10,7 +10,6 @@ use File::Basename;
 use Cwd;
 
 my $HTTP_PROXY = "";
-my $HTTP_PROXY = "http_proxy=http://proxy.fm.intel.com:911";
 
 # --- bootstrap vundle
 print "getting bundle ...\n";
