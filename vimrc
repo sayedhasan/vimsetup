@@ -53,7 +53,7 @@ Plugin 'tpope/vim-commentary'
 "--)
 
 " Text manipulation plugins"<--fold(
-Plugin 'godlygeek/tabular'
+" Plugin 'godlygeek/tabular'
 Plugin 'vim-scripts/Align'
 Plugin 'vim-scripts/Gundo'
 Plugin 'vim-scripts/VisIncr'
@@ -76,8 +76,8 @@ Plugin 'sayedhasan/taglist'
 "--)
 
 " Indent guides plugins"<--fold(
-Plugin 'nathanaelkane/vim-indent-guides'
-Plugin 'michaeljsmith/vim-indent-object'
+" Plugin 'nathanaelkane/vim-indent-guides'
+" Plugin 'michaeljsmith/vim-indent-object'
 Plugin 'Yggdroot/indentLine'
 Plugin 'tweekmonster/braceless.vim'
 "--)
@@ -96,8 +96,8 @@ Plugin 'derekwyatt/vim-fswitch'
 "--)
 
 " Code snippet plugins"<--fold(
-Plugin 'mattn/emmet-vim'
-Plugin 'tristen/vim-sparkup'
+" Plugin 'mattn/emmet-vim'
+" Plugin 'tristen/vim-sparkup'
 " Plugin 'scroolose/syntastic'
 " Plugin 'garbas/vim-snipmate'
 " Plugin 'msanders/snipmate.vim'
@@ -106,20 +106,20 @@ Plugin 'http://github.com/Shougo/neocomplcache.vim.git'
 "--)
 
 " Command-T like plugins"<--fold(
-Plugin 'http://github.com/vim-scripts/L9.git'
-Plugin 'http://github.com/vim-scripts/FuzzyFinder.git'
-Plugin 'http://github.com/kien/ctrlp.vim.git'
-Plugin 'DavidEGx/ctrlp-smarttabs'
+" Plugin 'http://github.com/vim-scripts/L9.git'
+" Plugin 'http://github.com/vim-scripts/FuzzyFinder.git'
+" Plugin 'http://github.com/kien/ctrlp.vim.git'
+" Plugin 'DavidEGx/ctrlp-smarttabs'
 " Plugin 'wincent/command-t'
-Plugin 'http://github.com/shemerey/vim-project.git'
-Plugin 'http://github.com/scrooloose/nerdtree.git'
+" Plugin 'http://github.com/shemerey/vim-project.git'
+" Plugin 'http://github.com/scrooloose/nerdtree.git'
 " Plugin 'http://github.com/jistr/vim-nerdtree-tabs.git'
 Plugin 'http://github.com/danro/rename.vim.git'
 "--)
 
 " Repo-management plugins"<--fold(
-Plugin 'http://github.com/tpope/vim-git.git'
-Plugin 'http://github.com/tpope/vim-fugitive.git'
+" Plugin 'http://github.com/tpope/vim-git.git'
+" Plugin 'http://github.com/tpope/vim-fugitive.git'
 " Plugin 'int3/vim-extradite'
 " Plugin 'http://github.com/mhinz/vim-signify.git'
 "--)
@@ -153,7 +153,7 @@ Plugin 'quanganhdo/grb256'
 Plugin 'ajh17/Spacegray.vim'
 Plugin 'chriskempson/base16-vim'
 Plugin 'chriskempson/tomorrow-theme'
-let base16colorspace=256  " Access colors present in 256 colorspace
+" let base16colorspace=256  " Access colors present in 256 colorspace
 "--)
 
 " Tmux-vim integration plugins"<--fold(
@@ -162,13 +162,13 @@ Plugin 'christoomey/vim-tmux-navigator'
 "--)
 
 " Language support plugins"<--fold(
-Plugin 'xolox/vim-misc.git'
+" Plugin 'xolox/vim-misc.git'
 " Plugin 'xolox/vim-notes.git'
-Plugin 'http://github.com/jcf/vim-latex.git'
+" Plugin 'http://github.com/jcf/vim-latex.git'
 Plugin 'http://github.com/vim-scripts/MatlabFilesEdition.git'
-Plugin 'http://github.com/rayburgemeestre/phpfolding.vim.git'
+" Plugin 'http://github.com/rayburgemeestre/phpfolding.vim.git'
 " Plugin 'http://github.com/spf13/PIV.git'
-Plugin 'http://github.com/Lokaltog/vim-easymotion.git'
+" Plugin 'http://github.com/Lokaltog/vim-easymotion.git'
 Plugin 'http://github.com/zaiste/tmux.vim.git'
 Plugin 'http://github.com/funorpain/vim-cpplint.git'
 " Plugin 'http://bitbucket.org/JohnKaul/cpp-devel-vim.git'
@@ -231,7 +231,7 @@ set autoread                   " auto-loads a buffer when changed on disc
 set wrapscan                   " set the search scan to wrap lines
 set hidden                     " allow unsaved buffer
 set lazyredraw                 " Don't update the display while executing macros
-set textwidth=80               " Text width before wrapping lines
+set textwidth=0                " Text width before wrapping lines
 set clipboard+=unnamed         " To use system clipboard
 set encoding=utf8              " utf8 encoding, needed to show NERDTree properly
 set ffs=unix,dos,mac           " EOF terminator type
@@ -244,6 +244,7 @@ set key=                       " Disable encryption (:X)
 " --------------------------------------------
 " set stl=%f\ %m\ %r%{fugitive#statusline()}\ Line:%l/%L[%p%%]\ Col:%v\ Buf:#%n\ [%b][0x%B]
 set laststatus=2               " tell VIM to always put a status line in, even if there is only one window
+set statusline+=%F             "Show full path of the filename
 set showcmd                    " shows last command at status line
 set showmode                   " shows mode
 set ch=1                       " make command line two lines high
@@ -871,8 +872,8 @@ if &term =~ '256color'
   set t_ut=
 endif
 
-" set gfn=Inconsolata\ 18
-set gfn=Consolas\ for\ Powerline\ 18
+" set gfn=Inconsolata\ 24
+set gfn=Consolas\ for\ Powerline\ 18 
 " set gfn=Monaco\ 16
 try
   " solarized molokai mustang base16-default
@@ -880,6 +881,7 @@ try
   " set background=dark
   " Tomorrow-Night-Bright
   colorscheme desert
+  " colorscheme molokai
 catch
 endtry
 
@@ -890,6 +892,7 @@ if has ("gui_running")
   " colorscheme abra
   " colorscheme base16-default
   colorscheme sandydune
+  set gfn=Consolas\ for\ Powerline\ 18
 endif
 
 set number
@@ -997,4 +1000,5 @@ function! <SID>SynStack()
   \       'synIDattr(v:val, "name")')
 endfunc
 
-
+" syntax off
+" set t_Co=0
