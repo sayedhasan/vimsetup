@@ -1,0 +1,208 @@
+"---------------------------------------------------------------------------------------------
+" Modeline and Notes
+"---------------------------------------------------------------------------------------------
+"   vim:set sw=2 ts=2 sts=2 et tw=72:
+"   vim:fdm=marker foldmarker=<--fold(,--) fdl=100 fdc=0:
+"
+"   This is the personal .vimrc file of Sayed Hasan
+"---------------------------------------------------------------------------------------------
+
+" Must be first line
+" Windows shell is bash
+set nocompatible
+if !(has('win16') || has('win32') || has('win64'))
+  set shell=/bin/sh
+endif
+
+" Unix Shell is tcsh
+if has('unix')
+  set shell=tcsh
+endif
+
+" Directory setup
+" On Windows, also use '.vim' instead of 'vimfiles';
+" this makes synchronization across (heterogeneous)
+" systems easier.
+if has('win32') || has('win64')
+  set runtimepath=$HOME/.vim,$VIM/vimfiles,$VIMRUNTIME
+endif
+
+" setup backdirectory
+set backupdir=~/.cache/vim/swap
+set directory=~/.cache/vim/swap
+
+
+" Set filetype stuff to on
+filetype on
+filetype plugin on
+filetype indent on
+
+
+" Tabstops and backspace related settings {
+" --------------------------------------------
+set tabstop=2                  " number of columns to shift for displaying <<TAB>>
+set shiftwidth=2               " number of columns to shift in auto-indent mode << or >>
+set softtabstop=2              " number of columns to shift in INSERT mode when hit <TAB>
+set expandtab                  " expands tabs to spaces
+set autoindent                 " copy indentation from the previous line ("stupid indent")
+set backspace=eol,start,indent " allow backspacing over indent, eol, and the start of an insert
+set whichwrap+=<,>,h,l
+
+
+" Buffer related options
+" --------------------------------------------
+set autoread                   " auto-loads a buffer when changed on disc
+set wrapscan                   " set the search scan to wrap lines
+set nowrap                     " unset wrap-screen
+set hidden                     " allow unsaved buffer
+set lazyredraw                 " Don't update the display while executing macros
+set textwidth=0                " Text width before wrapping lines
+set clipboard+=unnamed         " To use system clipboard
+set encoding=utf8              " utf8 encoding, needed to show NERDTree properly
+set ffs=unix,dos,mac           " EOF terminator type
+set autochdir                  " Vim will change CWD automatically to the file opened
+set number                     " shows line-number
+set key=                       " Disable encryption (:X)
+
+
+" Status line and other file info related stuff
+" --------------------------------------------
+" set stl=%f\ %m\ %r%{fugitive#statusline()}\ Line:%l/%L[%p%%]\ Col:%v\ Buf:#%n\ [%b][0x%B]
+"set laststatus=2               " tell VIM to always put a status line in, even if there is only one window
+set statusline+=%F             " Show full path of the filename
+set ruler
+set showcmd                    " shows last command at status line
+set showmode                   " shows mode
+" set ch=1                       " make command line two lines high
+
+
+" Search related settings
+" --------------------------------------------
+set showmatch                  " show the matching parentheses
+set hlsearch                   " highlight match
+set incsearch                  " incremental highlight of match
+set smartcase                  " ignores case in general but uses case if there is upper case letter
+
+
+" GUI related things
+" --------------------------------------------
+" set mousehide                  " Hide the mouse pointer while typing
+" set guioptions=acg             " Hide gui menu
+set timeoutlen=1500              " Some stuff I inherited
+" Turn mouse mode on
+nnoremap <leader>ma :set mouse=a<cr>
+" Turn mouse mode off
+nnoremap <leader>mo :set mouse=<cr>
+" Default to mouse mode on
+set mouse=a
+
+
+" Auto-complete stuff
+" --------------------------------------------
+set history=700                " Command-line history
+set wildmenu                   " command line auto-completion
+set complete=.,w,b,t           " insert mode auto-completion
+set showfulltag                " insert mode auto-completion with tag
+
+
+" Misc. settings
+" --------------------------------------------
+set printoptions=header:0,duplex:long,paper:letter  " Printing options
+set foldopen=block,insert,jump,mark,percent,quickfix,search,tag,undo
+set shellslash                 " use windows/unix type slash for appropriate system
+set vb                         " set visual bell -- do not wring it
+set fillchars = ""             " something I don't understand
+set grepprg=grep\ -nH\ $*      " grep option
+set diffopt+=iwhite            " add ignorance of whitespace to diff
+set magic                      " magic regular expression
+set ambiwidth=double           " set wider character wider
+
+
+" Switch on syntax highlighting.
+syntax on
+
+
+" key mappings {
+" Enhance '<' '>' , do not need to reselect the block after shift it.
+vnoremap <silent> < <gv
+vnoremap <silent> > >gv
+
+" System default for mappings is now the "," character
+let mapleader = ","
+
+" Wipe out all buffers
+nnoremap <silent> <leader>wa :1,9000bwipeout<cr>
+
+" Toggle paste mode
+nnoremap <silent> <leader>p :set invpaste<CR>:set paste?<CR>
+
+" cd to the directory containing the file in the buffer
+nnoremap <silent> <leader>cd :lcd %:h<CR>
+nnoremap <silent> <leader>md :!mkdir -p %:p:h<CR>
+
+" Turn off that stupid highlight search
+nnoremap <silent> <leader>n :nohls<CR>
+
+" put the vim directives for my file editing settings in
+nnoremap <silent> <leader>vi ovim:set ts=2 sts=2 sw=2:<CR>vim:fdm=marker fdl=1 fdc=0:<ESC>
+
+" Show all available VIM servers
+nnoremap <silent> <leader>ss :echo serverlist()<CR>
+
+" The following beast is something i didn't write... it will return the
+" syntax highlighting group that the current "thing" under the cursor
+" belongs to -- very useful for figuring out what to change as far as
+" syntax highlighting goes.
+nnoremap <silent> <leader>qq :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<' . synIDattr(synID(line("."),col("."),0),"name") . "> lo<" . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>
+
+nnoremap <silent> <leader>cp :let @" = expand("%")<CR>
+
+" set text wrapping toggles
+nnoremap <silent> <leader>ww :set invwrap<CR>:set wrap?<CR>
+
+set tags=./tags;
+
+
+" delete all trailing whitespaces
+nnoremap <Leader>ccc :%s/\s\+$//ge<CR>
+nnoremap <silent> <leader>wa :1,9000bwipeout<cr>
+
+" get rid of that damn annoying <F1> key
+nnoremap <F1> <Esc>
+vnoremap <F1> <Esc>
+inoremap <F1> <Esc>
+
+" asign F1 to shift F1
+nnoremap <S-F1> help<CR>
+
+cabbrev he tab help
+cabbrev help tab help
+
+" Auto commands
+"-----------------------------------------------------------------------------
+augroup sayed_files
+  au!
+  au BufNewFile,BufRead  *.gcov   set filetype=cpp
+  au BufNewFile,BufRead  *.c      set filetype=cpp
+  au BufNewFile,BufRead  *.mi     set filetype=tcl
+  au BufNewFile,BufRead  *.fi     set filetype=tcl
+  au BufNewFile,BufRead *.pdb     set filetype=tcl
+  au BufNewFile,BufRead *.log     set filetype=tcl
+  au BufNewFile,BufRead   *.m     set filetype=matlab
+  au BufNewFile,BufRead *.inc     set filetype=make
+  au BufNewFile,BufRead *.dat     set filetype=perl
+  au BufNewFile,BufRead *.t       set filetype=perl
+  au BufNewFile,BufRead *.newrule set filetype=perl
+  au BufNewFile,BufRead zirconQA  set fdm=marker
+  au BufNewFile,BufRead *.in      set filetype=cpp
+  " au BufNewFile,BufRead *.txt colorscheme slate
+augroup END
+" autocmd BufEnter *.m compiler mlint
+
+
+set gfn=Consolas\ for\ Powerline\ 18
+" colorscheme desert
+
+inoremap <Leader>fn <C-R>=expand("%:t")<CR>
+inoremap <Leader>fp <C-R>=getcwd()<CR>
+

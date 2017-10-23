@@ -136,6 +136,8 @@ Plugin 'chilicuil/nextCS'
 Plugin 'http://github.com/altercation/vim-colors-solarized.git'
 Plugin 'http://github.com/flazz/vim-colorschemes.git'
 Plugin 'http://github.com/drmikehenry/vim-fontsize.git'
+Plugin 'rakr/vim-one'
+
 " Plugin 'http://github.com/maciakl/vim-neatstatus.git'
 " Plugin 'http://github.com/Lokaltog/vim-powerline.git'    " --- very slow
 " Plugin 'http://github.com/bling/vim-airline.git
@@ -256,8 +258,8 @@ set ch=1                       " make command line two lines high
 set showmatch                  " show the matching parentheses
 set hlsearch                   " highlight match
 set incsearch                  " incremental highlight of match
-" set smartcase                  " ignores case in general but uses case if there is upper case letter
-set ignorecase                 " just ignore case
+set smartcase                  " ignores case in general but uses case if there is upper case letter
+" set ignorecase                 " just ignore case
 " }
 
 
@@ -850,15 +852,6 @@ autocmd Filetype cpp :set equalprg=/nfs/site/home/shasan/cpplint/applyMdsStyle.c
 " onoremap <F9> <C-C>za
 " vnoremap <F9> zf
 
-" shortcut to bright colorschemes
-" nnoremap <silent> <C-S-F5> :colorscheme emacs<CR>
-" nnoremap <silent> <C-S-F7> :colorscheme default<CR>
-"
-" " shortcut to mte colorschemes
-" nnoremap <silent> <C-S-F2> :colorscheme slate<CR>
-" nnoremap <silent> <C-S-F4> :colorscheme xoria256<CR>
-" nnoremap <silent> <C-S-F6> :colorscheme mustang<CR>
-
 noremap <silent> <Leader>hh "zyiw:tab he <C-R>"<CR>
 
 inoremap <Leader>fn <C-R>=expand("%:t")<CR>
@@ -872,28 +865,18 @@ if &term =~ '256color'
   set t_ut=
 endif
 
-" set gfn=Inconsolata\ 24
+" set gfn=Inconsolata\ 18
 set gfn=Consolas\ for\ Powerline\ 18 
 " set gfn=Monaco\ 16
 try
-  " solarized molokai mustang base16-default
-  " set background=light
-  " set background=dark
-  " Tomorrow-Night-Bright
-  colorscheme desert
-  " colorscheme molokai
+  colorscheme onedark
+  set background=dark
 catch
 endtry
 
-if has ("gui_running")
-  " colorscheme molokai
-  " colorscheme mustang
-  " colorscheme Tomorrow-Night-Bright
-  " colorscheme abra
-  " colorscheme base16-default
-  colorscheme sandydune
-  set gfn=Consolas\ for\ Powerline\ 18
-endif
+" if has ("gui_running")
+"   set gfn=Consolas\ for\ Powerline\ 18
+" endif
 
 set number
 set laststatus=2
@@ -952,6 +935,7 @@ augroup whitespace
 augroup END
 
 
+" delete all trailing whitespaces
 nnoremap <Leader>ccc :%s/\s\+$//ge<CR>
 nnoremap <silent> ,wa :1,9000bwipeout<cr>
 
@@ -999,6 +983,10 @@ function! <SID>SynStack()
   echo map(synstack(line('.'), col('.')),
   \       'synIDattr(v:val, "name")')
 endfunc
+
+set nowrap
+set ignorecase
+
 
 " syntax off
 " set t_Co=0

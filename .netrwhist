@@ -1,10 +1,7 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =8
-let g:netrw_dirhist_1='/nfs/sc/disks/hbar_tools/pkgs/cmc_parallel_ignore_6_29_2016'
-let g:netrw_dirhist_2='/nfs/sc/disks/hbar_tools/pkgs'
-let g:netrw_dirhist_3='/nfs/sc/disks/hbar_tools/pkgs/cmc_parallel_ignore_bugfix_6_30_2016'
-let g:netrw_dirhist_4='/nfs/sc/disks/hbar_tools/pkgs/cmc_parallel_ignore_bugfix_6_30_2016/brel'
-let g:netrw_dirhist_5='/nfs/sc/disks/hbar_tools/pkgs/cmc_parallel_ignore_bugfix_6_30_2016'
-let g:netrw_dirhist_6='/nfs/sc/disks/hbar_tools/pkgs'
-let g:netrw_dirhist_7='/nfs/sc/disks/hbar_tools/pkgs/cmc_parallel_ignore_bugfix_6_30_2016'
-let g:netrw_dirhist_8='/nfs/sc/disks/hbar_tools/pkgs/cmc_parallel_ignore_bugfix_6_30_2016/CMC'
+let g:netrw_dirhist_cnt =5
+let g:netrw_dirhist_1='/nfs/sc/disks/cmc_strain_temp_01/CMC.Dev/CMC.Build/dynamics'
+let g:netrw_dirhist_2='/nfs/sc/disks/cmc_strain_temp_01/SH/VP/383K_fatsd_1nm_tox_matchedwf'
+let g:netrw_dirhist_3='/nfs/sc/disks/cmc_strain_temp_01/SH/VP/383K_fatsd_1nm_tox_matchedwf/InP_target'
+let g:netrw_dirhist_4='/nfs/sc/disks/cmc_strain_temp_01/SH/VP/383K_fatsd_1nm_tox_matchedwf/InP_target/VDS-0.3'
+let g:netrw_dirhist_5='/nfs/sc/disks/cmc_strain_temp_01/SH/VP/383K_fatsd_1nm_tox_matchedwf/InP_target/VDS-0.3/run_dg_11'
