@@ -4,12 +4,16 @@ sudo apt-get update
 sudo apt-get upgrade
 
 #--- vim related
-sudo apt-get install git-core python-pip font-manager \
+sudo apt-get --yes --force-yes install git-core python-pip \
+  zsh ksh csh exuberant-ctags tmux gnome-terminal vim-gnome \
+  ncurses-term libX11-dev
+  
+sudo apt-get --yes --force-yes install git-core python-pip font-manager \
   ttf-mscorefonts-installer ttf-liberation zsh ksh tcsh csh \
   exuberant-ctags tmux vim-gnome gnome-terminal ncurses-term \
 
-#echo "" >> ~/.bashrc
-#echo "export TERM=xterm-256color" >> ~/.bashrc
+echo "" >> ~/.bashrc
+echo "export TERM=xterm-256color" >> ~/.bashrc
 
 #--- setup vim now
 cd $HOME
@@ -19,11 +23,11 @@ ln -s ~/vimsetup ~/.vim
 ln -s .vim/tmux.conf ~/.tmux.conf
 cd .vim
 ./bootstrap.pl
-font-install/install-font
+#font-install/install-font
 ln -s ~/.vim/vimrc ~/.vimrc
 vim +PluginInstall +qall
 
-git clone https://github.com/chriskempson/base16-gnome-terminal.git ~/.config/base16-gnome-terminal
+#git clone https://github.com/chriskempson/base16-gnome-terminal.git ~/.config/base16-gnome-terminal
 
 ##--- OpenELEC related
 #mkdir -p OpenELEC
