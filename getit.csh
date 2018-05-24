@@ -1,0 +1,37 @@
+#!/bin/csh -f
+
+#Source: http://misztal.edu.pl/software/databases/dibas/
+
+wget https://doctoral.matinf.uj.edu.pl/database/dibas/Acinetobacter.baumanii.zip
+wget https://doctoral.matinf.uj.edu.pl/database/dibas/Actinomyces.israeli.zip
+wget https://doctoral.matinf.uj.edu.pl/database/dibas/Bacteroides.fragilis.zip
+wget https://doctoral.matinf.uj.edu.pl/database/dibas/Bifidobacterium.spp.zip
+wget https://doctoral.matinf.uj.edu.pl/database/dibas/Candida.albicans.zip
+wget https://doctoral.matinf.uj.edu.pl/database/dibas/Clostridium.perfringens.zip
+wget https://doctoral.matinf.uj.edu.pl/database/dibas/Enterococcus.faecium.zip
+wget https://doctoral.matinf.uj.edu.pl/database/dibas/Enterococcus.faecalis.zip
+wget https://doctoral.matinf.uj.edu.pl/database/dibas/Escherichia.coli.zip
+wget https://doctoral.matinf.uj.edu.pl/database/dibas/Fusobacterium.zip
+wget https://doctoral.matinf.uj.edu.pl/database/dibas/Lactobacillus.casei.zip
+wget https://doctoral.matinf.uj.edu.pl/database/dibas/Lactobacillus.crispatus.zip
+wget https://doctoral.matinf.uj.edu.pl/database/dibas/Lactobacillus.delbrueckii.zip
+wget https://doctoral.matinf.uj.edu.pl/database/dibas/Lactobacillus.gasseri.zip
+wget https://doctoral.matinf.uj.edu.pl/database/dibas/Lactobacillus.jehnsenii.zip
+wget https://doctoral.matinf.uj.edu.pl/database/dibas/Lactobacillus.johnsonii.zip
+wget https://doctoral.matinf.uj.edu.pl/database/dibas/Lactobacillus.paracasei.zip
+wget https://doctoral.matinf.uj.edu.pl/database/dibas/Lactobacillus.plantarum.zip
+wget https://doctoral.matinf.uj.edu.pl/database/dibas/Lactobacillus.reuteri.zip
+wget https://doctoral.matinf.uj.edu.pl/database/dibas/Lactobacillus.rhamnosus.zip
+wget https://doctoral.matinf.uj.edu.pl/database/dibas/Lactobacillus.salivarius.zip
+wget https://doctoral.matinf.uj.edu.pl/database/dibas/Listeria.monocytogenes.zip
+wget https://doctoral.matinf.uj.edu.pl/database/dibas/Micrococcus.spp.zip
+wget https://doctoral.matinf.uj.edu.pl/database/dibas/Neisseria.gonorrhoeae.zip
+wget https://doctoral.matinf.uj.edu.pl/database/dibas/Porfyromonas.gingivalis.zip
+wget https://doctoral.matinf.uj.edu.pl/database/dibas/Propionibacterium.acnes.zip
+wget https://doctoral.matinf.uj.edu.pl/database/dibas/Proteus.zip
+wget https://doctoral.matinf.uj.edu.pl/database/dibas/Pseudomonas.aeruginosa.zip
+wget https://doctoral.matinf.uj.edu.pl/database/dibas/Staphylococcus.aureus.zip
+wget https://doctoral.matinf.uj.edu.pl/database/dibas/Staphylococcus.epidermidis.zip
+wget https://doctoral.matinf.uj.edu.pl/database/dibas/Staphylococcus.saprophiticus.zip
+wget https://doctoral.matinf.uj.edu.pl/database/dibas/Streptococcus.agalactiae.zip
+wget https://doctoral.matinf.uj.edu.pl/database/dibas/Veionella.zip
