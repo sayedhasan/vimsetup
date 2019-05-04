@@ -9,7 +9,6 @@ use File::Basename;
 #use Pod::Usage;
 use Cwd;
 
-#my $HTTP_PROXY = "http://proxy.fm.intel.com:911";
 my $HTTP_PROXY = "";
 
 # --- bootstrap vundle
