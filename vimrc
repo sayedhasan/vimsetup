@@ -962,8 +962,8 @@ cabbrev help tab help
 
 "--- Unite gtag mappings
 set csprg=gtags-cscope
-cs add GTAGS
-set cst
+" cs add GTAGS
+" set cst
 " cscope add /foo/bar/GTAGS
 
 nnoremap <leader>gd :execute 'Unite gtags/def:'.expand('<cword>')<CR>
