@@ -18,7 +18,7 @@ endif
 
 " Unix Shell is tcsh
 if has('unix')
-  set shell=tcsh
+  set shell=zsh
 endif
 "--)
 
