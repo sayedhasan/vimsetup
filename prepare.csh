@@ -3,17 +3,17 @@
 #sudo apt-get update
 #sudo apt-get upgrade
 
-#--- vim related
-sudo apt-get --yes --force-yes install git-core python-pip \
-  zsh ksh csh tcsh exuberant-ctags tmux gnome-terminal vim-gnome \
-  ncurses-term font-manager ttf-mscorefonts-installer ttf-liberation
+# #--- vim related
+# sudo apt-get --yes --force-yes install git-core python-pip \
+#   zsh ksh csh tcsh exuberant-ctags tmux gnome-terminal vim-gnome \
+#   ncurses-term font-manager ttf-mscorefonts-installer ttf-liberation
 
     #sudo apt-get --yes --force-yes install font-manager \
     #  ttf-mscorefonts-installer ttf-liberation zsh ksh tcsh csh \
     #  gnome-terminal ncurses-term \
 
-echo "" >> ~/.bashrc
-echo "export TERM=xterm-256color" >> ~/.bashrc
+# echo "" >> ~/.bashrc
+# echo "export TERM=xterm-256color" >> ~/.bashrc
 
 #--- setup vim now
 cd $HOME
