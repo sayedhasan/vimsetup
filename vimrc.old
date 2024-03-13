@@ -47,9 +47,6 @@ call vundle#begin()
 Plugin 'gmarik/Vundle.vim'
 "--)
 
-" ARM Assembly (Aarch64)
-Plugin 'https://github.com/compnerd/arm64asm-vim.git'
-
 " Commenting plugins"<--fold(
 Plugin 'tomtom/tcomment_vim'
 Plugin 'tpope/vim-commentary'
@@ -60,10 +57,13 @@ Plugin 'godlygeek/tabular'
 Plugin 'preservim/vim-markdown'
 Plugin 'preservim/vim-pencil'
 Plugin 'preservim/tagbar'
+Plugin 'itspriddle/vim-marked'
 Plugin 'junegunn/goyo.vim'
 
+let g:marked_app = "Marked"
 let g:marked_filetypes = ["markdown", "mkd", "ghmarkdown", "vimwiki"]
 
+Plugin 'masukomi/vim-markdown-folding'
 Plugin 'vim-scripts/Align'
 Plugin 'vim-scripts/Gundo'
 Plugin 'vim-scripts/VisIncr'
@@ -127,8 +127,6 @@ Plugin 'http://github.com/jistr/vim-nerdtree-tabs.git'
 Plugin 'http://github.com/danro/rename.vim.git'
 "--)
 
-Plugin 'https://github.com/Shirk/vim-gas.git'
-
 " Repo-management plugins"<--fold(
 " Plugin 'http://github.com/tpope/vim-git.git'
 " Plugin 'http://github.com/tpope/vim-fugitive.git'
@@ -157,25 +155,18 @@ Plugin 'mhartington/oceanic-next'
 " Plugin 'http://github.com/Lokaltog/vim-powerline.git'    " --- very slow
 " Plugin 'http://github.com/bling/vim-airline.git
 " Plugin 'bling/vim-airline'                               " --- very slow
-" Plugin 'http://github.com/rey-wright/argokai.git'
-" Plugin 'http://github.com/Pychimp/Pychimp-vim.git'
-" Plugin 'abra/vim-abra'
 
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'Shougo/denite.nvim'
 
-Plugin 'junegunn/fzf.vim'
 Plugin 'junegunn/fzf', { 'do': { -> fzf#install() } }
-" set rtp+=/home/linuxbrew/.linuxbrew/bin/fzf
-
-" Godbolt's compiler explorer
-Plugin 'ldrumm/compiler-explorer.vim'
-" Plugin 'krady21/compiler-explorer.nvim'
+Plugin 'junegunn/fzf.vim'
+set rtp+=/opt/homebrew/bin/fzf
 
 " Use the following command to set the fzf window to open at the bottom
-let g:fzf_layout = { 'down': '~80%' }
+let g:fzf_layout = { 'down': '~40%' }
 
 " Change the default command to use for `:Files`
 let g:fzf_files_options = '--prompt "Files> " --preview "bat --color=always {}"'
@@ -201,29 +192,12 @@ let g:fzf_colors =
 \ 'header':  ['fg', 'Comment']
 \ }
 
-Plugin 'jremmen/vim-ripgrep'
 
 
-Plugin 'dense-analysis/ale'
-
-" " now connect cspell with ale
-let g:ale_linters = {}
-let g:ale_linters['cpp'] = ['clang-tidy', 'cppcheck']
-" let g:ale_linters['text'] = ['cspell']
-" let g:ale_linters['markdown'] = ['cspell']
-"
-" let g:ale_fixers = {
-" \   '*': ['remove_trailing_lines', 'trim_whitespace'],
-" \}
-"
-" " Enable ALE and set it to run on various Vim events
-let g:ale_lint_on_text_changed = 'never' " You can set this to 'always' if you want spell checks as you type
-" let g:ale_fix_on_save = 1
-
-
-
-
-" Plugin 'http://github.com/easysid/mod8.vim.git'
+" Plugin 'http://github.com/rey-wright/argokai.git'
+" Plugin 'http://github.com/Pychimp/Pychimp-vim.git'
+" Plugin 'abra/vim-abra'
+Plugin 'http://github.com/easysid/mod8.vim.git'
 Plugin 'nice/sweater'
 Plugin 'blerins/flattown'
 Plugin 'duythinht/vim-coffee'
@@ -231,7 +205,7 @@ Plugin 'antlypls/vim-colors-codeschool'
 Plugin 'chankaward/vim-railscasts-theme'
 " Plugin 'quanganhdo/grb256'
 " Plugin 'ajh17/Spacegray.vim'
-" Plugin 'chriskempson/base16-vim'
+Plugin 'chriskempson/base16-vim'
 Plugin 'chriskempson/tomorrow-theme'
 " let base16colorspace=256  " Access colors present in 256 colorspace
 "--)
@@ -270,10 +244,6 @@ Plugin 'http://github.com/funorpain/vim-cpplint.git'
 " Plugin 'chrisbra/vim-diff-enhanced'
 "--)
 
-set spell
-set spellfile=~/.vim/spell/en.utf-8.add
-" set thesaurus+=/home/mshasan/vimsetup/thesaurus/words.txt
-
 call vundle#end()            " required
 filetype plugin indent on    " required
 
@@ -307,7 +277,7 @@ set expandtab                  " expands tabs to spaces
 set autoindent                 " copy indentation from the previous line ("stupid indent")
 set backspace=eol,start,indent " allow backspacing over indent, eol, and the start of an insert
 set whichwrap+=<,>,h,l
-
+set conceallevel=2             " for markdown
 
 " Buffer related options {
 " --------------------------------------------
@@ -317,7 +287,6 @@ set hidden                     " allow unsaved buffer
 set lazyredraw                 " Don't update the display while executing macros
 set textwidth=0                " Text width before wrapping lines
 set clipboard+=unnamed         " To use system clipboard
-set clipboard+=unnamedplus
 set encoding=utf8              " utf8 encoding, needed to show NERDTree properly
 set ffs=unix,dos,mac           " EOF terminator type
 set autochdir                  " Vim will change CWD automatically to the file opened
@@ -415,7 +384,7 @@ nnoremap <silent> ,md :!mkdir -p %:p:h<CR>
 nnoremap <silent> ,n :nohls<CR>
 
 " put the vim directives for my file editing settings in
-nnoremap <silent> ,vi ovim:set ts=2 sts=2 sw=2:<CR>vim:fdm=marker fdl=100 fdc=0:<ESC>
+nnoremap <silent> ,vi ovim:set ts=2 sts=2 sw=2:<CR>vim:fdm=marker fdl=1 fdc=0:<ESC>
 
 " Show all available VIM servers
 nnoremap <silent> ,ss :echo serverlist()<CR>
@@ -909,9 +878,6 @@ au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g
 " saving macros
 let @a = ':%s/ /\/g\ggvG'
 
-" set column number
-set statusline+=col:\ %c,
-
 nnoremap <silent> ,src :set lines=42 columns=158<CR>
 nnoremap <silent> ,srr :set lines=42<CR>
 nnoremap <silent> ,scc :set columns=158<CR>
@@ -943,7 +909,7 @@ noremap <silent> <Leader>hh "zyiw:tab he <C-R>"<CR>
 inoremap <Leader>fn <C-R>=expand("%:t")<CR>
 inoremap <Leader>fp <C-R>=getcwd()<CR>
 
-"set guifont=Menlo:h14
+" set guifont=Menlo:h14
 if &term =~ '256color'
   " disable Background Color Erase (BCE) so that color schemes
   " render properly when inside 256-color tmux and GNU screen.
@@ -954,7 +920,7 @@ endif
 
 " let g:airline_theme='one'
 " set gfn=Inconsolata\ 18
-set gfn=Consolas\ for\ Powerline\ 12
+" set gfn=Consolas\ for\ Powerline\ 12
 try
   colorscheme tender
   " colorscheme sienna
@@ -964,7 +930,7 @@ endtry
 
 if has ("gui_running")
   " set gfn=Consolas\ for\ Powerline\ 18
-  set gfn=Consolas\ for\ Powerline\ 14
+  set gfn=Consolas\ for\ Powerline\ 18
   colorscheme OceanicNext
 endif
 
@@ -980,7 +946,43 @@ set encoding=utf-8
 "| airline
 "+----------------------------
 let g:airline_powerline_fonts = 1
+
+" if !exists('g:airline_symbols')
+"   let g:airline_symbols = {}
+" endif
+"
+" " unicode symbols
+" let g:airline_left_sep = '»'
+" let g:airline_left_sep = '»'
+" let g:airline_left_sep = '▶'
+" let g:airline_right_sep = '«'
+" let g:airline_right_sep = '◀'
+" let g:airline_symbols.linenr = '␊'
+" let g:airline_symbols.linenr = '␤'
+" let g:airline_symbols.linenr = '¶'
+" let g:airline_symbols.branch = '⎇'
+" let g:airline_symbols.paste = 'ρ'
+" let g:airline_symbols.paste = 'Þ'
+" let g:airline_symbols.paste = '∥'
+" let g:airline_symbols.whitespace = 'Ξ'
+"
+" " airline symbols
+" let g:airline_left_sep = ''
+" let g:airline_left_alt_sep = ''
+" let g:airline_right_sep = ''
+" let g:airline_right_alt_sep = ''
+" let g:airline_symbols.branch = ''
+" let g:airline_symbols.readonly = ''
+" let g:airline_symbols.linenr = ''
+"
+" let g:airline#extensions#tabline#enabled = 1
+" let g:airline#extensions#tabline#left_sep = '||'
+" let g:airline#extensions#tabline#left_alt_sep = '#'
+" let g:airline#extensions#tabline#right_sep = '||'
+" let g:airline#extensions#tabline#right_alt_sep = '#'
+
 let g:airline_theme = 'onedark'
+" let g:airline_theme = 'one'
 let showtabline=2
 
 " let g:airline_theme             = 'solarized'
@@ -993,9 +995,9 @@ let showtabline=2
 " let g:airline_branch_prefix     = ''
 " let g:airline_readonly_symbol   = ''
 " let g:airline_linecolumn_prefix = ''
-" let g:airline_powerline_fonts   = 1
-" let g:airline_detect_modified   = 1
-" let g:airline_detect_paste      = 1
+let g:airline_powerline_fonts   = 1
+let g:airline_detect_modified   = 1
+let g:airline_detect_paste      = 1
 set lazyredraw
 " }
 
@@ -1061,7 +1063,7 @@ nnoremap <leader>gg :execute 'Unite gtags/grep -no-quit -keep-focus'<CR>
 vnoremap <leader>gv <ESC>:execute 'Unite gtags/def:'.GetVisualSelection()<CR>
 
 "--- special vi modeline for mi file
-nnoremap <leader>mif ggO vim:set ft=tcl sw=2 ts=2 sts=2 et tw=72:<CR>vim:fdm=marker foldmarker=<--fold(,--) fdl=100 fdc=0:<Esc>
+nnoremap <leader>mif ggO vim:set ft=tcl sw=2 ts=2 sts=2 et tw=72:<CR>vim:fdm=marker foldmarker=<--fold(,--) fdl=0 fdc=0:<Esc>
 
 " actually I like the intro message
 " intro
