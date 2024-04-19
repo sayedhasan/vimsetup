@@ -204,24 +204,22 @@ let g:fzf_colors =
 Plugin 'jremmen/vim-ripgrep'
 
 
-Plugin 'dense-analysis/ale'
-
-" " now connect cspell with ale
-let g:ale_linters = {}
-let g:ale_linters['cpp'] = ['clang-tidy', 'cppcheck']
-" let g:ale_linters['text'] = ['cspell']
-" let g:ale_linters['markdown'] = ['cspell']
+" Plugin 'dense-analysis/ale'
+"
+" " " now connect cspell with ale
+" let g:ale_linters = {}
+" let g:ale_linters['cpp'] = ['clang-tidy', 'cppcheck']
+" " let g:ale_linters['text'] = ['cspell']
+" " let g:ale_linters['markdown'] = ['cspell']
 "
 " let g:ale_fixers = {
 " \   '*': ['remove_trailing_lines', 'trim_whitespace'],
 " \}
 "
-" " Enable ALE and set it to run on various Vim events
-let g:ale_lint_on_text_changed = 'never' " You can set this to 'always' if you want spell checks as you type
-" let g:ale_fix_on_save = 1
-
-
-
+" " " Enable ALE and set it to run on various Vim events
+" let g:ale_lint_on_text_changed = 'never' " You can set this to 'always' if you want spell checks as you type
+" " let g:ale_fix_on_save = 1
+"
 
 " Plugin 'http://github.com/easysid/mod8.vim.git'
 Plugin 'nice/sweater'
