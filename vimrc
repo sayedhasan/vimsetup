@@ -47,23 +47,13 @@ call vundle#begin()
 Plugin 'gmarik/Vundle.vim'
 "--)
 
-" ARM Assembly (Aarch64)
-Plugin 'https://github.com/compnerd/arm64asm-vim.git'
-
 " Commenting plugins"<--fold(
 Plugin 'tomtom/tcomment_vim'
 Plugin 'tpope/vim-commentary'
 "--)
 
 " Text manipulation plugins"<--fold(
-Plugin 'godlygeek/tabular'
-Plugin 'preservim/vim-markdown'
-Plugin 'preservim/vim-pencil'
-Plugin 'preservim/tagbar'
-Plugin 'junegunn/goyo.vim'
-
-let g:marked_filetypes = ["markdown", "mkd", "ghmarkdown", "vimwiki"]
-
+" Plugin 'godlygeek/tabular'
 Plugin 'vim-scripts/Align'
 Plugin 'vim-scripts/Gundo'
 Plugin 'vim-scripts/VisIncr'
@@ -81,7 +71,7 @@ Plugin 'Shougo/unite.vim'
 Plugin 'hewes/unite-gtags'
 Plugin 'vim-scripts/gtags.vim'
 Plugin 'chazy/cscope_maps'
-" Plugin 'majutsushi/tagbar'
+Plugin 'majutsushi/tagbar'
 Plugin 'sayedhasan/taglist'
 "--)
 
@@ -128,8 +118,6 @@ Plugin 'http://github.com/jistr/vim-nerdtree-tabs.git'
 Plugin 'http://github.com/danro/rename.vim.git'
 "--)
 
-Plugin 'https://github.com/Shirk/vim-gas.git'
-
 " Repo-management plugins"<--fold(
 " Plugin 'http://github.com/tpope/vim-git.git'
 " Plugin 'http://github.com/tpope/vim-fugitive.git'
@@ -167,82 +155,15 @@ Plugin 'vim-airline/vim-airline'
 " Plugin 'http://github.com/rey-wright/argokai.git'
 " Plugin 'http://github.com/Pychimp/Pychimp-vim.git'
 " Plugin 'abra/vim-abra'
-
-Plugin 'vim-airline/vim-airline'
-Plugin 'vim-airline/vim-airline-themes'
-Plugin 'ctrlpvim/ctrlp.vim'
-Plugin 'Shougo/denite.nvim'
-
-Plugin 'junegunn/fzf.vim'
-Plugin 'junegunn/fzf', { 'do': { -> fzf#install() } }
-" set rtp+=/home/linuxbrew/.linuxbrew/bin/fzf
-
-" Godbolt's compiler explorer
-Plugin 'ldrumm/compiler-explorer.vim'
-" Plugin 'krady21/compiler-explorer.nvim'
-
-" Use the following command to set the fzf window to open at the bottom
-let g:fzf_layout = { 'down': '~80%' }
-
-" Change the default command to use for `:Files`
-let g:fzf_files_options = '--prompt "Files> " --preview "bat --color=always {}"'
-
-" Use `ripgrep` with `:GFiles?` to get a list of all modified files
-let g:fzf_git_status_command = 'rg --files-with-matches --follow --no-messages'
-
-" Change colors to match your color scheme; these numbers correspond to ANSI color codes
-let g:fzf_colors =
-\ {
-\ 'fg':      ['fg', 'Normal'],
-\ 'bg':      ['bg', 'Normal'],
-\ 'hl':      ['fg', 'Comment'],
-\ 'fg+':     ['fg', 'CursorLine', 'CursorColumn', 'Normal'],
-\ 'bg+':     ['bg', 'CursorLine', 'CursorColumn'],
-\ 'hl+':     ['fg', 'Statement'],
-\ 'info':    ['fg', 'PreProc'],
-\ 'border':  ['fg', 'Ignore'],
-\ 'prompt':  ['fg', 'Conditional'],
-\ 'pointer': ['fg', 'Exception'],
-\ 'marker':  ['fg', 'Keyword'],
-\ 'spinner': ['fg', 'Label'],
-\ 'header':  ['fg', 'Comment']
-\ }
-
-Plugin 'jremmen/vim-ripgrep'
-
-
-" Plugin 'dense-analysis/ale'
-"
-" " " now connect cspell with ale
-" let g:ale_linters = {}
-" let g:ale_linters['cpp'] = ['clang-tidy', 'cppcheck']
-" " let g:ale_linters['text'] = ['cspell']
-" " let g:ale_linters['markdown'] = ['cspell']
-"
-" let g:ale_fixers = {
-" \   '*': ['remove_trailing_lines', 'trim_whitespace'],
-" \}
-"
-" " " Enable ALE and set it to run on various Vim events
-" let g:ale_lint_on_text_changed = 'never' " You can set this to 'always' if you want spell checks as you type
-" " let g:ale_fix_on_save = 1
-"
-
-" Plugin 'http://github.com/easysid/mod8.vim.git'
+Plugin 'http://github.com/easysid/mod8.vim.git'
 Plugin 'nice/sweater'
 Plugin 'blerins/flattown'
 Plugin 'duythinht/vim-coffee'
 Plugin 'antlypls/vim-colors-codeschool'
 Plugin 'chankaward/vim-railscasts-theme'
-<<<<<<< HEAD
-" Plugin 'quanganhdo/grb256'
-" Plugin 'ajh17/Spacegray.vim'
-" Plugin 'chriskempson/base16-vim'
-=======
 Plugin 'quanganhdo/grb256'
 " Plugin 'ajh17/Spacegray.vim'
 Plugin 'chriskempson/base16-vim'
->>>>>>> 89a194c (Updating bootstraping)
 Plugin 'chriskempson/tomorrow-theme'
 " let base16colorspace=256  " Access colors present in 256 colorspace
 "--)
@@ -285,10 +206,6 @@ Plugin 'junegunn/fzf.vim'
 Plugin 'junegunn/fzf'
 
 "--)
-
-set spell
-set spellfile=~/.vim/spell/en.utf-8.add
-" set thesaurus+=/home/mshasan/vimsetup/thesaurus/words.txt
 
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -333,7 +250,6 @@ set hidden                     " allow unsaved buffer
 set lazyredraw                 " Don't update the display while executing macros
 set textwidth=0                " Text width before wrapping lines
 set clipboard+=unnamed         " To use system clipboard
-set clipboard+=unnamedplus
 set encoding=utf8              " utf8 encoding, needed to show NERDTree properly
 set ffs=unix,dos,mac           " EOF terminator type
 set autochdir                  " Vim will change CWD automatically to the file opened
@@ -431,7 +347,7 @@ nnoremap <silent> ,md :!mkdir -p %:p:h<CR>
 nnoremap <silent> ,n :nohls<CR>
 
 " put the vim directives for my file editing settings in
-nnoremap <silent> ,vi ovim:set ts=2 sts=2 sw=2:<CR>vim:fdm=marker fdl=100 fdc=0:<ESC>
+nnoremap <silent> ,vi ovim:set ts=2 sts=2 sw=2:<CR>vim:fdm=marker fdl=1 fdc=0:<ESC>
 
 " Show all available VIM servers
 nnoremap <silent> ,ss :echo serverlist()<CR>
@@ -925,9 +841,6 @@ au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g
 " saving macros
 let @a = ':%s/ /\/g\ggvG'
 
-" set column number
-set statusline+=col:\ %c,
-
 nnoremap <silent> ,src :set lines=42 columns=158<CR>
 nnoremap <silent> ,srr :set lines=42<CR>
 nnoremap <silent> ,scc :set columns=158<CR>
@@ -995,10 +908,6 @@ set encoding=utf-8
 "+----------------------------
 "| airline
 "+----------------------------
-let g:airline_powerline_fonts = 1
-let g:airline_theme = 'onedark'
-let showtabline=2
-
 " let g:airline_theme             = 'solarized'
 " let g:airline_enable_branch     = 1
 " let g:airline_enable_syntastic  = 1
@@ -1064,13 +973,8 @@ cabbrev help tab help
 
 
 "--- Unite gtag mappings
-<<<<<<< HEAD
-set csprg=gtags-cscope
-" cs add GTAGS
-=======
 " set csprg=gtags-cscope
 " cs add gtags
->>>>>>> 89a194c (Updating bootstraping)
 " set cst
 " cscope add /foo/bar/GTAGS
 
@@ -1082,7 +986,7 @@ nnoremap <leader>gg :execute 'Unite gtags/grep -no-quit -keep-focus'<CR>
 vnoremap <leader>gv <ESC>:execute 'Unite gtags/def:'.GetVisualSelection()<CR>
 
 "--- special vi modeline for mi file
-nnoremap <leader>mif ggO vim:set ft=tcl sw=2 ts=2 sts=2 et tw=72:<CR>vim:fdm=marker foldmarker=<--fold(,--) fdl=100 fdc=0:<Esc>
+nnoremap <leader>mif ggO vim:set ft=tcl sw=2 ts=2 sts=2 et tw=72:<CR>vim:fdm=marker foldmarker=<--fold(,--) fdl=0 fdc=0:<Esc>
 
 " actually I like the intro message
 " intro
