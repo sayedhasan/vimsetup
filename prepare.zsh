@@ -10,4 +10,3 @@ cd .vim
 ./bootstrap.pl
 ln -s ~/.vim/vimrc ~/.vimrc
 vim +PluginInstall +qall
-

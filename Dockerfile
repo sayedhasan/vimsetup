@@ -10,8 +10,9 @@ RUN apt-get update && apt-get install -y \
   git \
   wget \
   curl \
-  vim \
+  vim-gtk \
   tree \
+  tmux \
   ninja-build \
   dbus \
   exuberant-ctags \
@@ -25,6 +26,9 @@ RUN apt-get update && apt-get install -y \
   ca-certificates \
   gnupg \
   apt-transport-https
+
+# Set terminal colors
+ENV TERM xterm-256color
 
 # Fix for D-bus issue by installing and setting up D-Bus
 RUN service dbus start
