@@ -17,6 +17,7 @@ RUN apt-get update && apt-get install -y \
   exuberant-ctags \
   gcc \
   g++ \
+  gdb \
   cmake \
   make \
   software-properties-common \
